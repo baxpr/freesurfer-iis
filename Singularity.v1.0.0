@@ -1,0 +1,24 @@
+Bootstrap: docker
+From: centos:7.5.1804
+
+%help
+
+Freesurfer recon-all pipeline with thalamic segmentation module
+
+%post
+  yum -y install wget tar gunzip
+  
+  # Freesurfer development version
+  mkdir /FS
+  wget -P /FS https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
+
+  # Create input/output directories for binding
+  mkdir /INPUTS && mkdir /OUTPUTS
+
+%environment
+
+%runscript
+    xvfb-run --server-num=$(($$ + 99)) \
+    --server-args='-screen 0 1600x1200x24 -ac +extension GLX' \
+    bash \
+	"$@"
