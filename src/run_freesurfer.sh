@@ -53,5 +53,5 @@ echo OUTDIR      = "${OUTDIR}"
 
 # Run Freesurfer recon
 export SUBJECTS_DIR="${OUTDIR}"
-recon-all -i ${T1_NII} -s "${PROJECT}_${SUBJECT}_${SESSION}_${SCAN}" -all 
+recon-all -i "${T1_NII}" -s "${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}" -all 
 
