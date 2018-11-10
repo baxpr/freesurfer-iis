@@ -27,7 +27,15 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
 
 %post
   
-  yum -y install tcsh unzip wget xvfb
+  # For installs
+  yum -y install unzip wget
+  
+  # For Freesurfer
+  yum -y install tcsh
+  
+  # For X
+  yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
+  #xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
   
   # Install Freesurfer
   #wget -nv -P /usr/local https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
@@ -37,9 +45,10 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
 
   # Matlab runtime for brainstem, hippocampus, thalamus modules
   #wget -nv -P /opt http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
-  unzip /opt/MCR_R2014b_glnxa64_installer.zip -d /opt/MCR_R2014b_glnxa64_installer
-  /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes > /opt/MCR_install.log
-  rm -r /opt/MCR_R2014b_glnxa64_installer /opt/MCR_R2014b_glnxa64_installer.zip
+  unzip /opt/MCR_R2014b_glnxa64_installer.zip -d /opt/MCR_R2014b_glnxa64_installer > /opt/MCR_unzip.log
+  /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes
+  rm -r /opt/MCR_R2014b_glnxa64_installer
+  rm /opt/MCR_R2014b_glnxa64_installer.zip /opt/MCR_unzip.log
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
