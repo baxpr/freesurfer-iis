@@ -55,7 +55,6 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes
   rm -r /opt/MCR_R2014b_glnxa64_installer
   rm /opt/MCR_R2014b_glnxa64_installer.zip /opt/MCR_unzip.log
-  rm -r /tmp/*
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
