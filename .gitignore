@@ -1,3 +1,5 @@
 INPUTS*
 OUTPUTS*
 localdocker.sh
+*.tar.gz
+*.simg
