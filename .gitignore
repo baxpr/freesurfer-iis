@@ -3,3 +3,4 @@ OUTPUTS*
 localdocker.sh
 *.tar.gz
 *.simg
+freesurfer_license.txt
