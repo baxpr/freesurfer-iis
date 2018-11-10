@@ -43,12 +43,19 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   tar -zxf freesurfer-linux-centos7_x86_64-dev.tar.gz
   rm freesurfer-linux-centos7_x86_64-dev.tar.gz
 
+  # Don't want Freesurfer using /dev/shm for temp space because it easily runs 
+  # out in a container. So here is a hack to avoid (but, it doesn't work,
+  # probably because this is not the only place /dev/shm is specified)
+  #sed -i 's/if (-d \/dev\/shm) then/if ( ) then/' \
+  #  /usr/local/freesurfer/bin/mri_nu_correct.mni 
+
   # Matlab runtime for brainstem, hippocampus, thalamus modules
   #wget -nv -P /opt http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
   unzip /opt/MCR_R2014b_glnxa64_installer.zip -d /opt/MCR_R2014b_glnxa64_installer > /opt/MCR_unzip.log
   /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes
   rm -r /opt/MCR_R2014b_glnxa64_installer
   rm /opt/MCR_R2014b_glnxa64_installer.zip /opt/MCR_unzip.log
+  rm -r /tmp/*
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
