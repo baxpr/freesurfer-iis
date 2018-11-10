@@ -9,6 +9,7 @@ Freesurfer recon-all pipeline with thalamic segmentation module
   # Freesurfer development version. Download manually and reference a local copy
   # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
   freesurfer-linux-centos7_x86_64-dev.tar.gz /usr/local
+  src/run_freesurfer.sh /
 
 %post
   
@@ -19,6 +20,7 @@ Freesurfer recon-all pipeline with thalamic segmentation module
   
   # Example of binding FS license file:
   # https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
+  # --bind freesurfer_license.txt:/usr/local/freesurfer/license.txt
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
@@ -26,12 +28,14 @@ Freesurfer recon-all pipeline with thalamic segmentation module
 %environment
   export FREESURFER_HOME=/usr/local/freesurfer
   source $FREESURFER_HOME/SetUpFreeSurfer.sh
-  export SUBJECTS_DIR=/OUTPUTS
 
 %runscript
-    xvfb-run --server-num=$(($$ + 99)) \
-    --server-args='-screen 0 1600x1200x24 -ac +extension GLX' \
-    bash \
-	"$@"
+  bash /run_freesurfer.sh "$@"
 
-# recon-all -i <nifti_file> -s <subject_or_session_name?> -all 
+
+
+  #xvfb-run --server-num=$(($$ + 99)) \
+  #--server-args='-screen 0 1600x1200x24 -ac +extension GLX' \
+  #bash \
+  #"$@"
+
