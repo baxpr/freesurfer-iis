@@ -16,14 +16,18 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
   freesurfer-linux-centos7_x86_64-dev.tar.gz /usr/local
 
-  Default run script
-  src/run_freesurfer.sh /
+  # Matlab runtime, if we are going to download manually and reference a local 
+  # copy during the build
+  # http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
+  MCR_R2014b_glnxa64_installer.zip /opt
+
+  # Default run scripts
+  runscripts /opt
 
 
 %post
   
-  # tcsh for Freesurfer
-  yum -y install tcsh unzip wget
+  yum -y install tcsh unzip wget xvfb
   
   # Install Freesurfer
   #wget -nv -P /usr/local https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
@@ -32,12 +36,10 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   rm freesurfer-linux-centos7_x86_64-dev.tar.gz
 
   # Matlab runtime for brainstem, hippocampus, thalamus modules
-  mkdir /MCR
-  wget -nv -P /MCR http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
-  unzip /MCR/MCR_R2014b_glnxa64_installer.zip -d /MCR/MCR_R2014b_glnxa64_installer
-  /MCR/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes
-  rm -r /MCR/MCR_R2014b_glnxa64_installer /MCR/MCR_R2014b_glnxa64_installer.zip
-  rmdir /MCR
+  #wget -nv -P /opt http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
+  unzip /opt/MCR_R2014b_glnxa64_installer.zip -d /opt/MCR_R2014b_glnxa64_installer
+  /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes > /opt/MCR_install.log
+  rm -r /opt/MCR_R2014b_glnxa64_installer /opt/MCR_R2014b_glnxa64_installer.zip
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
@@ -56,14 +58,9 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   export LD_LIBRARY_PATH=${V84}/runtime/glnxa64:${LD_LIBRARY_PATH}
   export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v84/X11/app-defaults
 
+
 %runscript
-
-  bash /run_freesurfer.sh "$@"
-
-
-
-  #xvfb-run --server-num=$(($$ + 99)) \
-  #--server-args='-screen 0 1600x1200x24 -ac +extension GLX' \
-  #bash \
-  #"$@"
+  xvfb-run --server-num=$(($$ + 99)) \
+  --server-args='-screen 0 1600x1200x24 -ac +extension GLX' \
+  bash /opt/runscripts/run_everything.sh "$@"
 

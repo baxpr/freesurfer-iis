@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# Full T1 pipeline:
+#    recon-all
+#    segmentThalamicNuclei.sh
+#    segmentBS.sh
+#    segmentHA_T1.sh
 
 # Defaults
 export T1_NII=/INPUTS/T1.nii.gz
@@ -51,7 +57,21 @@ echo SESSION     = "${SESSION}"
 echo SCAN        = "${SCAN}"
 echo OUTDIR      = "${OUTDIR}"
 
-# Run Freesurfer recon
-export SUBJECTS_DIR="${OUTDIR}"
-recon-all -i "${T1_NII}" -s "${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}" -all 
+# Freesurfer recon-all
+export SUBJECT_DIR="${OUTDIR}"
+recon-all \
+-all \
+-i "${T1_NII}" \
+-s "${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
+
+# Hippocampus/amygdala
+
+# Thalamus
+
+# Brainstem
+
+
+
+
+# Create output PDF
 
