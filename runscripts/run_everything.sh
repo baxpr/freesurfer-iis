@@ -12,7 +12,7 @@ export PROJECT=UNK_PROJ
 export SUBJECT=UNK_SUBJ
 export SESSION=UNK_SESS
 export SCAN=UNK_SCAN
-export OUT_DIR=/OUTPUTS
+export OUTDIR=/OUTPUTS
 
 # Parse inputs
 while [[ $# -gt 0 ]]
@@ -57,8 +57,11 @@ echo SESSION     = "${SESSION}"
 echo SCAN        = "${SCAN}"
 echo OUTDIR      = "${OUTDIR}"
 
+# Freesurfer setup
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
 # Freesurfer recon-all
-export SUBJECT_DIR="${OUTDIR}"
+export SUBJECTS_DIR="${OUTDIR}"
 recon-all \
 -all \
 -i "${T1_NII}" \

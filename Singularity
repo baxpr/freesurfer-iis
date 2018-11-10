@@ -31,7 +31,7 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
   yum -y install unzip wget
   
   # For Freesurfer
-  yum -y install tcsh
+  yum -y install tcsh bc mesa-libGLU libgomp perl
   
   # For X
   yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
@@ -58,7 +58,6 @@ https://github.com/bud42/dax-processors/blob/master/FS6_v1.2.0_processor.yaml
 
   # Freesurfer
   export FREESURFER_HOME=/usr/local/freesurfer
-  source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
   # Matlab
   V84=/usr/local/MATLAB/MATLAB_Runtime/v84
