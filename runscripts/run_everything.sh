@@ -3,8 +3,8 @@
 # Full T1 pipeline:
 #    recon-all
 #    segmentThalamicNuclei.sh
-#    segmentBS.sh
 #    segmentHA_T1.sh
+#    segmentBS.sh
 
 # Defaults
 export T1_NII=/INPUTS/T1.nii.gz
@@ -59,22 +59,25 @@ echo OUTDIR      = "${OUTDIR}"
 
 # Freesurfer setup
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
-
-# Freesurfer recon-all
 export SUBJECTS_DIR="${OUTDIR}"
-recon-all \
--all \
--i "${T1_NII}" \
--s "${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
+export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
-# Hippocampus/amygdala
+# recon-all
+recon-all -all -i "${T1_NII}" -s $SUBJECT
 
 # Thalamus
+segmentThalamicNuclei.sh ${SUBJECT} ${SUBJECTS_DIR}
+
+# Hippocampus/amygdala
+segmentHA_T1.sh ${SUBJECT} ${SUBJECTS_DIR}
 
 # Brainstem
+segmentBS.sh ${SUBJECT} ${SUBJECTS_DIR}
 
+# Main output resources will be the freesurfer dirs, e.g. MRI, SURF, SCRIPTS
 
-
+# Convert some key outputs to nifti and pull to separate resources e.g.
+# T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ?
 
 # Create output PDF
 
