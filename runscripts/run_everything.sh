@@ -5,6 +5,9 @@
 #    segmentThalamicNuclei.sh
 #    segmentHA_T1.sh
 #    segmentBS.sh
+#
+# TO DO: Multiple runscripts or something so we can pass a simple command to 
+# the container to get any subanalysis
 
 # Defaults
 export T1_NII=/INPUTS/T1.nii.gz
@@ -63,7 +66,7 @@ export SUBJECTS_DIR="${OUTDIR}"
 export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
 # recon-all
-recon-all -all -i "${T1_NII}" -s $SUBJECT
+#recon-all -all -i "${T1_NII}" -s $SUBJECT
 
 # Thalamus
 segmentThalamicNuclei.sh ${SUBJECT} ${SUBJECTS_DIR}
@@ -74,10 +77,13 @@ segmentHA_T1.sh ${SUBJECT} ${SUBJECTS_DIR}
 # Brainstem
 segmentBS.sh ${SUBJECT} ${SUBJECTS_DIR}
 
-# Main output resources will be the freesurfer dirs, e.g. MRI, SURF, SCRIPTS
+# Main output resources will be the freesurfer dirs, e.g. MRI, SURF, SCRIPTS. ...
+# NO - for followup analyses we need the freesurfer subject dir to keep its 
+# structure.
 
 # Convert some key outputs to nifti and pull to separate resources e.g.
-# T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ?
+# T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ? Could be confusing if we ever do 
+# manual edit steps
 
 # Create output PDF
 
