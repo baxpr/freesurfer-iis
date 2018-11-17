@@ -5,9 +5,6 @@
 #    segmentThalamicNuclei.sh
 #    segmentHA_T1.sh
 #    segmentBS.sh
-#
-# TO DO: Multiple runscripts or something so we can pass a simple command to 
-# the container to get any subanalysis
 
 # Defaults
 export T1_NII=/INPUTS/T1.nii.gz
@@ -61,29 +58,28 @@ echo SCAN        = "${SCAN}"
 echo OUTDIR      = "${OUTDIR}"
 
 # Freesurfer setup
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
+source "${FREESURFER_HOME}"/SetUpFreeSurfer.sh
 export SUBJECTS_DIR="${OUTDIR}"
 export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
 # recon-all
-#recon-all -all -i "${T1_NII}" -s $SUBJECT
+recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
 
 # Thalamus
-segmentThalamicNuclei.sh ${SUBJECT} ${SUBJECTS_DIR}
+segmentThalamicNuclei.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
 # Hippocampus/amygdala
-segmentHA_T1.sh ${SUBJECT} ${SUBJECTS_DIR}
+segmentHA_T1.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
 # Brainstem
-segmentBS.sh ${SUBJECT} ${SUBJECTS_DIR}
+segmentBS.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
-# Main output resources will be the freesurfer dirs, e.g. MRI, SURF, SCRIPTS. ...
-# NO - for followup analyses we need the freesurfer subject dir to keep its 
-# structure.
+# Main output resource will be the freesurfer subject dir to keep its 
+# structure in case needed. Put in SUBJECT resource
 
 # Convert some key outputs to nifti and pull to separate resources e.g.
 # T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ? Could be confusing if we ever do 
 # manual edit steps
 
-# Create output PDF
+# Create output PDF https://github.com/bud42/FS6/tree/master/src
 
