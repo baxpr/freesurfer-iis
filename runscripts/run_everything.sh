@@ -63,7 +63,7 @@ export SUBJECTS_DIR="${OUTDIR}"
 export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
 # recon-all
-recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
+#recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
 
 # Thalamus
 segmentThalamicNuclei.sh "${SUBJECT}" "${SUBJECTS_DIR}"

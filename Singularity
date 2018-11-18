@@ -35,6 +35,9 @@ with Freesurfer's use of temp storage.
   # For Freesurfer
   yum -y install tcsh bc mesa-libGLU libgomp perl
   
+  # For matlab runtime
+  yum -y install java-1.8.0-openjdk
+  
   # For X
   yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
   #xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
@@ -64,12 +67,12 @@ with Freesurfer's use of temp storage.
   # Freesurfer
   export FREESURFER_HOME=/usr/local/freesurfer
 
-  # Matlab
-  V84=/usr/local/MATLAB/MATLAB_Runtime/v84
-  export LD_LIBRARY_PATH=${V84}/sys/os/glnxa64:${LD_LIBRARY_PATH}
-  export LD_LIBRARY_PATH=${V84}/bin/glnxa64:${LD_LIBRARY_PATH}
-  export LD_LIBRARY_PATH=${V84}/runtime/glnxa64:${LD_LIBRARY_PATH}
-  export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v84/X11/app-defaults
+  # Matlab (this is set by individual MCR runscripts, so not needed)
+  #V84=/usr/local/MATLAB/MATLAB_Runtime/v84
+  #export LD_LIBRARY_PATH=${V84}/sys/os/glnxa64:${LD_LIBRARY_PATH}
+  #export LD_LIBRARY_PATH=${V84}/bin/glnxa64:${LD_LIBRARY_PATH}
+  #export LD_LIBRARY_PATH=${V84}/runtime/glnxa64:${LD_LIBRARY_PATH}
+  #export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v84/X11/app-defaults
 
 
 %runscript
