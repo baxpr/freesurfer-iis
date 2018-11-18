@@ -67,13 +67,6 @@ with Freesurfer's use of temp storage.
   # Freesurfer
   export FREESURFER_HOME=/usr/local/freesurfer
 
-  # Matlab (this is set by individual MCR runscripts, so not needed)
-  #V84=/usr/local/MATLAB/MATLAB_Runtime/v84
-  #export LD_LIBRARY_PATH=${V84}/sys/os/glnxa64:${LD_LIBRARY_PATH}
-  #export LD_LIBRARY_PATH=${V84}/bin/glnxa64:${LD_LIBRARY_PATH}
-  #export LD_LIBRARY_PATH=${V84}/runtime/glnxa64:${LD_LIBRARY_PATH}
-  #export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v84/X11/app-defaults
-
 
 %runscript
   xvfb-run --server-num=$(($$ + 99)) \

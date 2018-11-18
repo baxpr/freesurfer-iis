@@ -63,7 +63,7 @@ export SUBJECTS_DIR="${OUTDIR}"
 export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
 # recon-all
-#recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
+recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
 
 # Thalamus
 segmentThalamicNuclei.sh "${SUBJECT}" "${SUBJECTS_DIR}"
@@ -79,7 +79,8 @@ segmentBS.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
 # Convert some key outputs to nifti and pull to separate resources e.g.
 # T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ? Could be confusing if we ever do 
-# manual edit steps
+# manual edit steps. It would be helpful to have some things in nifti, but also 
+# any following spiders could (should?) just do that conversion themselves.
 
 # Create output PDF https://github.com/bud42/FS6/tree/master/src
 
