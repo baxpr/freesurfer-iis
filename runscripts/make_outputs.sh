@@ -8,6 +8,7 @@ echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
 
 # Find center of mass of left and right thalamus, left and right hippocampus, brainstem
+#mri_surfcluster reports centroid
 
 
 # Whole brain: cor, ax, sag through thalamus, hippocampus, brainstem
