@@ -84,3 +84,4 @@ segmentBS.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
 # Create output PDF https://github.com/bud42/FS6/tree/master/src
 
+bash /opt/runscripts/make_outputs.sh "${SUBJECTS_DIR}" "${SUBJECT}"
