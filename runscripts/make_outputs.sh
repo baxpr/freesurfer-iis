@@ -3,8 +3,8 @@
 # Generate a number of useful extra outputs from Freesurfer results: PDF page,
 # regional volumes, and Nifti images.
 
-SUBJECTS_DIR=${1}
-SUBJECT=${2}
+echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
+
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
 
 # Find center of mass of left and right thalamus, left and right hippocampus, brainstem
