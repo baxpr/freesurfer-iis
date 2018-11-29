@@ -6,9 +6,23 @@
 echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
 
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
+SURF="${SUBJECTS_DIR}"/"${SUBJECT}"/surf
+TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 
-# Find center of mass of left and right thalamus, left and right hippocampus, brainstem
-#mri_surfcluster reports centroid
+## Find center of mass of left and right thalamus
+
+# Region labels in aseg.mgz
+#    10   L thalamus
+#    49   R thalamus
+#    17   L hippocampus
+#    53   R hippocampus
+#    16   brainstem
+#
+# grep hack to find the first cluster.
+# Voxel x,y,z centroid position are the 4th,5th,6th fields.
+# Thalamus labels aren't in the FS LUT (81xx)
+LABEL="R_Thalamus"; REGION=10; AXIS=sagittal
+/opt/runscripts/screenshot.sh "${LABEL}" "${REGION}" "${AXIS}"
 
 
 # Whole brain: cor, ax, sag through thalamus, hippocampus, brainstem
@@ -75,3 +89,7 @@ for f in \
     mri_convert "${MRI}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
+
+# Clean up
+rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
