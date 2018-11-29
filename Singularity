@@ -102,10 +102,13 @@ Thalamus:
   # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
   freesurfer-linux-centos7_x86_64-dev.tar.gz /usr/local
 
-  # Matlab runtime, if we are going to download manually and reference a local 
-  # copy during the build
+  # Matlab runtime, if we are going to download manually and ref the local copy
   # http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
   MCR_R2014b_glnxa64_installer.zip /opt
+
+  # FSL archive, if we are going to download manually and ref the local copy
+  # https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.0-centos7_64.tar.gz
+  fsl-6.0.0-centos7_64.tar.gz /opt
 
   # Default run scripts
   runscripts /opt
@@ -125,6 +128,14 @@ Thalamus:
   # For X
   yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
   #xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+  
+  # We need a piece of FSL (fslstats)
+  #wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.0-centos7_64.tar.gz
+  cd /opt
+  tar -zxf fsl-6.0.0-centos7_64.tar.gz
+  mkdir -p /usr/local/fsl/bin
+  cp fsl/bin/fslstats /usr/local/fsl/bin
+  rm -r fsl fsl-6.0.0-centos7_64.tar.gz
   
   # Install Freesurfer
   #wget -nv -P /usr/local https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
@@ -148,6 +159,9 @@ Thalamus:
 
 %environment
 
+  # FSL (we only use fslstats so no need for the full setup)
+  export FSLOUTPUTTYPE=NIFTI_GZ
+  
   # Freesurfer
   export FREESURFER_HOME=/usr/local/freesurfer
 
