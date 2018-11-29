@@ -6,28 +6,30 @@
 echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
 
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
-SURF="${SUBJECTS_DIR}"/"${SUBJECT}"/surf
-TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+RSCR=/opt/runscripts
 
-## Find center of mass of left and right thalamus
+# Screenshots for whole brain
+"${RSCR}"/screenshot.sh brain_axi axial
+"${RSCR}"/screenshot.sh brain_sag sagittal
+"${RSCR}"/screenshot.sh brain_cor coronal
 
-# Region labels in aseg.mgz
+# Screenshots for ROIs. Region labels in aseg.mgz are
 #    10   L thalamus
 #    49   R thalamus
 #    17   L hippocampus
 #    53   R hippocampus
 #    16   brainstem
-#
-# grep hack to find the first cluster.
-# Voxel x,y,z centroid position are the 4th,5th,6th fields.
-# Thalamus labels aren't in the FS LUT (81xx)
-LABEL="R_Thalamus"; REGION=10; AXIS=sagittal
-/opt/runscripts/screenshot.sh "${LABEL}" "${REGION}" "${AXIS}"
+"${RSCR}"/screenshot_roi.sh  Lthal_sag sagittal  3  10
+"${RSCR}"/screenshot_roi.sh  Rthal_sag sagittal  3  49
+"${RSCR}"/screenshot_roi2.sh thal_axi  axial     3  10 49
+"${RSCR}"/screenshot_roi2.sh thal_cor  coronal   3  10 49
 
+"${RSCR}"/screenshot_roi.sh  Lhipp_sag sagittal  2  17
+"${RSCR}"/screenshot_roi.sh  Rhipp_sag sagittal  2  53
 
-# Whole brain: cor, ax, sag through thalamus, hippocampus, brainstem
+"${RSCR}"/screenshot_roi.sh  brainstem_sag sagittal  2  16
+"${RSCR}"/screenshot_roi.sh  brainstem_cor coronal   2  16
 
-# Zooms: cor, ax, sag through thalamus, hippocampus, brainstem
 
 
 # Make useful resources:
