@@ -1,0 +1,86 @@
+---
+moreauto: true
+procversion: 1.0.0
+procname: freesurfer_dev
+proctype: freesurfer_dev_v1
+
+inputs:
+  default:
+    container_path: baxpr-freesurfer-singularity-master-dev.simg
+    container_source: shub://baxpr/freesurfer-singularity:dev
+    extraflags: ""
+  xnat:
+    scans:
+      - name: scan_T1
+        types: 'T1'
+        needs_qc: False
+        resources:
+          - resource: NIFTI
+            ftype: FILE
+            fdest: T1.nii.gz
+            varname: t1_file
+
+    attrs:
+      - varname: project
+        object: session
+        attr: project
+      - varname: subject
+        object: session
+        attr: subject_label
+      - varname: session
+        object: session
+        attr: label
+      - varname: scan
+        object: scan
+        attr: ID
+        ref: scan
+
+outputs:
+  - path: PDF
+    type: DIR
+    resource: PDF
+  - path: PDF_DETAIL
+    type: DIR
+    resource: PDF_DETAIL
+  - path: SUBJECT
+    type: DIR
+    resource: SUBJECT
+  - path: NII_NU
+    type: DIR
+    resource: NII_NU	
+  - path: NII_ASEG
+    type: DIR
+    resource: NII_ASEG
+  - path: NII_WMPARC
+    type: DIR
+    resource: NII_WMPARC
+  - path: NII_THALAMUS
+    type: DIR
+    resource: NII_THALAMUS
+  - path: NII_BRAINSTEM
+    type: DIR
+    resource: NII_BRAINSTEM
+  - path: NII_HIPP_AMYG
+    type: DIR
+    resource: NII_HIPP_AMYG
+
+command: >-
+  singularity
+  run
+  --home $INDIR
+  --bind $INDIR:/INPUTS
+  --bind $OUTDIR:/OUTPUTS
+  {container_path}
+  --t1_nii {t1_file}
+  --project {project}
+  --subject {subject}
+  --session {session}
+  --scan {scan}
+  --outdir /OUTPUTS
+
+attrs:
+  xsitype: proc:genProcData
+  walltime: '1:00:00'
+  memory: 8192
+  ppn: 1
+jobtemplate: singularity_job_template.txt
