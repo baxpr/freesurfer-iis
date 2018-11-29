@@ -74,14 +74,5 @@ segmentHA_T1.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 # Brainstem
 segmentBS.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
-# Main output resource will be the freesurfer subject dir to keep its 
-# structure in case needed. Put in SUBJECT resource
-
-# Convert some key outputs to nifti and pull to separate resources e.g.
-# T1_CORTEX_SURF, T1_SEG, THAL_SEG, etc ? Could be confusing if we ever do 
-# manual edit steps. It would be helpful to have some things in nifti, but also 
-# any following spiders could (should?) just do that conversion themselves.
-
-# Create output PDF https://github.com/bud42/FS6/tree/master/src
-
-bash /opt/runscripts/make_outputs.sh "${SUBJECTS_DIR}" "${SUBJECT}"
+# Produce additional outputs and organize
+bash /opt/runscripts/make_outputs.sh

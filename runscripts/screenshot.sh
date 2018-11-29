@@ -10,7 +10,7 @@ TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 # View selected slice on T1, with surfaces
 freeview \
     -v "${MRI}"/T1.mgz \
-    -viewsize 400 400 --layout 1 --zoom 1.15 --viewport "${AXIS}" \
+    -viewsize 400 400 --layout 1 --zoom 1 --viewport "${AXIS}" \
     -f "${SURF}"/lh.white:edgecolor=turquoise:edgethickness=1 \
     -f "${SURF}"/lh.pial:edgecolor=red:edgethickness=1 \
     -f "${SURF}"/rh.white:edgecolor=turquoise:edgethickness=1 \
