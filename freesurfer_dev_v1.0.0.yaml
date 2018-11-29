@@ -12,7 +12,6 @@ inputs:
   xnat:
     scans:
       - name: scan_T1
-        types: 'T1'
         needs_qc: False
         resources:
           - resource: NIFTI
@@ -78,9 +77,15 @@ command: >-
   --scan {scan}
   --outdir /OUTPUTS
 
+
+inputs:
+  xnat:
+    scans:
+      - name: scan_T1
+        types: 'T1'
 attrs:
   xsitype: proc:genProcData
-  walltime: '1:00:00'
-  memory: 8192
+  walltime: '96:00:00'
+  memory: 16384
   ppn: 1
 jobtemplate: singularity_job_template.txt

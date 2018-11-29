@@ -127,7 +127,9 @@ Thalamus:
   
   # For X
   yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
-  #xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+
+  # For PDF outputs
+  yum -y install ImageMagick
   
   # We need a piece of FSL (fslstats)
   wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.0-centos7_64.tar.gz
