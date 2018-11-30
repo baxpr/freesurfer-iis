@@ -91,6 +91,6 @@ convert page3.png \
 page3.png
 
 # Final PDF
-mkdir "${SUBJECT_DIR}"/PDF
+mkdir "${SUBJECTS_DIR}"/PDF
 convert page1.png page2.png page3.png -page letter \
-    "${SUBJECT_DIR}"/PDF/freesurfer_report.pdf
+    "${SUBJECTS_DIR}"/PDF/freesurfer_report.pdf

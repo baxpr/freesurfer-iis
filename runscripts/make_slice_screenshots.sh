@@ -297,5 +297,5 @@ sag_mont11.png \
 -page letter -compress jpeg \
 freesurfer_detailed.pdf
 
-mkdir "${SUBJECT_DIR}"/PDF_DETAIL
-mv freesurfer_detailed.pdf "${SUBJECT_DIR}"/PDF_DETAIL
+mkdir "${SUBJECTS_DIR}"/PDF_DETAIL
+mv freesurfer_detailed.pdf "${SUBJECTS_DIR}"/PDF_DETAIL
