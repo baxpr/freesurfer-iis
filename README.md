@@ -1,7 +1,9 @@
 
-Freesurfer 201811 development version. Runs recon-all plus hippocampus, 
-thalamus, brainstem modules. Requires a valid license file at runtime - example:
-  --bind /where/is/freesurfer_license.txt:/usr/local/freesurfer/license.txt
+# Freesurfer 201811 development version.
+
+Runs recon-all plus hippocampus, thalamus, brainstem modules. Requires a valid license 
+file at runtime. Example:
+    --bind /where/is/freesurfer_license.txt:/usr/local/freesurfer/license.txt
 
 
 REFERENCES
