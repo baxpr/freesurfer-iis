@@ -3,17 +3,18 @@
 
 Runs recon-all plus hippocampus, thalamus, brainstem modules. Requires a valid license 
 file at runtime. Example:
+
     --bind /where/is/freesurfer_license.txt:/usr/local/freesurfer/license.txt
 
 
-REFERENCES
+## REFERENCES
 
-recon-all:
+### recon-all
 
-   Collins, DL, Neelin, P., Peters, TM, and Evans, AC. (1994) Automatic 3D 
-   Inter-Subject Registration of MR Volumetric Data in Standardized Talairach 
-   Space, Journal of Computer Assisted Tomography, 18(2) p192-205, 1994 PMID: 
-   8126267; UI: 94172121
+Collins, DL, Neelin, P., Peters, TM, and Evans, AC. (1994) Automatic 3D 
+Inter-Subject Registration of MR Volumetric Data in Standardized Talairach 
+Space, Journal of Computer Assisted Tomography, 18(2) p192-205, 1994 PMID: 
+8126267; UI: 94172121
 
    Cortical Surface-Based Analysis I: Segmentation and Surface Reconstruction 
    Dale, A.M., Fischl, Bruce, Sereno, M.I., (1999). Cortical Surface-Based 
@@ -50,15 +51,13 @@ recon-all:
    Anders M. Dale. Automatically Parcellating the Human Cerebral Cortex. 
    Cerebral Cortex January 2004; 14:11-22.
 
-
-Brainstem:
+### Brainstem
 
    Bayesian segmentation of brainstem structures in MRI. Iglesias, J.E., Van 
    Leemput, K., Bhatt, P., Casillas, C., Dutt, S., Schuff, N., Truran-Sacrey, 
    D., Boxer, A., and Fischl, B. NeuroImage, 113, June 2015, 184-195.
 
-
-Hippocampus and amygdala:
+### Hippocampus and amygdala
 
    Hippocampus: A computational atlas of the hippocampal formation using ex 
    vivo, ultra-high resolution MRI: Application to adaptive segmentation of in 
@@ -77,8 +76,7 @@ Hippocampus and amygdala:
    Leemput K, Augustinack J, Insausti R, Fischl B, Reuter M. Neuroimage, 141, 
    November 2016, 542-555.
 
-
-Thalamus:
+### Thalamus
 
    A probabilistic atlas of the human thalamic nuclei combining ex vivo MRI and 
    histology. Iglesias, J.E., Insausti, R., Lerma-Usabiaga, G., Bocchetta, M., 
