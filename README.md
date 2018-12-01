@@ -5,9 +5,9 @@ Runs recon-all plus hippocampus, thalamus, brainstem modules. A singularity
 container is probably available at 
 https://www.singularity-hub.org/collections/1896
 
-Requires a valid license file at runtime. Example:
+A valid Freesurfer license file is required at runtime.
 
-`--bind /where/is/freesurfer_license.txt:/usr/local/freesurfer/license.txt`
+See [usage.md] for details.
 
 
 ## REFERENCES
