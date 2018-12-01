@@ -20,7 +20,7 @@ singularity run \
 
 ## Options line by line
 
-`--contain`,`--containall`
+`--contain`, `--containall`
 
 * Do NOT use these options. Freesurfer uses temporary space in /dev/shm in the 
 container filesystem. The container itself does not have enough free space, so 
@@ -46,7 +46,7 @@ provide a location on the host. If two running containers use the same
 location, there will be collisions, so <inputs_dir> should be unique for each 
 running container.
 
-`--bind <inputs_dir>:/INPUTS`,`--bind <outputs_dir>:/OUTPUTS`
+`--bind <inputs_dir>:/INPUTS`, `--bind <outputs_dir>:/OUTPUTS`
 
 * Default means of passing files in and retrieving outputs is to create these 
 two directories on the host and bind them like so.
@@ -57,7 +57,7 @@ two directories on the host and bind them like so.
 Only the compressed Nifti format is supported. This argument is optional - if 
 not supplied, the default is the path shown here.
 
-`--project UNK_PROJ`,`--subject UNK_PROJ`,`--session UNK_PROJ`,`--scan UNK_PROJ`
+`--project UNK_PROJ`, `--subject UNK_PROJ`, `--session UNK_PROJ`, `--scan UNK_PROJ`
 
 * Labels for project, subject, session, and scan which are useful in the context
 of XNAT. These are optional, with the default values shown here. They do not
