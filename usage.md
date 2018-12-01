@@ -23,8 +23,8 @@ singularity run \
 `--contain`, `--containall`
 
 * Do NOT use these options. Freesurfer uses temporary space in /dev/shm. The 
-container itself does not have enough free space, so this must be bound to a 
-location on the host. A typical install of singularity does this by default 
+container itself does not have enough free space, so /dev/shm must be bound to 
+a location on the host. A typical install of singularity does this by default 
 behind the scenes.
 
 `--cleanenv`
@@ -40,17 +40,18 @@ location in the container.
 
 `--home <inputs_dir>`
 
-* The Matlab runtime will use the home directory in the container for temporary 
-files. There is not enough headroom for this in the container itself, so we 
-provide a location on the host. If two running containers use the same 
-location, there will be collisions, so the provided home directory should be 
-unique for each running container. Setting it to <inputs_dir> lets the inputs 
-directory do double duty, which is probably fine in most cases.
+* The Matlab runtime will use the home directory in the container's file system 
+for temporary files. There is not enough headroom for this in the container 
+itself, so we provide a location on the host. If two running containers use the 
+same location, there will be collisions, so the provided home directory should 
+be unique for each running container. Setting it to <inputs_dir> lets the 
+inputs directory do double duty, which is probably fine in most cases.
 
 `--bind <inputs_dir>:/INPUTS`, `--bind <outputs_dir>:/OUTPUTS`
 
-* The default way of passing files in and retrieving outputs is to create these 
-two directories on the host and bind them like so.
+* The expected way of passing files in and retrieving outputs is to create 
+these two directories on the host and bind them like so. The /INPUTS and 
+/OUTPUTS directories are created in the container filesystem at build time.
 
 `--t1_nii /INPUTS/T1.nii.gz`
 
@@ -58,7 +59,7 @@ two directories on the host and bind them like so.
 filesystem must be specified. Only the compressed Nifti format is supported. 
 This argument is optional; if not supplied, the default is the path shown here.
 
-`--project UNK_PROJ`, `--subject UNK_PROJ`, `--session UNK_PROJ`, `--scan UNK_PROJ`
+`--project UNK_PROJ`, `--subject UNK_SUBJ`, `--session UNK_SESS`, `--scan UNK_SCAN`
 
 * Labels for project, subject, session, and scan which are useful in the context
 of XNAT. These are optional, with the default values shown here. They do not

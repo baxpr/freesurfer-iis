@@ -1,13 +1,15 @@
 
 # Freesurfer, development version
 
-Runs recon-all plus hippocampus, thalamus, brainstem modules. A singularity
-container is probably available at 
-https://www.singularity-hub.org/collections/1896
+This repository contains the files needed to build a singularity container that 
+runs Freesurfer's recon-all, plus hippocampus, thalamus, brainstem segmentation 
+modules. The build recipe is [Singularity.dev](Singularity.dev). An 
+already-built singularity container is probably available at 
+https://www.singularity-hub.org/collections/1896 .
 
 A valid Freesurfer license file is required at runtime.
 
-See [usage.md](usage.md) for details.
+See [USAGE.md](USAGE.md) for details.
 
 
 ## REFERENCES
