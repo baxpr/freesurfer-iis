@@ -93,23 +93,14 @@ See `--t1_nii` above.
 All outputs are stored in <outputs_dir> in these subdireectories:
 
 ```
-PDF
-  
-PDF_DETAIL
-SUBJECT
-  Freesurfer "subject" directory with all Freesurfer outputs
-VOLUMES
-  *.txt volume measurements for all structures
-NII_NU
-  nu.mgz structural image converted to Nifti
-NII_ASEG
-  aseg.mgz segmentation (Nifti)
-NII_WMPARC
-  wmparc.mgz full volumetric parcellation (Nifti)
-NII_THALAMUS
-  ThalamicNuclei.v10.T1.FSvoxelSpace.mgz thalamus parcellation (Nifti)
-NII_BRAINSTEM
-  brainstemSsLabels.v12.FSvoxelSpace.mgz brainstem parcellation (Nifti)
-NII_HIPP_AMYG
-  ?h.hippoAmygLabels-T1.v21.*FSvoxelSpace.mgz hipp/amyg parcellation (Nifti)
+PDF             At-a-glance report
+PDF_DETAIL      Slice-by-slice view of surfaces
+SUBJECT         Freesurfer "subject" directory with all Freesurfer outputs
+VOLUMES         Volume measurements for all structures
+NII_NU          nu.mgz structural image converted to Nifti
+NII_ASEG        aseg.mgz segmentation (Nifti)
+NII_WMPARC      wmparc.mgz full volumetric parcellation (Nifti)
+NII_THALAMUS    thalamus parcellation (Nifti)
+NII_BRAINSTEM   brainstem parcellation (Nifti)
+NII_HIPP_AMYG   hipp/amyg parcellation (Nifti)
 ```
