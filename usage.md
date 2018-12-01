@@ -90,7 +90,7 @@ See `--t1_nii` above.
 
 ## Outputs
 
-All outputs are stored in <outputs_dir> in these subdireectories:
+All outputs are stored in <outputs_dir> in these subdirectories:
 
 ```
 PDF             At-a-glance report
@@ -102,5 +102,5 @@ NII_ASEG        aseg.mgz segmentation (Nifti)
 NII_WMPARC      wmparc.mgz full volumetric parcellation (Nifti)
 NII_THALAMUS    thalamus parcellation (Nifti)
 NII_BRAINSTEM   brainstem parcellation (Nifti)
-NII_HIPP_AMYG   hipp/amyg parcellation (Nifti)
+NII_HIPP_AMYG   hippocampus/amygdala parcellation (Nifti)
 ```
