@@ -7,7 +7,7 @@ https://www.singularity-hub.org/collections/1896
 
 A valid Freesurfer license file is required at runtime.
 
-See [usage.md] for details.
+See [usage.md](usage.md) for details.
 
 
 ## REFERENCES
