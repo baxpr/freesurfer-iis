@@ -22,10 +22,10 @@ singularity run \
 
 `--contain`, `--containall`
 
-* Do NOT use these options. Freesurfer uses temporary space in /dev/shm in the 
-container filesystem. The container itself does not have enough free space, so 
-this must be bound to a location on the host. A typical install of singularity 
-does this by default behind the scenes.
+* Do NOT use these options. Freesurfer uses temporary space in /dev/shm. The 
+container itself does not have enough free space, so this must be bound to a 
+location on the host. A typical install of singularity does this by default 
+behind the scenes.
 
 `--cleanenv`
 
@@ -49,14 +49,14 @@ directory do double duty, which is probably fine in most cases.
 
 `--bind <inputs_dir>:/INPUTS`, `--bind <outputs_dir>:/OUTPUTS`
 
-* Default means of passing files in and retrieving outputs is to create these 
+* The default way of passing files in and retrieving outputs is to create these 
 two directories on the host and bind them like so.
 
 `--t1_nii /INPUTS/T1.nii.gz`
 
-* The T1 weighted image that will be processed, in the container filesystem. 
-Only the compressed Nifti format is supported. This argument is optional - if 
-not supplied, the default is the path shown here.
+* The T1 weighted image that will be processed. The full path in the container 
+filesystem must be specified. Only the compressed Nifti format is supported. 
+This argument is optional; if not supplied, the default is the path shown here.
 
 `--project UNK_PROJ`, `--subject UNK_PROJ`, `--session UNK_PROJ`, `--scan UNK_PROJ`
 
