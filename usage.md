@@ -43,8 +43,9 @@ location in the container.
 * The Matlab runtime will use the home directory in the container for temporary 
 files. There is not enough headroom for this in the container itself, so we 
 provide a location on the host. If two running containers use the same 
-location, there will be collisions, so <inputs_dir> should be unique for each 
-running container.
+location, there will be collisions, so the provided home directory should be 
+unique for each running container. Setting it to <inputs_dir> lets the inputs 
+directory do double duty, which is probably fine in most cases.
 
 `--bind <inputs_dir>:/INPUTS`, `--bind <outputs_dir>:/OUTPUTS`
 
