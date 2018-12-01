@@ -73,7 +73,7 @@ done
 
 
 # Clean up
-rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
 
 # Rename subject dir so DAX can find it

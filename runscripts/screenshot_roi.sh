@@ -12,7 +12,7 @@ TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 # https://surfer.nmr.mgh.harvard.edu/fswiki/CoordinateSystems
 LO=`echo ${REGION} - 0.5 | bc`
 HI=`echo ${REGION} + 0.5 | bc`
-RAS=`/usr/local/fsl/bin/fslstats aseg.nii.gz -l ${LO} -u ${HI} -c`
+RAS=`/usr/local/fsl/bin/fslstats ${MRI}/aseg.nii.gz -l ${LO} -u ${HI} -c`
 
 # View selected slice on T1, with surfaces
 freeview \

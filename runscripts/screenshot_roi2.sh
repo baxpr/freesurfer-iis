@@ -13,14 +13,14 @@ TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 # https://surfer.nmr.mgh.harvard.edu/fswiki/CoordinateSystems
 LO1=`echo ${REGION1} - 0.5 | bc`
 HI1=`echo ${REGION1} + 0.5 | bc`
-RAS1=`/usr/local/fsl/bin/fslstats aseg.nii.gz -l ${LO1} -u ${HI1} -c`
+RAS1=`/usr/local/fsl/bin/fslstats ${MRI}/aseg.nii.gz -l ${LO1} -u ${HI1} -c`
 R1=`echo "${RAS1}" | awk '{printf "%d",$1}'`
 A1=`echo "${RAS1}" | awk '{printf "%d",$2}'`
 S1=`echo "${RAS1}" | awk '{printf "%d",$3}'`
 
 LO2=`echo ${REGION2} - 0.5 | bc`
 HI2=`echo ${REGION2} + 0.5 | bc`
-RAS2=`/usr/local/fsl/bin/fslstats aseg.nii.gz -l ${LO2} -u ${HI2} -c`
+RAS2=`/usr/local/fsl/bin/fslstats ${MRI}/aseg.nii.gz -l ${LO2} -u ${HI2} -c`
 R2=`echo "${RAS2}" | awk '{printf "%d",$1}'`
 A2=`echo "${RAS2}" | awk '{printf "%d",$2}'`
 S2=`echo "${RAS2}" | awk '{printf "%d",$3}'`
