@@ -7,6 +7,8 @@ Freesurfer 201811 development version. Runs recon-all plus hippocampus,
 thalamus, brainstem modules. Requires a valid license file at runtime - example:
   --bind /where/is/freesurfer_license.txt:/usr/local/freesurfer/license.txt
 
+See /opt/usage.md within the container for detailed instructions.
+
 To identify the specific Freesurfer version that was installed, view the file
 /usr/local/freesurfer/build-stamp.txt within the container.
 
@@ -113,6 +115,9 @@ Thalamus:
   # Default run scripts
   runscripts /opt
 
+  # Usage
+  usage.md /opt
+  
 
 %post
   
