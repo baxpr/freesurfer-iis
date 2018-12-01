@@ -26,8 +26,8 @@ singularity run \
 ```
 Do NOT use these options. Freesurfer uses temporary space in /dev/shm in the 
 container filesystem. The container itself does not have enough free space, so 
-this must be bound to a location on the host. Typical install of singularity 
-do this by default behind the scenes.
+this must be bound to a location on the host. A typical install of singularity 
+does this by default behind the scenes.
 
 ```
 --cleanenv
