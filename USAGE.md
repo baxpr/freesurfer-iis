@@ -86,7 +86,7 @@ PDF             At-a-glance report
 PDF_DETAIL      Slice-by-slice view of surfaces
 SUBJECT         Freesurfer "subject" directory with all Freesurfer outputs
 VOLUMES         Volume measurements for all structures
-NII_NU          nu.mgz structural image converted to Nifti
+NII_T1          T1.mgz scaled structural image converted to Nifti
 NII_ASEG        aseg.mgz segmentation (Nifti)
 NII_WMPARC      wmparc.mgz full volumetric parcellation (Nifti)
 NII_THALAMUS    thalamus parcellation (Nifti)
