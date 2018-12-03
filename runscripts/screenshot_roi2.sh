@@ -34,5 +34,5 @@ freeview \
     -v "${MRI}"/T1.mgz \
     -v "${MRI}"/ThalamicNuclei.v10.T1.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom ${ZOOM} --viewport "${AXIS}" \
-	-ras "${R} ${A} ${S}" \
+	-ras "${R}" "${A}" "${S}" \
     -ss "${TMP}"/"${LABEL}".png

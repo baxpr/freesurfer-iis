@@ -12,12 +12,12 @@ TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 # https://surfer.nmr.mgh.harvard.edu/fswiki/CoordinateSystems
 LO=`echo ${REGION} - 0.5 | bc`
 HI=`echo ${REGION} + 0.5 | bc`
-RAS=`/usr/local/fsl/bin/fslstats ${MRI}/aseg.nii.gz -l ${LO} -u ${HI} -c`
+RAS=`/usr/local/fsl/bin/fslstats ${SUBJECTS_DIR}/NII_ASEG/aseg.nii.gz -l ${LO} -u ${HI} -c`
 
 # View selected slice on T1, with surfaces
 freeview \
     -v "${MRI}"/T1.mgz \
     -v "${MRI}"/ThalamicNuclei.v10.T1.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom ${ZOOM} --viewport "${AXIS}" \
-	-ras "${RAS}" \
+    -ras ${RAS} \
     -ss "${TMP}"/"${LABEL}".png

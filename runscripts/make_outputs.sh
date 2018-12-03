@@ -7,12 +7,6 @@ echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
 
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
 
-# Make screenshots and PDFs
-/opt/runscripts/make_all_screenshots.sh
-/opt/runscripts/make_slice_screenshots.sh
-
-
-# Make other useful resources:
 
 # VOLUMES
 VOLUMES="${SUBJECTS_DIR}"/VOLUMES
@@ -72,8 +66,13 @@ for f in \
 done
 
 
+# Make screenshots and PDFs
+/opt/runscripts/make_all_screenshots.sh
+/opt/runscripts/make_slice_screenshots.sh
+
+
 # Clean up
-#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
 
 # Rename subject dir so DAX can find it
