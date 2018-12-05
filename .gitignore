@@ -2,6 +2,7 @@ INPUTS*
 OUTPUTS*
 localdocker.sh
 *.tar.gz
+*.tgz
 *.zip
 *.simg
 freesurfer_license.txt
