@@ -1,9 +1,10 @@
 INPUTS*
 OUTPUTS*
-localdocker.sh
+local*.sh
 *.tar.gz
 *.tgz
 *.zip
 *.simg
 freesurfer_license.txt
 sandbox
+
