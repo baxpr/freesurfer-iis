@@ -28,3 +28,10 @@ lh_lat_white lh_med_white rh_lat_white rh_med_white \
 	-trim -bordercolor white -border 20x20 -resize 400x400 \
 	${p}.png
 done
+
+# Make montage
+montage -mode concatenate \
+lh_lat_pial.png lh_med_pial.png rh_lat_pial.png rh_med_pial.png \
+lh_lat_white.png lh_med_white.png rh_lat_white.png rh_med_white.png \
+-tile 2x -quality 100 -background white -gravity center \
+-trim -border 20 -bordercolor white -resize 600x page1.png
