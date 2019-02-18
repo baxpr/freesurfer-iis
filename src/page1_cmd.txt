@@ -1,0 +1,24 @@
+-viewsize 800 800 --layout 1 --viewport 3d --hide-3d-slices
+
+-f surf/lh.pial:annot=aparc.annot
+-view left -ss lh_lat_pial.png -noquit
+-view right -ss lh_med_pial.png -noquit
+--hide surface
+
+-f surf/rh.pial:annot=aparc.annot
+-view right -ss rh_lat_pial.png -noquit
+-view left -ss rh_med_pial.png -noquit
+--hide surface
+
+-f surf/lh.white:annot=aparc.annot
+-view left -ss lh_lat_white.png -noquit
+-view right -ss lh_med_white.png -noquit
+--hide surface
+
+-f surf/rh.white:annot=aparc.annot
+-view right -ss rh_lat_white.png -noquit
+-view left -ss rh_med_white.png -noquit
+--hide surface
+
+-quit
+
