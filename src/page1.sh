@@ -4,20 +4,24 @@
 # Parcellation on white matter surface
 # "Scaled CNR" on white matter surface
 
-
+# FIXME These settings are for testing only
 export FREESURFER_HOME=/usr/local/freesurfer
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
+export SUBJECTS_DIR=`pwd`/../OUTPUTS
+export SUBJECT=SUBJECT
 
-#export SDIR="${SUBJECTS_DIR}"/"${SUBJECT}"
-export SDIR=../OUTPUTS/SUBJECT
-export SUBJECT=WOODWARD_TCP-x-113458-x-113458-x-401
+# Script location
+#RSCR=/opt/runscripts
+RSCR=`pwd`
+
+# Working directory
+TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 
 # Get Freesurfer screenshots
-CDIR=`pwd`
-cd ${SDIR}
-freeview -cmd ${CDIR}/page1_cmd.txt &&
-cd ${CDIR}
-mv ${SDIR}/*.png ${CDIR}
+cd "${SUBJECTS_DIR}"/"${SUBJECT}"
+freeview -cmd ${RSCR}/page1_cmd.txt
+mv *.png ${TMP}
+cd ${TMP}
 
 # Trim, change background to white, resize
 for p in \
@@ -31,7 +35,9 @@ lh_lat_white lh_med_white rh_lat_white rh_med_white \
 done
 
 # Get CNR
-mri_cnr ${SDIR}/surf ${SDIR}/mri/T1.mgz | tr -d '\t' > t1_cnr.txt
+mri_cnr "${SUBJECTS_DIR}"/"${SUBJECT}"/surf \
+"${SUBJECTS_DIR}"/"${SUBJECT}"/mri/T1.mgz \
+| tr -d '\t' > t1_cnr.txt
 CNRTXT=`cat t1_cnr.txt`
 
 # Make montage
