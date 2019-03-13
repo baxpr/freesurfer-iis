@@ -12,7 +12,7 @@ asegstats2table --delimiter comma --no-vol-extras -m volume \
 -s "${SUBJECT}" -t "${TMP}"/aseg.csv
 
 # Surface parcels
-#    aparc, aparc.pial, aparc.a2009s, aparc.DKTatlas
+#    aparc, aparc.pial, aparc.a2009s, aparc.DKTatlas, BA_exvivo
 #    lh, rh
 #    volume, area, thickness
 # These also store BrainSegVolNotVent and eTIV which will need to be handled
