@@ -3,9 +3,14 @@ SUBJECTS_DIR=`pwd`/../OUTPUTS
 SUBJECT=SUBJECT
 TMP=.
 
-# TODO Hippocampus, amygdala, brainstem, thalamus
+# Would be clearest to keep these all in separate outputs that go to separate
+# instruments in REDCap. Then we can include the eTIV and so on in each case, 
+# and it'll show up in the corresponding REDCap report.
+#
+# Although, we could consider combining the lh+rh ?
 
-# TODO MM re-org of hippocampus
+# TODO Hippocampus, amygdala, brainstem, thalamus. Also MM hippocampus calcs.
+
 
 # Subcortical regions, aseg
 asegstats2table --delimiter comma --no-vol-extras -m volume \
