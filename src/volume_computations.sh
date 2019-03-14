@@ -13,7 +13,8 @@ TMP=.
 
 
 # Subcortical regions, aseg
-asegstats2table --delimiter comma --no-vol-extras -m volume \
+#    ?  --no-vol-extras
+asegstats2table --delimiter comma -m volume \
 -s "${SUBJECT}" -t "${TMP}"/aseg.csv
 
 # Surface parcels
