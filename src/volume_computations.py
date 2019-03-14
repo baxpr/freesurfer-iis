@@ -132,7 +132,7 @@ for hemi in ('lh','rh'):
                  hemi+'_body_ca',
                  hemi+'_body_dg',
                  hemi+'_body_subiculum',
-                 hemi+'_hippocampal_tail'] )
+                 hemi+'_tail'] )
                  
     Y.to_csv(os.path.join(outdir,'hipposubfields.'+hemi+'.T1.v21.MMHBT.stats.csv'),
         index=False)
