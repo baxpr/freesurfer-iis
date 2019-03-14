@@ -11,12 +11,11 @@ TMP=.
 
 # TODO Remove capital letters, special chars, hyphen from region names
 
-# TODO MM hippocampus calcs.
-
 
 # Subcortical regions, aseg
 asegstats2table --delimiter comma -m volume \
 -s "${SUBJECT}" -t "${TMP}"/aseg.csv
+
 
 # Surface parcels
 #    aparc, aparc.pial, aparc.a2009s, aparc.DKTatlas, BA_exvivo
@@ -32,4 +31,8 @@ for APARC in aparc aparc.a2009s aparc.pial aparc.DKTatlas BA_exvivo ; do
 		done
 	done
 done
+
+
+# MM computations
+python volume_computations.py "${SUBJECTS_DIR}/${SUBJECT}/stats" "${TMP}"
 
