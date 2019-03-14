@@ -28,7 +28,7 @@ Useful information within the container:
   #fsl-6.0.0-centos7_64.tar.gz /opt
 
   # Default run scripts
-  runscripts /opt
+  src /opt
 
   # Usage and Readme
   USAGE.md /opt

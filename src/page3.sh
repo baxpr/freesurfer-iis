@@ -9,16 +9,8 @@
 #
 # Include a plain T1 next to e.g. the axial thalamus for comparison.
 
-
-# FIXME These settings are for testing only
-export FREESURFER_HOME=/usr/local/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
-export SUBJECTS_DIR=`pwd`/../OUTPUTS
-export SUBJECT=SUBJECT
-
 # Script location
-#RSCR=/opt/runscripts
-RSCR=`pwd`
+RSCR=/opt/src
 
 # Working directory
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp

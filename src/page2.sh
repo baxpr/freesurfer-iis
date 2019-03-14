@@ -4,16 +4,8 @@
 #
 # Subcortical also.
 
-
-# FIXME These settings are for testing only
-export FREESURFER_HOME=/usr/local/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
-export SUBJECTS_DIR=`pwd`/../OUTPUTS
-export SUBJECT=SUBJECT
-
 # Script location
-#RSCR=/opt/runscripts
-RSCR=`pwd`
+RSCR=/opt/scr
 
 # Directories
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp

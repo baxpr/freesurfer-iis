@@ -1,20 +1,8 @@
+#!/bin/bash
+#
+# Compute and reformat regional volume/area/thickness measures
 
-SUBJECTS_DIR=`pwd`/../OUTPUTS
-SUBJECT=SUBJECT
-OUTDIR=./out
-
-# Would be clearest to keep these all in separate outputs that go to separate
-# instruments in REDCap. Then we can include the eTIV and so on in each case, 
-# and it'll show up in the corresponding REDCap report.
-
-# TODO Reformatting freesurfer's csvs 
-#   Combine the lh+rh, handling extras BrainSegVolNotVent,eTIV
-#   Remove first column
-#   Remove special chars in region names
-#       aseg.csv   : -, capitals
-#       a2009s     : &, -, capitals
-#       BA1_exvivo : capitals
-#       DKTatlas   : capitals
+OUTDIR="${SUBJECTS_DIR}/${SUBJECT}/tmp"
 
 
 # Subcortical regions, aseg
@@ -40,6 +28,7 @@ done
 
 # MM computations
 python volume_computations.py "${SUBJECTS_DIR}/${SUBJECT}/stats" "${OUTDIR}"
+
 
 # Reformat CSVs
 python reformat_csvs.py "${OUTDIR}"

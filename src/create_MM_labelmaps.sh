@@ -6,13 +6,10 @@
 # Both hemispheres are labeled with the same codes.
 #
 # Label info is in $FREESURFER_HOME/FreeSurferColorLUT.txt
+#
+# Resample with mri_vol2vol
 
-# Resample with https://surfer.nmr.mgh.harvard.edu/fswiki/mri_vol2vol ?
-
-# FIXME this is for testing
-SUBJECTS_DIR=`pwd`/../OUTPUTS
-SUBJECT=SUBJECT
-OUTDIR=./out
+OUTDIR="${SUBJECTS_DIR}/${SUBJECT}"/tmp
 MRI="${SUBJECTS_DIR}/${SUBJECT}"/mri
 
 
