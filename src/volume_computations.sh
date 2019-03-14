@@ -9,11 +9,12 @@ TMP=.
 #
 # Although, we could consider combining the lh+rh ?
 
-# TODO Hippocampus, amygdala, brainstem, thalamus. Also MM hippocampus calcs.
+# TODO Remove capital letters, special chars, hyphen from region names
+
+# TODO MM hippocampus calcs.
 
 
 # Subcortical regions, aseg
-#    ?  --no-vol-extras
 asegstats2table --delimiter comma -m volume \
 -s "${SUBJECT}" -t "${TMP}"/aseg.csv
 
