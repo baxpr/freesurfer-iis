@@ -13,6 +13,8 @@
 SUBJECTS_DIR=`pwd`/../OUTPUTS
 SUBJECT=SUBJECT
 OUTDIR=./out
+MRI="${SUBJECTS_DIR}/${SUBJECT}"/mri
+
 
 ##############################################################################
 # MMAP anterior/posterior
@@ -43,6 +45,7 @@ OUTDIR=./out
 #        215  hippocampal-fissure
 #       7...  amygdala
 for hemi in lh rh ; do
+	
 mri_binarize \
 --i "${SUBJECTS_DIR}/${SUBJECT}/mri/${hemi}.hippoAmygLabels-T1.v21.mgz" \
 \
@@ -79,7 +82,14 @@ mri_binarize \
 --replace 7015 0 \
 \
 --o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz
+
+mri_vol2vol --nearest --regheader \
+--mov "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz \
+--targ "${MRI}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
+--o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMAP.FSVoxelSpace.mgz
+
 done
+
 
 # Make corresponding label file
 cat <<EOF > "${OUTDIR}/hippoLabels-T1.v21.MMAP.csv"
@@ -128,6 +138,7 @@ EOF
 #        215  hippocampal-fissure
 #       7...  amygdala
 for hemi in lh rh ; do
+
 mri_binarize \
 --i "${SUBJECTS_DIR}/${SUBJECT}/mri/${hemi}.hippoAmygLabels-T1.v21.mgz" \
 \
@@ -169,6 +180,12 @@ mri_binarize \
 --replace 7015 0 \
 \
 --o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz
+
+mri_vol2vol --nearest --regheader \
+--mov "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz \
+--targ "${MRI}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
+--o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMHBT.FSVoxelSpace.mgz
+
 done
 
 # Make corresponding label file
