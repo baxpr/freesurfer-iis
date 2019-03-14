@@ -9,12 +9,12 @@
 
 # Resample with https://surfer.nmr.mgh.harvard.edu/fswiki/mri_vol2vol ?
 
-
+# FIXME this is for testing
 SUBJECTS_DIR=`pwd`/../OUTPUTS
 SUBJECT=SUBJECT
 TMP=.
 
-
+##############################################################################
 # MMAP anterior/posterior
 #
 #   Anterior (1)
@@ -81,8 +81,15 @@ mri_binarize \
 --o "${TMP}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz
 done
 
+# Make corresponding label file
+cat <<EOF > "${TMP}/hippoLabels-T1.v21.MMAP.csv"
+Label,Region
+1,Anterior-Hippocampus
+2,Posterior-Hippocampus
+EOF
 
 
+##############################################################################
 # MMHBT head/body/tail
 #
 #  Head-CA (1)
@@ -164,4 +171,15 @@ mri_binarize \
 --o "${TMP}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz
 done
 
+# Make corresponding label file
+cat <<EOF > "${TMP}/hippoLabels-T1.v21.MMHBT.csv"
+Label,Region
+1,Head-CA
+2,Head-DG
+3,Head-subiculum
+4,Body-CA
+5,Body-DG
+6,Body-subiculum
+7,Tail
+EOF
 
