@@ -1,5 +1,7 @@
 # Reformat Freesurfer's subcortical volume measurement files to CSV
 
+# TODO Combine the lh+rh
+
 import re
 import sys
 import os

@@ -12,7 +12,7 @@
 # FIXME this is for testing
 SUBJECTS_DIR=`pwd`/../OUTPUTS
 SUBJECT=SUBJECT
-TMP=.
+OUTDIR=./out
 
 ##############################################################################
 # MMAP anterior/posterior
@@ -78,11 +78,11 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${TMP}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz
+--o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz
 done
 
 # Make corresponding label file
-cat <<EOF > "${TMP}/hippoLabels-T1.v21.MMAP.csv"
+cat <<EOF > "${OUTDIR}/hippoLabels-T1.v21.MMAP.csv"
 Label,Region
 1,Anterior-Hippocampus
 2,Posterior-Hippocampus
@@ -168,11 +168,11 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${TMP}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz
+--o "${OUTDIR}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz
 done
 
 # Make corresponding label file
-cat <<EOF > "${TMP}/hippoLabels-T1.v21.MMHBT.csv"
+cat <<EOF > "${OUTDIR}/hippoLabels-T1.v21.MMHBT.csv"
 Label,Region
 1,Head-CA
 2,Head-DG
