@@ -3,7 +3,7 @@
 
 This repository contains the files needed to build a singularity container that 
 runs Freesurfer's recon-all, plus hippocampus, thalamus, brainstem segmentation 
-modules. The build recipe is [Singularity.dev](Singularity.dev). An 
+modules. The build recipe is [Singularity.dev2](Singularity.dev2). An 
 already-built singularity container is probably available at 
 https://www.singularity-hub.org/collections/1896 .
 
