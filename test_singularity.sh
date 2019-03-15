@@ -19,4 +19,5 @@ singularity shell \
 --bind freesurfer_license.txt:/usr/local/freesurfer/license.txt \
 --bind INPUTS:/INPUTS \
 --bind OUTPUTS:/OUTPUTS \
+--bind `pwd`:/opt/wkdir \
 baxpr-freesurfer-singularity-master-dev2.simg

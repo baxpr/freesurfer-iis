@@ -56,6 +56,9 @@ Useful information within the container:
   # For PDF outputs
   yum -y install ImageMagick
   
+  # Python modules
+  yum -y install python-pip
+  pip install pandas numpy
   
   # We need a piece of FSL (fslstats)
   wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.0-centos7_64.tar.gz
