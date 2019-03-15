@@ -44,6 +44,7 @@ do
         shift; shift
         ;;
     *)
+		echo Unknown argument $key
         shift
         ;;
   esac

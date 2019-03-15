@@ -68,14 +68,12 @@ Useful information within the container:
   cp fsl/bin/fslstats /usr/local/fsl/bin
   rm -r fsl fsl-6.0.0-centos7_64.tar.gz
   
-  
   # Matlab runtime for brainstem, hippocampus, thalamus modules
   wget -nv -P /opt http://ssd.mathworks.com/supportfiles/downloads/R2014b/deployment_files/R2014b/installers/glnxa64/MCR_R2014b_glnxa64_installer.zip
   unzip -q /opt/MCR_R2014b_glnxa64_installer.zip -d /opt/MCR_R2014b_glnxa64_installer
   /opt/MCR_R2014b_glnxa64_installer/install -mode silent -agreeToLicense yes
   rm -r /opt/MCR_R2014b_glnxa64_installer
   rm /opt/MCR_R2014b_glnxa64_installer.zip
-
 
   # Install Freesurfer
   wget -nv -P /usr/local https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
@@ -88,7 +86,6 @@ Useful information within the container:
   
   # Tell freesurfer where to find the MCR
   ln -s /usr/local/MATLAB/MATLAB_Compiler_Runtime/v84 /usr/local/freesurfer/MCRv84
-
 
   # Create input/output directories for binding
   mkdir /INPUTS && mkdir /OUTPUTS
