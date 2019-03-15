@@ -2,13 +2,13 @@
 #
 # Compute and reformat regional volume/area/thickness measures
 
-OUTDIR="${SUBJECTS_DIR}/${SUBJECT}/tmp"
+TMP="${SUBJECTS_DIR}/${SUBJECT}/tmp"
 
 
 # Subcortical regions, aseg
 # This provides our eTIV
 asegstats2table --delimiter comma -m volume \
--s "${SUBJECT}" -t "${OUTDIR}"/aseg.csv
+-s "${SUBJECT}" -t "${TMP}"/aseg.csv
 
 
 # Surface parcels
@@ -20,15 +20,16 @@ for APARC in aparc aparc.a2009s aparc.pial aparc.DKTatlas BA_exvivo ; do
 		for HEMI in lh rh ; do
 			aparcstats2table --delimiter comma \
 			-m $MEAS --hemi $HEMI -s "${SUBJECT}" --parc $APARC \
-			-t "${OUTDIR}"/"${HEMI}-${APARC}-${MEAS}.csv"
+			-t "${TMP}"/"${HEMI}-${APARC}-${MEAS}.csv"
 		done
 	done
 done
 
 
 # MM computations
-python volume_computations.py "${SUBJECTS_DIR}/${SUBJECT}/stats" "${OUTDIR}"
+python /opt/src/volume_computations.py \
+    "${SUBJECTS_DIR}/${SUBJECT}/stats" "${TMP}"
 
 
 # Reformat CSVs
-python reformat_csvs.py "${OUTDIR}"
+python /opt/src/reformat_csvs.py "${TMP}"

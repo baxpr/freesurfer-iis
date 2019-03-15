@@ -41,7 +41,7 @@ Useful information within the container:
   yum -y install unzip wget
   
   # For Freesurfer
-  yum -y install tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers
+  yum -y install tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu
   
   # For FSL
   yum -y install epel-release
