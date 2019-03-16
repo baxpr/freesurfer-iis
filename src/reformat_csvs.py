@@ -82,7 +82,7 @@ for fbase in [
 
     Y = pandas.concat((L,R),axis=1)
     Y.to_csv(os.path.join(outdir,fbase),index=False)
-    
+
     os.remove(os.path.join(outdir,'lh-'+fbase))
     os.remove(os.path.join(outdir,'rh-'+fbase))
     

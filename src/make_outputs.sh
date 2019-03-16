@@ -31,8 +31,8 @@ for f in \
   aparc.pial-volume.csv \
   aseg.csv \
   brainstem.v12.stats.csv \
-  hippoLabels-T1.v21.MMAP.csv \
-  hippoLabels-T1.v21.MMHBT.csv \
+  hipposubfields-T1.v21.MMAP.csv \
+  hipposubfields-T1.v21.MMHBT.csv \
   hipposubfields.T1.v21.MMAP.stats.csv \
   hipposubfields.T1.v21.MMHBT.stats.csv \
   hipposubfields.T1.v21.stats.csv \
@@ -103,7 +103,7 @@ mkdir "${SUBJECTS_DIR}"/PDF
 /opt/src/page1.sh
 /opt/src/page2.sh
 /opt/src/page3.sh
-convert
+convert \
   "${TMP}"/page1.png \
   "${TMP}"/page2.png \
   "${TMP}"/page3.png \
@@ -111,8 +111,8 @@ convert
 
 
 # Clean up
-rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
-rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
+#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
 
 # Rename subject dir so DAX can find it
 mv "${SUBJECTS_DIR}"/"${SUBJECT}" "${SUBJECTS_DIR}"/SUBJECT

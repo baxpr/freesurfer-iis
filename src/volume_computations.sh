@@ -27,9 +27,11 @@ done
 
 
 # MM computations
+echo "MM volume computations"
 python /opt/src/volume_computations.py \
     "${SUBJECTS_DIR}/${SUBJECT}/stats" "${TMP}"
 
 
 # Reformat CSVs
+echo "Reformatting CSVs"
 python /opt/src/reformat_csvs.py "${TMP}"
