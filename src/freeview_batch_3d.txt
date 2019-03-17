@@ -1,0 +1,40 @@
+-viewsize 600 600 --layout 1 --viewport 3d --hide-3d-slices
+-f surf/lh.inflated
+-ss lh_lat_pial.png -noquit
+-cam azimuth 180 
+-ss lh_med_pial.png -noquit
+--hide surface
+-f surf/lh.inflated:overlay=lh.thickness:overlay_threshold=0.1,3
+-cam azimuth 180 
+-ss lh_lat_thick.png -noquit
+-cam azimuth 180 
+-ss lh_med_thick.png -noquit
+--hide surface
+-f surf/rh.inflated
+-ss rh_lat_pial.png -noquit
+-cam azimuth 180 
+-ss rh_med_pial.png -noquit
+--hide surface
+-f surf/rh.inflated:overlay=rh.thickness:overlay_threshold=0.1,3
+-cam azimuth 180 
+-ss rh_lat_thick.png -noquit
+-cam azimuth 180 
+-ss rh_med_thick.png -noquit
+--hide surface
+-f surf/rh.pial:annot=aparc
+-zoom 1.15 
+-cam azimuth 180 
+-ss rh_lat_aparc.png -noquit
+-cam azimuth 180 
+-ss rh_med_aparc.png -noquit
+--hide surface
+-f surf/lh.pial:annot=aparc
+-ss lh_lat_aparc.png -noquit
+-cam azimuth 180 
+-ss lh_med_aparc.png -noquit
+--hide surface
+-f surf/rh.pial:annot=aparc
+-ss rh_lat_aparc.png -noquit
+-cam azimuth 180 
+-ss rh_med_aparc.png -noquit
+-quit

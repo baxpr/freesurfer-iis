@@ -111,8 +111,8 @@ convert \
 
 
 # Clean up
-#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
-#rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
+rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
 
 # Rename subject dir so DAX can find it
 mv "${SUBJECTS_DIR}"/"${SUBJECT}" "${SUBJECTS_DIR}"/SUBJECT
