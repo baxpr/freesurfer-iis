@@ -97,7 +97,13 @@ for f in \
     mri_convert "${TMP}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
-
+for f in \
+  hippoLabels-T1.v21.MMAP.csv \
+  hippoLabels-T1.v21.MMHBT.csv \
+  ; do
+	  mv "${f}" "${NII_HIPP_AMYG}"
+done
+	  
 # Make screenshots and PDFs
 mkdir "${SUBJECTS_DIR}"/PDF
 /opt/src/page1.sh

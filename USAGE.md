@@ -85,11 +85,12 @@ All outputs are stored in <outputs_dir> in these subdirectories:
 PDF             At-a-glance report
 PDF_DETAIL      Slice-by-slice view of surfaces
 SUBJECT         Freesurfer "subject" directory with all Freesurfer outputs
-VOLUMES         Volume measurements for all structures
+STATS           Volume measurements for all structures in csv format
 NII_T1          T1.mgz scaled structural image converted to Nifti
 NII_ASEG        aseg.mgz segmentation (Nifti)
 NII_WMPARC      wmparc.mgz full volumetric parcellation (Nifti)
 NII_THALAMUS    thalamus parcellation (Nifti)
 NII_BRAINSTEM   brainstem parcellation (Nifti)
-NII_HIPP_AMYG   hippocampus/amygdala parcellation (Nifti)
+NII_HIPP_AMYG   hippocampus/amygdala parcellations (Nifti)
 ```
+
