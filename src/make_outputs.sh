@@ -101,16 +101,18 @@ for f in \
   ; do
 	  mv "${TMP}"/"${f}" "${NII_HIPP_AMYG}"
 done
-	  
+
 # Make screenshots and PDFs
 mkdir "${SUBJECTS_DIR}"/PDF
 ${SRC}/page1.sh
 ${SRC}/page2.sh
 ${SRC}/page3.sh
+${SRC}/page4.sh
 convert \
   "${TMP}"/page1.png \
   "${TMP}"/page2.png \
   "${TMP}"/page3.png \
+  "${TMP}"/page4.png \
   "${SUBJECTS_DIR}"/PDF/freesurfer_v2.pdf
 
 # Detailed PDF

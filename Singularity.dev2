@@ -76,9 +76,11 @@ Useful information within the container:
   rm /opt/MCR_R2014b_glnxa64_installer.zip
 
   # Install Freesurfer
+  # Make our own build stamp since FS dev seems to not provide it sometimes
   wget -nv -P /usr/local https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/dev/freesurfer-linux-centos7_x86_64-dev.tar.gz
   cd /usr/local
   tar -zxf freesurfer-linux-centos7_x86_64-dev.tar.gz
+  md5sum freesurfer-linux-centos7_x86_64-dev.tar.gz > freesurfer/build-hash.txt
   rm freesurfer-linux-centos7_x86_64-dev.tar.gz
 
   # Freeview needs a machine id here
