@@ -11,7 +11,7 @@ TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 
 # STATS
 STATS="${SUBJECTS_DIR}"/STATS
-mkdir "STATS"
+mkdir "${STATS}"
 for f in \
   BA_exvivo-area.csv \
   BA_exvivo-thickness.csv \
@@ -31,8 +31,6 @@ for f in \
   aparc.pial-volume.csv \
   aseg.csv \
   brainstem.v12.stats.csv \
-  hipposubfields-T1.v21.MMAP.csv \
-  hipposubfields-T1.v21.MMHBT.csv \
   hipposubfields.T1.v21.MMAP.stats.csv \
   hipposubfields.T1.v21.MMHBT.stats.csv \
   hipposubfields.T1.v21.stats.csv \
@@ -101,24 +99,26 @@ for f in \
   hippoLabels-T1.v21.MMAP.csv \
   hippoLabels-T1.v21.MMHBT.csv \
   ; do
-	  mv "${f}" "${NII_HIPP_AMYG}"
+	  mv "${TMP}"/"${f}" "${NII_HIPP_AMYG}"
 done
 	  
 # Make screenshots and PDFs
 mkdir "${SUBJECTS_DIR}"/PDF
-/opt/src/page1.sh
-/opt/src/page2.sh
-/opt/src/page3.sh
+${SRC}/page1.sh
+${SRC}/page2.sh
+${SRC}/page3.sh
 convert \
   "${TMP}"/page1.png \
   "${TMP}"/page2.png \
   "${TMP}"/page3.png \
   "${SUBJECTS_DIR}"/PDF/freesurfer_v2.pdf
 
+# Detailed PDF
+${SRC}/make_slice_screenshots.sh
 
-# Clean up
-rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
-rm -r "${SUBJECTS_DIR}"/"${SUBJECT}"/trash
+# Clean up (DAX will ignore these if we move them here)
+mv "${SUBJECTS_DIR}"/"${SUBJECT}"/tmp "${SUBJECTS_DIR}"
+mv "${SUBJECTS_DIR}"/"${SUBJECT}"/trash "${SUBJECTS_DIR}"
 
 # Rename subject dir so DAX can find it
 mv "${SUBJECTS_DIR}"/"${SUBJECT}" "${SUBJECTS_DIR}"/SUBJECT

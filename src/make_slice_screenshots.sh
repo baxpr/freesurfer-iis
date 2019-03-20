@@ -2,7 +2,6 @@
 
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
-RSCR=/opt/src
 
 cd "${TMP}"
 
@@ -11,10 +10,10 @@ mri_binarize --i "${MRI}"/aseg.mgz --o "${TMP}"/aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 41 0 --replace 42 0
 
 # Create the screenshots
-freeview -cmd "${RSCR}"/freeview_batch_3d.txt
-freeview -cmd "${RSCR}"/freeview_batch_axl.txt
-freeview -cmd "${RSCR}"/freeview_batch_cor.txt
-freeview -cmd "${RSCR}"/freeview_batch_sag.txt
+freeview -cmd "${SRC}"/freeview_batch_3d.txt
+freeview -cmd "${SRC}"/freeview_batch_axl.txt
+freeview -cmd "${SRC}"/freeview_batch_cor.txt
+freeview -cmd "${SRC}"/freeview_batch_sag.txt
 
 # Trim 3d screenshots
 for i in [lr]h_*.png;do convert $i -fuzz 1% -trim +repage t${i};done

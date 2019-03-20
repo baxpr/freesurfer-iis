@@ -4,16 +4,12 @@
 # Parcellation on white matter surface
 # "Scaled CNR" on white matter surface
 
-
-# Script location
-RSCR=/opt/src
-
 # Working directory
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 
 # Get Freesurfer screenshots
 cd "${SUBJECTS_DIR}"/"${SUBJECT}"
-freeview -cmd ${RSCR}/page1_cmd.txt
+freeview -cmd ${SRC}/page1_cmd.txt
 mv *.png ${TMP}
 cd ${TMP}
 

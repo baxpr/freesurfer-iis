@@ -9,9 +9,6 @@
 #
 # Include a plain T1 next to e.g. the axial thalamus for comparison.
 
-# Script location
-RSCR=/opt/src
-
 # Working directory
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 

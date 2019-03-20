@@ -1,4 +1,4 @@
--v mri/T1.mgz:visible=1:grayscale=0,165
+-v ../mri/T1.mgz:visible=1:grayscale=0,165
 -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z
 -slice  49  49  49 -ss axl049_a.png -noquit
 -slice  53  53  53 -ss axl053_a.png -noquit
@@ -37,11 +37,11 @@
 -slice 185 185 185 -ss axl185_a.png -noquit
 -slice 189 189 189 -ss axl189_a.png -noquit
 -slice 193 193 193 -ss axl193_a.png -noquit
--v mri/aseg.sub.mgz:visible=1:colormap=FreeSurferColorLUT.txt
--f surf/lh.white:edgecolor=turquoise:edgethickness=1
--f surf/lh.pial:edgecolor=red:edgethickness=1
--f surf/rh.white:edgecolor=turquoise:edgethickness=1
--f surf/rh.pial:edgecolor=red:edgethickness=1
+-v aseg.sub.mgz:visible=1:colormap=lut
+-f ../surf/lh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/lh.pial:edgecolor=red:edgethickness=1
+-f ../surf/rh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/rh.pial:edgecolor=red:edgethickness=1
 -slice  49  49  49 -ss axl049_b.png -noquit
 -slice  53  53  53 -ss axl053_b.png -noquit
 -slice  57  57  57 -ss axl057_b.png -noquit

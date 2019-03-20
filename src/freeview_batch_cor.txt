@@ -1,4 +1,4 @@
--v mri/T1.mgz:visible=1:grayscale=0,165
+-v ../mri/T1.mgz:visible=1:grayscale=0,165
 -viewsize 400 400 --layout 1 --zoom 1.25 --viewport y
 -slice  25  25  25 -ss cor025_a.png -noquit
 -slice  29  29  29 -ss cor029_a.png -noquit
@@ -46,11 +46,11 @@
 -slice 197 197 197 -ss cor197_a.png -noquit
 -slice 201 201 201 -ss cor201_a.png -noquit
 -slice 205 205 205 -ss cor205_a.png -noquit
--v mri/aseg.sub.mgz:visible=1:colormap=lut
--f surf/lh.white:edgecolor=turquoise:edgethickness=1
--f surf/lh.pial:edgecolor=red:edgethickness=1
--f surf/rh.white:edgecolor=turquoise:edgethickness=1
--f surf/rh.pial:edgecolor=red:edgethickness=1
+-v aseg.sub.mgz:visible=1:colormap=lut
+-f ../surf/lh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/lh.pial:edgecolor=red:edgethickness=1
+-f ../surf/rh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/rh.pial:edgecolor=red:edgethickness=1
 -slice  25  25  25 -ss cor025_b.png -noquit
 -slice  29  29  29 -ss cor029_b.png -noquit
 -slice  33  33  33 -ss cor033_b.png -noquit

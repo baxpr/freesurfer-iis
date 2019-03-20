@@ -1,4 +1,4 @@
--v mri/T1.mgz:visible=1:grayscale=0,165
+-v ../mri/T1.mgz:visible=1:grayscale=0,165
 -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x
 -slice  49  49  49 -ss sag049_a.png -noquit
 -slice  53  53  53 -ss sag053_a.png -noquit
@@ -40,11 +40,11 @@
 -slice 197 197 197 -ss sag197_a.png -noquit
 -slice 201 201 201 -ss sag201_a.png -noquit
 -slice 205 205 205 -ss sag205_a.png -noquit
--v mri/aseg.sub.mgz:visible=1:colormap=lut
--f surf/lh.white:edgecolor=turquoise:edgethickness=1
--f surf/lh.pial:edgecolor=red:edgethickness=1
--f surf/rh.white:edgecolor=turquoise:edgethickness=1
--f surf/rh.pial:edgecolor=red:edgethickness=1
+-v aseg.sub.mgz:visible=1:colormap=lut
+-f ../surf/lh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/lh.pial:edgecolor=red:edgethickness=1
+-f ../surf/rh.white:edgecolor=turquoise:edgethickness=1
+-f ../surf/rh.pial:edgecolor=red:edgethickness=1
 -slice  49  49  49 -ss sag049_b.png -noquit
 -slice  53  53  53 -ss sag053_b.png -noquit
 -slice  57  57  57 -ss sag057_b.png -noquit

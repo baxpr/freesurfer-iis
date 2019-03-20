@@ -4,8 +4,6 @@
 #
 # Subcortical also.
 
-# Script location
-RSCR=/opt/scr
 
 # Directories
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
@@ -73,6 +71,6 @@ convert \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
 -gravity SouthWest -annotate +15+10 `cat $FREESURFER_HOME/build-stamp.txt` \
 -gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
-page3.png
+page2.png
 
 

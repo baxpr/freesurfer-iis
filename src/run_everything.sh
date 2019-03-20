@@ -63,6 +63,9 @@ source "${FREESURFER_HOME}"/SetUpFreeSurfer.sh
 export SUBJECTS_DIR="${OUTDIR}"
 export SUBJECT="${PROJECT}-x-${SUBJECT}-x-${SESSION}-x-${SCAN}"
 
+# Script location
+export SRC=/opt/src
+
 # recon-all
 recon-all -all -i "${T1_NII}" -s "${SUBJECT}"
 
@@ -76,7 +79,6 @@ segmentHA_T1.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 segmentBS.sh "${SUBJECT}" "${SUBJECTS_DIR}"
 
 # Produce additional outputs and organize
-bash /opt/src/make_slice_screeshots.sh
-bash /opt/src/volume_computations.sh
-bash /opt/src/create_MM_labelmaps.sh
-bash /opt/src/make_outputs.sh
+${SRC}/volume_computations.sh
+${SRC}/create_MM_labelmaps.sh
+${SRC}/make_outputs.sh
