@@ -8,36 +8,8 @@ echo "Generating outputs for ${SUBJECTS_DIR} ${SUBJECT}"
 MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
 TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
 
-
-# STATS
-STATS="${SUBJECTS_DIR}"/STATS
-mkdir "${STATS}"
-for f in \
-  BA_exvivo-area.csv \
-  BA_exvivo-thickness.csv \
-  BA_exvivo-volume.csv \
-  amygdalar-nuclei.T1.v21.stats.csv \
-  aparc-area.csv \
-  aparc-thickness.csv \
-  aparc-volume.csv \
-  aparc.DKTatlas-area.csv \
-  aparc.DKTatlas-thickness.csv \
-  aparc.DKTatlas-volume.csv \
-  aparc.a2009s-area.csv \
-  aparc.a2009s-thickness.csv \
-  aparc.a2009s-volume.csv \
-  aparc.pial-area.csv \
-  aparc.pial-thickness.csv \
-  aparc.pial-volume.csv \
-  aseg.csv \
-  brainstem.v12.stats.csv \
-  hipposubfields.T1.v21.MMAP.stats.csv \
-  hipposubfields.T1.v21.MMHBT.stats.csv \
-  hipposubfields.T1.v21.stats.csv \
-  thalamic-nuclei.v10.T1.stats.csv \
-  ; do
-    cp "${TMP}"/"${f}" "${STATS}"
-done
+# Stats
+${SRC}/make_xnat_csvs.sh
 
 # NII_T1
 NII_T1="${SUBJECTS_DIR}"/NII_T1

@@ -82,6 +82,9 @@ Useful information within the container:
   tar -zxf freesurfer-linux-centos7_x86_64-dev.tar.gz
   md5sum freesurfer-linux-centos7_x86_64-dev.tar.gz > freesurfer/build-hash.txt
   rm freesurfer-linux-centos7_x86_64-dev.tar.gz
+  cd /usr/local/freesurfer
+  H=$(cat build-hash.txt)
+  echo ${H% freesurfer-linux-centos7_x86_64-dev.tar.gz} > build-hash.txt
 
   # Freeview needs a machine id here
   dbus-uuidgen > /etc/machine-id
