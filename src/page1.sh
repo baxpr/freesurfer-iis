@@ -45,7 +45,7 @@ convert \
 -gravity South \( eight.png -resize 1194x1354 \) -geometry +0+60 -composite \
 -gravity NorthEast -pointsize 24 -annotate +15+10 "${CNRTXT}" \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 `cat $FREESURFER_HOME/build-info.txt` \
+-gravity SouthWest -annotate +15+10 "`cat $FREESURFER_HOME/build-info.txt`" \
 -gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
 page1.png
 

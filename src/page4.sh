@@ -76,7 +76,7 @@ convert page4.png \
 -border 15 -gravity SouthEast -background white -splice 0x15 -pointsize 24 \
 -annotate +15+10 "$(date)" \
 -gravity SouthWest -annotate +15+10 \
-`cat $FREESURFER_HOME/build-info.txt` \
+"`cat $FREESURFER_HOME/build-info.txt`" \
 -gravity NorthWest -background white -splice 0x60 -pointsize 24 -annotate +15+0 \
 'FreeSurfer segmentBS.sh' \
 -gravity NorthWest -background white -splice 0x60 -pointsize 24 -annotate +15+10 \

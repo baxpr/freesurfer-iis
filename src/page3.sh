@@ -156,6 +156,6 @@ convert \
 -gravity center \( twenty.png -resize 1194x1554 \) -geometry +0+80 -composite \
 -gravity NorthEast -pointsize 24 -annotate +15+10 "Thalamus" \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 `cat $FREESURFER_HOME/build-info.txt` \
+-gravity SouthWest -annotate +15+10 "`cat $FREESURFER_HOME/build-info.txt`" \
 -gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
 page3.png
