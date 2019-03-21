@@ -69,7 +69,7 @@ convert \
 -gravity center \( twelve.png -resize 1194x1454 \) -geometry +0+0 -composite \
 -gravity NorthEast -pointsize 24 -annotate +15+10 "recon-all" \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 `cat $FREESURFER_HOME/build-stamp.txt` \
+-gravity SouthWest -annotate +15+10 `cat $FREESURFER_HOME/build-info.txt` \
 -gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
 page2.png
 

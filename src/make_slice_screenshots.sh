@@ -43,7 +43,7 @@ convert first_page.png \
 -extent 1194x1479 -bordercolor white -border 15 \
 -gravity SouthEast -background white -splice 0x15 -pointsize 16 \
 -annotate +15+10 "$(date)" -gravity SouthWest -annotate +15+10 \
-`cat $FREESURFER_HOME/build-stamp.txt` \
+`cat $FREESURFER_HOME/build-info.txt` \
 -gravity NorthWest -background white -splice 0x60 \
 -pointsize 24 -annotate +15+35 \
 'QA Summary - FreeSurfer recon-all' \

@@ -85,6 +85,7 @@ Useful information within the container:
   cd /usr/local/freesurfer
   H=$(cat build-hash.txt)
   echo ${H% freesurfer-linux-centos7_x86_64-dev.tar.gz} > build-hash.txt
+  cat build-hash.txt build-stamp.txt > build-info.txt
 
   # Freeview needs a machine id here
   dbus-uuidgen > /etc/machine-id
