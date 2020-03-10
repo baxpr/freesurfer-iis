@@ -11,7 +11,13 @@ baxpr-freesurfer-singularity-master-dev2.simg \
 --project TESTPROJ \
 --subject TESTSUBJ \
 --session TESTSESS \
---scan TESTSCAN
+--scan TESTSCAN \
+> OUTPUTS/testrun.log 2>&1 
+
+
+
+exit 0
+
 
 #############################################################################
 # To test post-recon stuff only
