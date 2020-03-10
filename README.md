@@ -11,7 +11,7 @@ A valid Freesurfer license file is required at runtime.
 
 See [USAGE.md](USAGE.md) for details.
 
-Here are the [look-up table](FreeSurferColorLUT.txt) for the various Freesurfer segmentations, 
+Here is the [look-up table for the various Freesurfer segmentations](FreeSurferColorLUT.txt), 
 and the [description of MM hippocampus re-combinations](src/create_MM_labelmaps.sh).
 
 
