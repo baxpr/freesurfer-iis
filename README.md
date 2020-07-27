@@ -85,9 +85,20 @@ substructures in brain MRI using subject-specific atlases. Iglesias JE, Van
 Leemput K, Augustinack J, Insausti R, Fischl B, Reuter M. Neuroimage, 141, 
 November 2016, 542-555.
 
+### "MM" hippocampal subregions
+
+A reorganization of Freesurfer's segmentation into anterior and posterior segments 
+as described in:
+
+McHugo M, Talati P, Woodward ND, Armstrong K, Blackford JU, Heckers S. Regionally 
+specific volume deficits along the hippocampal long axis in early and chronic 
+psychosis. Neuroimage Clin. 2018;20:1106-1114. doi:10.1016/j.nicl.2018.10.021
+
+
 ### Thalamus
 
 A probabilistic atlas of the human thalamic nuclei combining ex vivo MRI and 
 histology. Iglesias, J.E., Insausti, R., Lerma-Usabiaga, G., Bocchetta, M., 
 Van Leemput, K., Greve, D., van der Kouwe, A., Caballero-Gaudes, C., 
 Paz-Alonso, P. Neuroimage (accepted).
+
