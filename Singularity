@@ -33,7 +33,7 @@ Useful information within the container:
   freesurfer_version=7.2.0
   
   # For installs
-  yum -y aupdate
+  yum -y update
   yum -y install unzip wget
   
   # For Freesurfer
