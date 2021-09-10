@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: centos:8.3.2011
+From: centos:7.9.2009
 
 %help
 
@@ -33,7 +33,7 @@ Useful information within the container:
   freesurfer_version=7.2.0
   
   # For installs
-  yum -y update
+  yum -y aupdate
   yum -y install unzip wget
   
   # For Freesurfer
