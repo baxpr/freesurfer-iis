@@ -40,8 +40,8 @@ Useful information within the container:
   yum -y install tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu
   
   # For FSL
-  yum -y install epel-release
-  yum -y install openblas-devel
+  #yum -y install epel-release
+  #yum -y install openblas-devel
   
   # For X
   yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which
@@ -50,8 +50,8 @@ Useful information within the container:
   yum -y install ImageMagick
   
   # Python modules
-  yum -y install python-pip
-  pip install pandas numpy
+  yum -y install python3
+  pip3 install pandas numpy
   
   # fslstats via local copy
   tar -zx -f /opt/fsl-${fsl_version}-centos7_64.tar.gz fsl/bin/fslstats -C /usr/local
