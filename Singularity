@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: centos:7.5.1804
+From: centos:8.3.2011
 
 %help
 
