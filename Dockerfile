@@ -15,10 +15,9 @@ RUN yum -y install mesa-libGL libXext libSM libXrender libXmu
 RUN yum clean all
 
 # install fs
-RUN wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
-    tar --no-same-owner -xzvf fs.tar.gz && \
-    mv freesurfer /usr/local && \
-    rm fs.tar.gz
+RUN wget -P /opt https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
+    tar -zxf /opt/fs.tar.gz -C /usr/local && \
+    rm /opt/fs.tar.gz
 
 # setup fs env
 ENV OS Linux
@@ -43,3 +42,15 @@ ENV MNI_DIR /usr/local/freesurfer/mni
 ENV MNI_DATAPATH /usr/local/freesurfer/mni/data
 ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
+
+
+# fslstats
+RUN wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz -O fsl.tar.gz && \
+    tar -zxf /opt/fsl.tar.gz fsl/bin/fslstats -C /usr/local && \
+    rm /opt/fsl-*.tar.gz
+
+
+# Additional code for generating PDF etc
+ADD README.md /opt/fs-extensions/
+ADD src /opt/fs-extensions/
+
