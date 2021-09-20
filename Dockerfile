@@ -25,21 +25,6 @@ RUN wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
 RUN wget -nv https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
     tar -zxf fs.tar.gz -C /usr/local && \
     rm fs.tar.gz
-
-
-# Remaining utils for freesurfer, FSL, ImageMagick, X
-RUN yum -y install bc libgomp perl tar tcsh wget vim-common && \
-    yum -y install mesa-libGL libXext libSM libXrender libXmu && \
-    yum -y install epel-release openblas-devel && \
-    yum -y install ImageMagick && \
-    yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
-    yum clean all
-
-
-# Additional code for generating PDF etc
-COPY README.md /opt/fs-extensions/
-COPY src /opt/fs-extensions/
-    
     
 # setup fs env
 ENV OS Linux
@@ -65,4 +50,20 @@ ENV MNI_DATAPATH /usr/local/freesurfer/mni/data
 ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
 
+# Matlab runtime for freesurfer
+RUN fs_install_mcr R2014b
 
+
+# Remaining utils for freesurfer, FSL, ImageMagick, X
+RUN yum -y install bc libgomp perl tcsh vim-common && \
+    yum -y install mesa-libGL libXext libSM libXrender libXmu && \
+    yum -y install epel-release openblas-devel && \
+    yum -y install ImageMagick && \
+    yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
+    yum clean all
+
+
+# Additional code for generating PDF etc
+COPY README.md /opt/fs-extensions/
+COPY src /opt/fs-extensions/
+ 

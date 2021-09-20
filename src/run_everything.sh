@@ -34,6 +34,12 @@ echo out_dir     = "${out_dir}"
 # recon-all
 recon-all -all -i "${t1_niigz}" -s SUBJECT
 
+# Subregion modules
+segmentHA_T1.sh SUBJECT
+
+# Does this help with csvs?
+# quantifyHAsubregions.sh
+
 # Produce additional outputs and organize
 volume_computations.sh
 create_MM_labelmaps.sh
