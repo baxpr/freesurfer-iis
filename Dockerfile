@@ -10,7 +10,7 @@ WORKDIR /opt
 
 # Initial update and utils
 RUN yum -y update && \
-    yum -y install wget tar && \
+    yum -y install wget tar zip unzip && \
     yum clean all
 
 
@@ -25,7 +25,7 @@ RUN wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
 RUN wget -nv https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
     tar -zxf fs.tar.gz -C /usr/local && \
     rm fs.tar.gz
-    
+
 # setup fs env
 ENV OS Linux
 ENV PATH /opt/fs-extensions/src:/usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin:/usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
