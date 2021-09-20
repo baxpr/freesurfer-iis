@@ -31,14 +31,22 @@ echo t1_niigz    = "${t1_niigz}"
 echo label_info  = "${label_info}"
 echo out_dir     = "${out_dir}"
 
+# Set freesurfer subjects dir
+export SUBJECTS_DIR="${out_dir}"
+
 # recon-all
 recon-all -all -i "${t1_niigz}" -s SUBJECT
 
 # Subregion modules
+segmentBS.sh SUBJECT
 segmentHA_T1.sh SUBJECT
+segmentThalamicNuclei.sh SUBJECT
 
 # Does this help with csvs?
+# quantifyBrainstemStructures.sh
 # quantifyHAsubregions.sh
+# quantifyThalamicNuclei.sh
+
 
 # Produce additional outputs and organize
 volume_computations.sh
