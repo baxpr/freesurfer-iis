@@ -31,10 +31,6 @@ echo t1_niigz    = "${t1_niigz}"
 echo label_info  = "${label_info}"
 echo out_dir     = "${out_dir}"
 
-# Freesurfer setup
-source "${FREESURFER_HOME}"/SetUpFreeSurfer.sh
-export SUBJECTS_DIR="${out_dir}"
-
 # recon-all
 recon-all -all -i "${t1_niigz}" -s SUBJECT
 
