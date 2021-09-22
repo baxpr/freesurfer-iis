@@ -16,14 +16,17 @@ RUN yum -y update && \
 # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
 FROM init AS freesurfer
 COPY external/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz /opt/freesurfer.tar.gz
-RUN tar -zxf /opt/freesurfer.tar.gz -C /usr/local
-RUN /usr/local/freesurfer/bin/fs_install_mcr R2014b
+RUN tar -zxf /opt/freesurfer.tar.gz -C /usr/local && \
+    rm /opt/freesurfer.tar.gz
+ENV FREESURFER_HOME /usr/local/freesurfer
+RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
 
 # fslstats
 # https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
 FROM init AS fsl
 COPY external/fsl-6.0.4-centos7_64.tar.gz /opt/fsl.tar.gz
-RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats
+RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
+    rm /opt/fsl.tar.gz
 
 
 # Everything else
