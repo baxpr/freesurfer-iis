@@ -13,6 +13,7 @@ RUN yum -y update && \
     yum clean all
 
 # Freesurfer
+# Installed from local file to avoid a long download. Available at
 # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
 FROM init AS freesurfer
 COPY external/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz /opt/freesurfer.tar.gz
@@ -35,14 +36,9 @@ COPY --from=freesurfer /usr/local/freesurfer /usr/local/
 COPY --from=fsl /usr/local/fsl /usr/local/
 
 
-# freesurfer
-#RUN wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
-#    tar -zxf fs.tar.gz -C /usr/local && \
-#    rm fs.tar.gz
 
 # setup fs env
 ENV OS Linux
-ENV PATH /opt/fs-extensions/src:/usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin:/usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV FREESURFER_HOME /usr/local/freesurfer
 ENV FREESURFER /usr/local/freesurfer
 ENV SUBJECTS_DIR /usr/local/freesurfer/subjects
@@ -64,13 +60,8 @@ ENV MNI_DATAPATH /usr/local/freesurfer/mni/data
 ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
 
-# Matlab runtime for freesurfer
-#RUN fs_install_mcr R2014b
-
-# fslstats
-#RUN wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz -O fsl.tar.gz && \
-#    tar -zxf fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
-#    rm fsl.tar.gz
+# Path
+ENV PATH /opt/fs-extensions/src:/usr/local/fsl/bin:/usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin:/usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 
 # fs?
