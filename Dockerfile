@@ -82,9 +82,6 @@ ENV PATHFS2 /usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin
 ENV PATHSYS /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH ${PATHEXT}:${PATHFSL}:${PATHFS1}:${PATHFS2}:${PATHSYS}
 
-# fs?
-
-
 
 # Additional code for generating PDF etc
 COPY README.md /opt/fs-extensions/
