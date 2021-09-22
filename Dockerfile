@@ -15,6 +15,7 @@ RUN yum -y update && \
 # Freesurfer
 # Installed from local file to avoid a long download. Available at
 # https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
+# Also see https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
 FROM init AS freesurfer
 COPY external/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz /opt/freesurfer.tar.gz
 RUN tar -zxf /opt/freesurfer.tar.gz -C /usr/local && \
@@ -24,6 +25,7 @@ RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
 
 # fslstats
 # https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
+# Also see https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
 FROM init AS fsl
 COPY external/fsl-6.0.4-centos7_64.tar.gz /opt/fsl.tar.gz
 RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
@@ -32,10 +34,19 @@ RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
 
 # Everything else
 FROM init
-COPY --from=freesurfer /usr/local/freesurfer /usr/local/
-COPY --from=fsl /usr/local/fsl /usr/local/
+COPY --from=freesurfer /usr/local/freesurfer /usr/local/freesurfer
+COPY --from=fsl /usr/local/fsl /usr/local/fsl
 
-
+# Remaining utils for freesurfer, FSL, ImageMagick, X
+# bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
+# or,   tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu
+# java-1.8.0-openjdk reqd for MCR
+RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu && \
+    yum -y install java-1.8.0-openjdk && \
+    yum -y install epel-release openblas-devel && \
+    yum -y install ImageMagick && \
+    yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
+    yum clean all
 
 # setup fs env
 ENV OS Linux
@@ -60,21 +71,19 @@ ENV MNI_DATAPATH /usr/local/freesurfer/mni/data
 ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
 
-# Path
-ENV PATH /opt/fs-extensions/src:/usr/local/fsl/bin:/usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin:/usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# Avoid some warnings from freesurfer
+ENV XDG_RUNTIME_DIR=/tmp/runtime-root
 
+# Path
+ENV PATHEXT /opt/fs-extensions/src
+ENV PATHFSL /usr/local/fsl/bin
+ENV PATHFS1 /usr/local/freesurfer/bin:/usr/local/freesurfer/fsfast/bin
+ENV PATHFS2 /usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin
+ENV PATHSYS /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH ${PATHEXT}:${PATHFSL}:${PATHFS1}:${PATHFS2}:${PATHSYS}
 
 # fs?
-# bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
-#   or
-# tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu java-1.8.0-openjdk
 
-# Remaining utils for freesurfer, FSL, ImageMagick, X
-RUN yum -y install tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu java-1.8.0-openjdk && \
-    yum -y install epel-release openblas-devel && \
-    yum -y install ImageMagick && \
-    yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
-    yum clean all
 
 
 # Additional code for generating PDF etc
