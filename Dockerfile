@@ -3,23 +3,39 @@
 # It shows the centos package dependencies, and how to set up the freesurfer
 # environment without running the SetUpFreeSurfer.sh script.
 
-FROM centos:7
-
-# shell settings
-WORKDIR /opt
+# Use multi-stage build to let us install things from local .tar.gz files
+# without blowing up the size of the final container
 
 # Initial update and utils
+FROM centos:7 AS init
 RUN yum -y update && \
     yum -y install wget tar zip unzip && \
     yum clean all
 
+# Freesurfer
+# https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
+FROM init AS freesurfer
+COPY external/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz /opt/freesurfer.tar.gz
+RUN tar -zxf /opt/freesurfer.tar.gz -C /usr/local
+RUN /usr/local/freesurfer/bin/fs_install_mcr R2014b
 
-## Slow downloads first
+# fslstats
+# https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
+FROM init AS fsl
+COPY external/fsl-6.0.4-centos7_64.tar.gz /opt/fsl.tar.gz
+RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats
+
+
+# Everything else
+FROM init
+COPY --from=freesurfer /usr/local/freesurfer /usr/local/
+COPY --from=fsl /usr/local/fsl /usr/local/
+
 
 # freesurfer
-RUN wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
-    tar -zxf fs.tar.gz -C /usr/local && \
-    rm fs.tar.gz
+#RUN wget https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz -O fs.tar.gz && \
+#    tar -zxf fs.tar.gz -C /usr/local && \
+#    rm fs.tar.gz
 
 # setup fs env
 ENV OS Linux
@@ -46,12 +62,12 @@ ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
 
 # Matlab runtime for freesurfer
-RUN fs_install_mcr R2014b
+#RUN fs_install_mcr R2014b
 
 # fslstats
-RUN wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz -O fsl.tar.gz && \
-    tar -zxf fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
-    rm fsl.tar.gz
+#RUN wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz -O fsl.tar.gz && \
+#    tar -zxf fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
+#    rm fsl.tar.gz
 
 
 # fs?
