@@ -14,7 +14,7 @@ for fbase in [
     'hipposubfields.lh.T1.v21.stats.csv',
     'hipposubfields.lh.T1.v21.MMAP.stats.csv',
     'hipposubfields.lh.T1.v21.MMHBT.stats.csv',
-    'thalamic-nuclei.lh.v10.T1.stats.csv',
+    'thalamic-nuclei.lh.v12.T1.stats.csv',
     'amygdalar-nuclei.lh.T1.v21.stats.csv'
     ]:
 
