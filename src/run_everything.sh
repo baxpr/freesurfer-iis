@@ -26,7 +26,7 @@ do
   esac
 done
 
-# See what we got
+# Show what we got
 echo t1_niigz    = "${t1_niigz}"
 echo label_info  = "${label_info}"
 echo out_dir     = "${out_dir}"
@@ -37,16 +37,10 @@ export SUBJECTS_DIR="${out_dir}"
 # recon-all
 recon-all -all -i "${t1_niigz}" -s SUBJECT
 
-# Subregion modules
+# Subregion modules (xvfb needed)
 segmentBS.sh SUBJECT
 segmentHA_T1.sh SUBJECT
 segmentThalamicNuclei.sh SUBJECT
-
-# Does this help with csvs?
-# quantifyBrainstemStructures.sh
-# quantifyHAsubregions.sh
-# quantifyThalamicNuclei.sh
-
 
 # Produce additional outputs and organize
 volume_computations.sh

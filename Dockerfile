@@ -48,6 +48,13 @@ RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libX
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
     yum clean all
 
+# Install python3 and make it the default system python. Add needed modules
+RUN yum -y install python3 && \
+    ln -fs /usr/bin/python3 /usr/bin/python && \
+    ln -fs /usr/bin/pip3 /usr/bin/pip && \
+    yum clean all && \
+    pip install pandas numpy
+
 # setup fs env
 ENV OS Linux
 ENV FREESURFER_HOME /usr/local/freesurfer
