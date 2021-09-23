@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Reformat Freesurfer's subcortical volume measurement files to CSV
 
@@ -16,8 +16,8 @@ fnames = [
     'hipposubfields.rh.T1.v21.stats',
     'amygdalar-nuclei.lh.T1.v21.stats',
     'amygdalar-nuclei.rh.T1.v21.stats',
-    'thalamic-nuclei.lh.v10.T1.stats',
-    'thalamic-nuclei.rh.v10.T1.stats',
+    'thalamic-nuclei.lh.v12.T1.stats',
+    'thalamic-nuclei.rh.v12.T1.stats',
     'brainstem.v12.stats'
     ]
     

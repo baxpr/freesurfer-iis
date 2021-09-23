@@ -48,12 +48,12 @@ RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libX
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
     yum clean all
 
-# Install python3 and make it the default system python. Add needed modules
+# Install python3 and add needed modules. Note that making python3 
+# the system default breaks yum, so we won't do that. Rather, spec
+# python3 in the first line of python scripts
 RUN yum -y install python3 && \
-    ln -fs /usr/bin/python3 /usr/bin/python && \
-    ln -fs /usr/bin/pip3 /usr/bin/pip && \
     yum clean all && \
-    pip install pandas numpy
+    pip3 install pandas numpy
 
 # setup fs env
 ENV OS Linux
