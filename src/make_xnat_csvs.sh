@@ -29,7 +29,7 @@ for f in \
   hipposubfields.T1.v21.MMAP.stats.csv \
   hipposubfields.T1.v21.MMHBT.stats.csv \
   hipposubfields.T1.v21.stats.csv \
-  thalamic-nuclei.v10.T1.stats.csv \
+  thalamic-nuclei.v12.T1.stats.csv \
   ; do
     cp "${tmp}"/"${f}" "${stats}"
 done
@@ -60,4 +60,4 @@ cp "${tmp}"/brainstem.v12.stats.csv "${st}"/brainstem.csv
 cp "${tmp}"/hipposubfields.T1.v21.MMAP.stats.csv "${st}"/mmhipp_ap.csv
 cp "${tmp}"/hipposubfields.T1.v21.MMHBT.stats.csv "${st}"/mmhipp_hbt.csv
 cp "${tmp}"/hipposubfields.T1.v21.stats.csv "${st}"/hipp.csv
-cp "${tmp}"/thalamic-nuclei.v10.T1.stats.csv "${st}"/thal.csv
+cp "${tmp}"/thalamic-nuclei.v12.T1.stats.csv "${st}"/thal.csv

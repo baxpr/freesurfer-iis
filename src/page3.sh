@@ -20,14 +20,14 @@ mri="${SUBJECTS_DIR}"/SUBJECT/mri
 # Get LGN location: left is 8109, right is 8209
 # /usr/local/freesurfer/FreeSurferColorLUT.txt
 RASL=$(fslstats \
-${SUBJECTS_DIR}/NII_THALAMUS/ThalamicNuclei.v10.T1.FSvoxelSpace.nii.gz \
+${SUBJECTS_DIR}/NII_THALAMUS/ThalamicNuclei.v12.T1.FSvoxelSpace.nii.gz \
 -l 8108.5 -u 8109.5 -c)
 RL=`echo "${RASL}" | awk '{printf "%d",$1}'`
 AL=`echo "${RASL}" | awk '{printf "%d",$2}'`
 SL=`echo "${RASL}" | awk '{printf "%d",$3}'`
 
 RASR=$(fslstats \
-${SUBJECTS_DIR}/NII_THALAMUS/ThalamicNuclei.v10.T1.FSvoxelSpace.nii.gz \
+${SUBJECTS_DIR}/NII_THALAMUS/ThalamicNuclei.v12.T1.FSvoxelSpace.nii.gz \
 -l 8208.5 -u 8209.5 -c)
 RR=$(echo "${RASR}" | awk '{printf "%d",$1}')
 AR=$(echo "${RASR}" | awk '{printf "%d",$2}')
@@ -59,7 +59,7 @@ THALS=$(echo "(${SL} + ${SR}) / 2" | bc)
 # Freeview command line chunks
 V_STR="-viewsize 400 350 --layout 1 --zoom 4"
 T1_STR="-v ${mri}/T1.mgz"
-SEG_STR="-v ${mri}/ThalamicNuclei.v10.T1.FSvoxelSpace.mgz:visible=1:colormap=lut"
+SEG_STR="-v ${mri}/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz:visible=1:colormap=lut"
 
 # Coronal slices, A to P
 freeview --viewport coronal ${V_STR} ${T1_STR} \

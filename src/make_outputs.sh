@@ -29,8 +29,8 @@ mri_convert "${mri}"/wmparc.mgz "${NII_WMPARC}"/wmparc.nii.gz
 # NII_THALAMUS
 NII_THALAMUS="${SUBJECTS_DIR}"/NII_THALAMUS
 mkdir "${NII_THALAMUS}"
-mri_convert "${mri}"/ThalamicNuclei.v10.T1.FSvoxelSpace.mgz \
-    "${NII_THALAMUS}"/ThalamicNuclei.v10.T1.FSvoxelSpace.nii.gz
+mri_convert "${mri}"/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz \
+    "${NII_THALAMUS}"/ThalamicNuclei.v12.T1.FSvoxelSpace.nii.gz
 
 # NII_BRAINSTEM
 NII_BRAINSTEM="${SUBJECTS_DIR}"/NII_BRAINSTEM

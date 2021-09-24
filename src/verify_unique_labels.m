@@ -22,7 +22,7 @@ files = {
 	'hipposubfields.T1.v21.MMAP.stats.csv'
 	'hipposubfields.T1.v21.MMHBT.stats.csv'
 	'hipposubfields.T1.v21.stats.csv'
-	'thalamic-nuclei.v10.T1.stats.csv'
+	'thalamic-nuclei.v12.T1.stats.csv'
 	};
 
 clear F
