@@ -4,14 +4,11 @@
 # Parcellation on white matter surface
 # "Scaled CNR" on white matter surface
 
-# Working directory
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
-
 # Get Freesurfer screenshots
 cd "${SUBJECTS_DIR}"/SUBJECT
 freeview -cmd ${src_dir}/page1_cmd.txt
-mv *.png ${tmp}
-cd ${tmp}
+mv *.png ${tmp_dir}
+cd ${tmp_dir}
 
 # Trim, change background to white, resize
 for p in \

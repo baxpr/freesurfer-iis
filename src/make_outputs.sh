@@ -5,8 +5,9 @@
 
 echo "Generating outputs for ${SUBJECTS_DIR}"
 
-mri="${SUBJECTS_DIR}"/SUBJECT/mri
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
+export tmp_dir="${SUBJECTS_DIR}"/SUBJECT/tmp
+export mri_dir="${SUBJECTS_DIR}"/SUBJECT/mri
+export surf_dir="${SUBJECTS_DIR}"/SUBJECT/surf
 
 # Stats
 make_xnat_csvs.sh
@@ -14,28 +15,28 @@ make_xnat_csvs.sh
 # NII_FST1
 NII_FST1="${SUBJECTS_DIR}"/NII_FST1
 mkdir "${NII_FST1}"
-mri_convert "${mri}"/norm.mgz "${NII_FST1}"/norm.nii.gz
+mri_convert "${mri_dir}"/norm.mgz "${NII_FST1}"/norm.nii.gz
 
 # NII_ASEG
 NII_ASEG="${SUBJECTS_DIR}"/NII_ASEG
 mkdir "${NII_ASEG}"
-mri_convert "${mri}"/aseg.mgz "${NII_ASEG}"/aseg.nii.gz
+mri_convert "${mri_dir}"/aseg.mgz "${NII_ASEG}"/aseg.nii.gz
 
 # NII_WMPARC
 NII_WMPARC="${SUBJECTS_DIR}"/NII_WMPARC
 mkdir "${NII_WMPARC}"
-mri_convert "${mri}"/wmparc.mgz "${NII_WMPARC}"/wmparc.nii.gz
+mri_convert "${mri_dir}"/wmparc.mgz "${NII_WMPARC}"/wmparc.nii.gz
 
 # NII_THALAMUS
 NII_THALAMUS="${SUBJECTS_DIR}"/NII_THALAMUS
 mkdir "${NII_THALAMUS}"
-mri_convert "${mri}"/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz \
+mri_convert "${mri_dir}"/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz \
     "${NII_THALAMUS}"/ThalamicNuclei.v12.T1.FSvoxelSpace.nii.gz
 
 # NII_BRAINSTEM
 NII_BRAINSTEM="${SUBJECTS_DIR}"/NII_BRAINSTEM
 mkdir "${NII_BRAINSTEM}"
-mri_convert "${mri}"/brainstemSsLabels.v12.FSvoxelSpace.mgz \
+mri_convert "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz \
     "${NII_BRAINSTEM}"/brainstemSsLabels.v12.FSvoxelSpace.nii.gz
 
 # NII_HIPP_AMYG
@@ -51,7 +52,7 @@ for f in \
   lh.hippoAmygLabels-T1.v21.CA.FSvoxelSpace \
   rh.hippoAmygLabels-T1.v21.CA.FSvoxelSpace \
   ; do
-    mri_convert "${mri}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
+    mri_convert "${mri_dir}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
 for f in \
@@ -64,14 +65,14 @@ for f in \
   rh.hippoLabels-T1.v21.MMAP \
   rh.hippoLabels-T1.v21.MMHBT \
   ; do
-    mri_convert "${tmp}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
+    mri_convert "${tmp_dir}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
 for f in \
   hippoLabels-T1.v21.MMAP.csv \
   hippoLabels-T1.v21.MMHBT.csv \
   ; do
-	  mv "${tmp}"/"${f}" "${NII_HIPP_AMYG}"
+	  mv "${tmp_dir}"/"${f}" "${NII_HIPP_AMYG}"
 done
 
 # Make screenshots and PDFs
@@ -81,10 +82,10 @@ page2.sh
 page3.sh
 page4.sh
 convert \
-  "${tmp}"/page1.png \
-  "${tmp}"/page2.png \
-  "${tmp}"/page3.png \
-  "${tmp}"/page4.png \
+  "${tmp_dir}"/page1.png \
+  "${tmp_dir}"/page2.png \
+  "${tmp_dir}"/page3.png \
+  "${tmp_dir}"/page4.png \
   "${SUBJECTS_DIR}"/PDF/freesurfer.pdf
 
 # Detailed PDF

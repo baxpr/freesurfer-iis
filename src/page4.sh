@@ -2,14 +2,6 @@
 #
 # Page 4, hippocampus/brainstem
 
-# Working directory
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
-
-# mri directory
-mri="${SUBJECTS_DIR}"/SUBJECT/mri
-
-
-
 ##########################################################################
 # Hipp snaps
 
@@ -22,18 +14,18 @@ RASR=$(fslstats ${SUBJECTS_DIR}/NII_ASEG/aseg.nii.gz -l 52.5 -u 53.5 -c)
 
 # View selected slices on T1, with surfaces
 freeview \
-    -v "${mri}"/T1.mgz \
-    -v "${mri}"/lh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
+    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/lh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sag \
     -ras ${RASL} \
-    -ss "${tmp}"/Lhipp_sag.png
+    -ss "${tmp_dir}"/Lhipp_sag.png
 
 freeview \
-    -v "${mri}"/T1.mgz \
-    -v "${mri}"/rh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
+    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/rh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sag \
     -ras ${RASR} \
-    -ss "${tmp}"/Rhipp_sag.png
+    -ss "${tmp_dir}"/Rhipp_sag.png
 
 
 
@@ -47,24 +39,24 @@ RAS=$(fslstats ${SUBJECTS_DIR}/NII_ASEG/aseg.nii.gz -l 15.5 -u 16.5 -c)
 
 # View selected slices on T1, with surfaces
 freeview \
-    -v "${mri}"/T1.mgz \
-    -v "${mri}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
+    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sagittal \
     -ras ${RAS} \
-    -ss "${tmp}"/brainstem_sag.png
+    -ss "${tmp_dir}"/brainstem_sag.png
 
 freeview \
-    -v "${mri}"/T1.mgz \
-    -v "${mri}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
+    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport coronal \
     -ras ${RAS} \
-    -ss "${tmp}"/brainstem_cor.png
+    -ss "${tmp_dir}"/brainstem_cor.png
 
 
 
 ##########################################################################
 # Join up
-cd "${tmp}"
+cd "${tmp_dir}"
 
 montage -mode concatenate \
 Lhipp_sag.png Rhipp_sag.png brainstem_sag.png brainstem_cor.png \

@@ -9,14 +9,6 @@
 #
 # Include a plain T1 next to e.g. the axial thalamus for comparison.
 
-# Working directory
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
-
-# mri directory
-mri="${SUBJECTS_DIR}"/SUBJECT/mri
-
-
-
 # Get LGN location: left is 8109, right is 8209
 # /usr/local/freesurfer/FreeSurferColorLUT.txt
 RASL=$(fslstats \
@@ -58,86 +50,86 @@ THALS=$(echo "(${SL} + ${SR}) / 2" | bc)
 
 # Freeview command line chunks
 V_STR="-viewsize 400 350 --layout 1 --zoom 4"
-T1_STR="-v ${mri}/T1.mgz"
-SEG_STR="-v ${mri}/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz:visible=1:colormap=lut"
+T1_STR="-v ${mri_dir}/T1.mgz"
+SEG_STR="-v ${mri_dir}/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz:visible=1:colormap=lut"
 
 # Coronal slices, A to P
 freeview --viewport coronal ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "$((THALA+14))" "${THALS}" \
-    -ss "${tmp}"/cor_a14_plain.png
+    -ss "${tmp_dir}"/cor_a14_plain.png
 freeview --viewport coronal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "$((THALA+14))" "${THALS}" \
-    -ss "${tmp}"/cor_a14.png
+    -ss "${tmp_dir}"/cor_a14.png
 
 freeview --viewport coronal ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "$((THALA+7))" "${THALS}" \
-    -ss "${tmp}"/cor_a7_plain.png
+    -ss "${tmp_dir}"/cor_a7_plain.png
 freeview --viewport coronal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "$((THALA+7))" "${THALS}" \
-    -ss "${tmp}"/cor_a7.png
+    -ss "${tmp_dir}"/cor_a7.png
 
 freeview --viewport coronal ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "${THALA}" "${THALS}" \
-    -ss "${tmp}"/cor_0_plain.png
+    -ss "${tmp_dir}"/cor_0_plain.png
 freeview --viewport coronal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "${THALA}" "${THALS}" \
-    -ss "${tmp}"/cor_0.png
+    -ss "${tmp_dir}"/cor_0.png
 
 freeview --viewport coronal ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "$((THALA-7))" "${THALS}" \
-    -ss "${tmp}"/cor_p7_plain.png
+    -ss "${tmp_dir}"/cor_p7_plain.png
 freeview --viewport coronal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "$((THALA-7))" "${THALS}" \
-    -ss "${tmp}"/cor_p7.png
+    -ss "${tmp_dir}"/cor_p7.png
 
 freeview --viewport coronal ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "${LGNA}" "${THALS}" \
-    -ss "${tmp}"/cor_lgn_plain.png
+    -ss "${tmp_dir}"/cor_lgn_plain.png
 freeview --viewport coronal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "${LGNA}" "${THALS}" \
-    -ss "${tmp}"/cor_lgn.png
+    -ss "${tmp_dir}"/cor_lgn.png
 
 # Axial slices
 freeview --viewport axial ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "${THALA}" "${LGNS}" \
-    -ss "${tmp}"/axi_lgn_plain.png
+    -ss "${tmp_dir}"/axi_lgn_plain.png
 freeview --viewport axial ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "${THALA}" "${LGNS}" \
-    -ss "${tmp}"/axi_lgn.png
+    -ss "${tmp_dir}"/axi_lgn.png
 
 freeview --viewport axial ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "${THALA}" "${THALS}" \
-    -ss "${tmp}"/axi_0_plain.png
+    -ss "${tmp_dir}"/axi_0_plain.png
 freeview --viewport axial ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "${THALA}" "${THALS}" \
-    -ss "${tmp}"/axi_0.png
+    -ss "${tmp_dir}"/axi_0.png
 
 freeview --viewport axial ${V_STR} ${T1_STR} \
 	-ras "${THALR}" "${THALA}" "$((THALS+7))" \
-    -ss "${tmp}"/axi_s7_plain.png
+    -ss "${tmp_dir}"/axi_s7_plain.png
 freeview --viewport axial ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${THALR}" "${THALA}" "$((THALS+7))" \
-    -ss "${tmp}"/axi_s7.png
+    -ss "${tmp_dir}"/axi_s7.png
 
 # Sagittal
 freeview --viewport sagittal ${V_STR} ${T1_STR} \
 	-ras "${RL}" "${AL}" "${SL}" \
-	-ss "${tmp}"/sag_L_plain.png
+	-ss "${tmp_dir}"/sag_L_plain.png
 freeview --viewport sagittal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${RL}" "${AL}" "${SL}" \
-	-ss "${tmp}"/sag_L.png
+	-ss "${tmp_dir}"/sag_L.png
 
 freeview --viewport sagittal ${V_STR} ${T1_STR} \
 	-ras "${RR}" "${AR}" "${SR}" \
-	-ss "${tmp}"/sag_R_plain.png
+	-ss "${tmp_dir}"/sag_R_plain.png
 freeview --viewport sagittal ${V_STR} ${T1_STR} ${SEG_STR} \
 	-ras "${RR}" "${AR}" "${SR}" \
-	-ss "${tmp}"/sag_R.png
+	-ss "${tmp_dir}"/sag_R.png
 
 
 
 # Layout. 20 panels, 4 wide (2 pairs) by 5 high.
-cd "${tmp}"
+cd "${tmp_dir}"
 montage -mode concatenate \
 cor_lgn_plain.png cor_lgn.png cor_p7_plain.png cor_p7.png \
 cor_0_plain.png cor_0.png cor_a7_plain.png cor_a7.png \

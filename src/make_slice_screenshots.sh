@@ -1,12 +1,9 @@
 #!/bin/bash
 
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
-mri="${SUBJECTS_DIR}"/SUBJECT/mri
-
-cd "${tmp}"
+cd "${tmp_dir}"
 
 # Create the aseg without wm or cerebral gm
-mri_binarize --i "${mri}"/aseg.mgz --o "${tmp}"/aseg.sub.mgz \
+mri_binarize --i "${mri_dir}"/aseg.mgz --o "${tmp_dir}"/aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 41 0 --replace 42 0
 
 # Create the screenshots

@@ -4,29 +4,23 @@
 #
 # Subcortical also.
 
-
-# Directories
-tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
-mri="${SUBJECTS_DIR}"/SUBJECT/mri
-surf="${SUBJECTS_DIR}"/SUBJECT/surf
-
 # Create the aseg without wm or cerebral gm
-mri_binarize --i "${mri}"/aseg.mgz --o "${tmp}"/aseg.sub.mgz \
+mri_binarize --i "${mri_dir}"/aseg.mgz --o "${tmp_dir}"/aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 4 0 \
 --replace 41 0 --replace 42 0 --replace 43 0
 
-cd "${tmp}"
+cd "${tmp_dir}"
 
 # Axial slices
 for S in 80 100 120 140 160 180 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport axial \
-    -v "${mri}"/T1.mgz \
-    -v "${tmp}"/aseg.sub.mgz:visible=1:colormap=lut \
-    -f "${surf}"/lh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${surf}"/lh.pial:edgecolor=red:edgethickness=1 \
-    -f "${surf}"/rh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${surf}"/rh.pial:edgecolor=red:edgethickness=1 \
+    -v "${mri_dir}"/T1.mgz \
+    -v "${tmp_dir}"/aseg.sub.mgz:visible=1:colormap=lut \
+    -f "${surf_dir}"/lh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf_dir}"/lh.pial:edgecolor=red:edgethickness=1 \
+    -f "${surf_dir}"/rh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf_dir}"/rh.pial:edgecolor=red:edgethickness=1 \
     -slice  "$S" "$S" "$S" -ss axi_"$S".png
 done
 
@@ -34,12 +28,12 @@ done
 for S in 50 75 100 125 150 175 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport coronal \
-    -v "${mri}"/T1.mgz \
-    -v "${tmp}"/aseg.sub.mgz:visible=1:colormap=lut \
-    -f "${surf}"/lh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${surf}"/lh.pial:edgecolor=red:edgethickness=1 \
-    -f "${surf}"/rh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${surf}"/rh.pial:edgecolor=red:edgethickness=1 \
+    -v "${surf_dir}"/T1.mgz \
+    -v "${tmp_dir}"/aseg.sub.mgz:visible=1:colormap=lut \
+    -f "${surf_dir}"/lh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf_dir}"/lh.pial:edgecolor=red:edgethickness=1 \
+    -f "${surf_dir}"/rh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf_dir}"/rh.pial:edgecolor=red:edgethickness=1 \
     -slice  "$S" "$S" "$S" -ss cor_"$S".png
 done
 
