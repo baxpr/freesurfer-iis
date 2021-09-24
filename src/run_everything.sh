@@ -11,6 +11,7 @@ export recon_opts="-hires"
 export label_info="UNKNOWN SCAN"
 export out_dir="/OUTPUTS"
 export src_dir="/opt/fs-extensions/src"
+export edits_dir=""
 
 # Parse inputs
 while [[ $# -gt 0 ]]
@@ -25,6 +26,10 @@ do
         export label_info="$2"; shift; shift;;
     --out_dir)
         export out_dir="$2"; shift; shift;;
+    --src_dir)
+        export src_dir="$2"; shift; shift;;
+    --edits_dir)
+        export edits_dir="$2"; shift; shift;;
     *)
 		echo "Unknown argument $key"; shift;;
   esac
@@ -39,7 +44,17 @@ echo out_dir     = "${out_dir}"
 export SUBJECTS_DIR="${out_dir}"
 
 # recon-all
-recon-all -all -i "${t1_niigz}" -s SUBJECT ${recon_opts}
+if [ -z "${edits_dir}" ]; then
+    # Complete recon
+    recon-all -all -i "${t1_niigz}" -s SUBJECT ${recon_opts}
+else
+    # Redo with edits
+    cp -R "${edits_dir}" "${SUBJECTS_DIR}"/SUBJECT
+    if [ -f "${SUBJECTS_DIR}"/SUBJECT/tmp/control.dat ]; then
+        recon-all -autorecon2-cp -autorecon3 -s SUBJECT ${recon_opts}
+    else
+        recon-all -autorecon2-wm -autorecon3 -s SUBJECT ${recon_opts}
+fi
 
 # Subregion modules (xvfb needed)
 segmentBS.sh SUBJECT
