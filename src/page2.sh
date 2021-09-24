@@ -12,7 +12,7 @@ mri_binarize --i "${mri_dir}"/aseg.mgz --o "${tmp_dir}"/aseg.sub.mgz \
 cd "${tmp_dir}"
 
 # Axial slices
-for S in 80 100 120 140 160 180 ; do
+for S in 080 100 120 140 160 180 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport axial \
     -v "${mri_dir}"/nu.mgz \
@@ -25,10 +25,10 @@ for S in 80 100 120 140 160 180 ; do
 done
 
 # Coronal slices
-for S in 50 75 100 125 150 175 ; do
+for S in 050 075 100 125 150 175 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport coronal \
-    -v "${surf_dir}"/nu.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${tmp_dir}"/aseg.sub.mgz:visible=1:colormap=lut \
     -f "${surf_dir}"/lh.white:edgecolor=turquoise:edgethickness=1 \
     -f "${surf_dir}"/lh.pial:edgecolor=red:edgethickness=1 \
@@ -38,7 +38,7 @@ for S in 50 75 100 125 150 175 ; do
 done
 
 # Trim, change background to white, resize
-for p in axi_*png cor*png ; do
+for p in axi_*png cor_*png ; do
 	convert ${p} \
 	-fuzz 5% -fill none -draw "color 0,0 floodfill" -background white \
 	${p}
