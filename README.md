@@ -1,11 +1,10 @@
 
-# Freesurfer, development version
+# Freesurfer 7.2.0
 
-This repository contains the files needed to build a singularity container that 
-runs Freesurfer 7.2.0 recon-all. The build recipe is [Singularity](Singularity).
+This repository contains the files needed to build a docker container that 
+runs Freesurfer 7.2.0 recon-all. See [the Dockerfile](Dockerfile) for details.
 
-A valid Freesurfer license file is required at runtime. See [USAGE.md](USAGE.md) 
-for details.
+A valid Freesurfer license file is required at runtime.
 
 Here is the [look-up table for the various Freesurfer segmentations](FreeSurferColorLUT.txt), 
 and the [description of MM hippocampus re-combinations](src/create_MM_labelmaps.sh).
