@@ -6,10 +6,11 @@
 #    PDF creation
 
 # Defaults
-export t1_niigz=/INPUTS/t1.nii.gz
+export t1_niigz="/INPUTS/t1.nii.gz"
 export recon_opts="-hires"
 export label_info="UNKNOWN SCAN"
-export out_dir=/OUTPUTS
+export out_dir="/OUTPUTS"
+export src_dir="/opt/fs-extensions/src"
 
 # Parse inputs
 while [[ $# -gt 0 ]]

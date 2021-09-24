@@ -1,19 +1,19 @@
 #!/bin/bash
 
-TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
-MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
+tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
+mri="${SUBJECTS_DIR}"/SUBJECT/mri
 
-cd "${TMP}"
+cd "${tmp}"
 
 # Create the aseg without wm or cerebral gm
-mri_binarize --i "${MRI}"/aseg.mgz --o "${TMP}"/aseg.sub.mgz \
+mri_binarize --i "${mri}"/aseg.mgz --o "${tmp}"/aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 41 0 --replace 42 0
 
 # Create the screenshots
-freeview -cmd "${SRC}"/freeview_batch_3d.txt
-freeview -cmd "${SRC}"/freeview_batch_axl.txt
-freeview -cmd "${SRC}"/freeview_batch_cor.txt
-freeview -cmd "${SRC}"/freeview_batch_sag.txt
+freeview -cmd "${src_dir}"/freeview_batch_3d.txt
+freeview -cmd "${src_dir}"/freeview_batch_axl.txt
+freeview -cmd "${src_dir}"/freeview_batch_cor.txt
+freeview -cmd "${src_dir}"/freeview_batch_sag.txt
 
 # Trim 3d screenshots
 for i in [lr]h_*.png;do convert $i -fuzz 1% -trim +repage t${i};done
@@ -43,12 +43,12 @@ convert first_page.png \
 -extent 1194x1479 -bordercolor white -border 15 \
 -gravity SouthEast -background white -splice 0x15 -pointsize 16 \
 -annotate +15+10 "$(date)" -gravity SouthWest -annotate +15+10 \
-"`cat $FREESURFER_HOME/build-stamp.txt`" \
+"$(cat $FREESURFER_HOME/build-stamp.txt)" \
 -gravity NorthWest -background white -splice 0x60 \
 -pointsize 24 -annotate +15+35 \
 'QA Summary - FreeSurfer recon-all' \
 -pointsize 18 -gravity NorthEast -annotate +15+10 \
-"${SUBJECT}" \
+"${label_info}" \
 first_page.png
 
 # Create montages
@@ -278,7 +278,7 @@ sag065_a.png sag065_b.png \
 for i in *_mont*.png
 	do convert ${i} -bordercolor white -border 13x1 \
 	-background white -resize 1224x1554 -extent 1224x1554 -gravity NorthEast \
-	-splice 0x30 -pointsize 16 -annotate +15+10 "${SUBJECT}" ${i}
+	-splice 0x30 -pointsize 16 -annotate +15+10 "${label_info}" ${i}
 done
 
 # Concatenate into PDF

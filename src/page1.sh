@@ -9,7 +9,7 @@ tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
 
 # Get Freesurfer screenshots
 cd "${SUBJECTS_DIR}"/SUBJECT
-freeview -cmd ${SRC}/page1_cmd.txt
+freeview -cmd ${src_dir}/page1_cmd.txt
 mv *.png ${tmp}
 cd ${tmp}
 
