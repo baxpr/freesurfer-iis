@@ -38,6 +38,8 @@ done
 # Show what we got
 echo t1_niigz    = "${t1_niigz}"
 echo label_info  = "${label_info}"
+echo recon_opts  = "${recon_opts}"
+echo edit_dir    = "${edit_dir}"
 echo out_dir     = "${out_dir}"
 
 # Set freesurfer subjects dir
