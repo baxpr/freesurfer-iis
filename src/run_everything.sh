@@ -50,10 +50,7 @@ if [ -z "${edits_dir}" ]; then
 else
     # Redo with edits
     cp -R "${edits_dir}" "${SUBJECTS_DIR}"/SUBJECT
-    if [ -f "${SUBJECTS_DIR}"/SUBJECT/tmp/control.dat ]; then
-        recon-all -autorecon2-cp -autorecon3 -s SUBJECT ${recon_opts}
-    else
-        recon-all -autorecon2-wm -autorecon3 -s SUBJECT ${recon_opts}
+    recon-all -all -s SUBJECT ${recon_opts}
 fi
 
 # Subregion modules (xvfb needed)
