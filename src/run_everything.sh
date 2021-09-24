@@ -7,6 +7,7 @@
 
 # Defaults
 export t1_niigz=/INPUTS/t1.nii.gz
+export recon_opts="-hires"
 export label_info="UNKNOWN SCAN"
 export out_dir=/OUTPUTS
 
@@ -17,6 +18,8 @@ do
   case $key in
     --t1_niigz)
         export t1_niigz="$2"; shift; shift;;
+    --recon_opts)
+        export recon_opts="$2"; shift; shift;;
     --label_info)
         export label_info="$2"; shift; shift;;
     --out_dir)
@@ -35,7 +38,7 @@ echo out_dir     = "${out_dir}"
 export SUBJECTS_DIR="${out_dir}"
 
 # recon-all
-recon-all -all -i "${t1_niigz}" -s SUBJECT
+recon-all -all -i "${t1_niigz}" -s SUBJECT ${recon_opts}
 
 # Subregion modules (xvfb needed)
 segmentBS.sh SUBJECT
