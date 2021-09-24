@@ -89,8 +89,9 @@ ENV PATHFS2 /usr/local/freesurfer/tktools:/usr/local/freesurfer/mni/bin
 ENV PATHSYS /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH ${PATHEXT}:${PATHFSL}:${PATHFS1}:${PATHFS2}:${PATHSYS}
 
-
-# Additional code for generating PDF etc
+# Additional code for generating outputs
 COPY README.md /opt/fs-extensions/
 COPY src /opt/fs-extensions/
- 
+
+# Entrypoint
+ENTRYPOINT ["xwrapper.sh","run_everything.sh"]
