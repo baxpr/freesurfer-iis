@@ -50,7 +50,7 @@ THALS=$(echo "(${SL} + ${SR}) / 2" | bc)
 
 # Freeview command line chunks
 V_STR="-viewsize 400 350 --layout 1 --zoom 4"
-T1_STR="-v ${mri_dir}/T1.mgz"
+T1_STR="-v ${mri_dir}/nu.mgz"
 SEG_STR="-v ${mri_dir}/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz:visible=1:colormap=lut"
 
 # Coronal slices, A to P

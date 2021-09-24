@@ -1,4 +1,4 @@
--v ../mri/T1.mgz:visible=1:grayscale=0,165
+-v ../mri/nu.mgz:visible=1:grayscale=0,165
 -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x
 -slice  49  49  49 -ss sag049_a.png -noquit
 -slice  53  53  53 -ss sag053_a.png -noquit

@@ -15,7 +15,7 @@ cd "${tmp_dir}"
 for S in 80 100 120 140 160 180 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport axial \
-    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${tmp_dir}"/aseg.sub.mgz:visible=1:colormap=lut \
     -f "${surf_dir}"/lh.white:edgecolor=turquoise:edgethickness=1 \
     -f "${surf_dir}"/lh.pial:edgecolor=red:edgethickness=1 \
@@ -28,7 +28,7 @@ done
 for S in 50 75 100 125 150 175 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport coronal \
-    -v "${surf_dir}"/T1.mgz \
+    -v "${surf_dir}"/nu.mgz \
     -v "${tmp_dir}"/aseg.sub.mgz:visible=1:colormap=lut \
     -f "${surf_dir}"/lh.white:edgecolor=turquoise:edgethickness=1 \
     -f "${surf_dir}"/lh.pial:edgecolor=red:edgethickness=1 \

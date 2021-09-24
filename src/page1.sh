@@ -23,9 +23,9 @@ done
 
 # Get CNR
 mri_cnr "${SUBJECTS_DIR}"/SUBJECT/surf \
-"${SUBJECTS_DIR}"/SUBJECT/mri/norm.mgz \
-| tr -d '\t' > t1_cnr.txt
-cnrtxt=$(cat t1_cnr.txt)
+"${SUBJECTS_DIR}"/SUBJECT/mri/nu.mgz \
+| tr -d '\t' > nu_cnr.txt
+cnrtxt=$(cat nu_cnr.txt)
 
 # Make montage
 montage -mode concatenate \

@@ -14,14 +14,14 @@ RASR=$(fslstats ${SUBJECTS_DIR}/NII_ASEG/aseg.nii.gz -l 52.5 -u 53.5 -c)
 
 # View selected slices on T1, with surfaces
 freeview \
-    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${mri_dir}"/lh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sag \
     -ras ${RASL} \
     -ss "${tmp_dir}"/Lhipp_sag.png
 
 freeview \
-    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${mri_dir}"/rh.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sag \
     -ras ${RASR} \
@@ -39,14 +39,14 @@ RAS=$(fslstats ${SUBJECTS_DIR}/NII_ASEG/aseg.nii.gz -l 15.5 -u 16.5 -c)
 
 # View selected slices on T1, with surfaces
 freeview \
-    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport sagittal \
     -ras ${RAS} \
     -ss "${tmp_dir}"/brainstem_sag.png
 
 freeview \
-    -v "${mri_dir}"/T1.mgz \
+    -v "${mri_dir}"/nu.mgz \
     -v "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz:visible=1:colormap=lut \
     -viewsize 400 400 --layout 1 --zoom 2.5 --viewport coronal \
     -ras ${RAS} \
