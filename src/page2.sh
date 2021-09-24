@@ -46,9 +46,9 @@ done
 
 # Layout
 montage -mode concatenate \
-axi_80.png axi_100.png axi_120.png \
+axi_080.png axi_100.png axi_120.png \
 axi_140.png axi_160.png axi_180.png \
-cor_50.png cor_75.png cor_100.png \
+cor_050.png cor_075.png cor_100.png \
 cor_125.png cor_150.png cor_175.png \
 -tile 3x4 -quality 100 -background white -gravity center \
 -trim -border 10 -bordercolor white -resize 600x twelve.png

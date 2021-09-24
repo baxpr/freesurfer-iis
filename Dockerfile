@@ -39,12 +39,13 @@ COPY --from=fsl /usr/local/fsl /usr/local/fsl
 
 # Remaining utils for freesurfer, FSL, ImageMagick, X
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
-# or,   tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu
-# java-1.8.0-openjdk reqd for MCR
-RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL mesa-libGLU mesa-dri-drivers && \
+# java-1.8.0-openjdk                 reqd for MCR
+# mesa-libGLU mesa-dri-drivers       reqd for fs under xvfb
+RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL && \
     yum -y install libXext libSM libXrender libXmu && \
+    yum -y install mesa-libGLU mesa-dri-drivers && \
     yum -y install java-1.8.0-openjdk && \
-    yum -y install epel-release openblas-devel && \
+    yum -y install epel-release openblas-devel openblas-serial && \
     yum -y install ImageMagick && \
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
     yum clean all
@@ -78,9 +79,6 @@ ENV MNI_DIR /usr/local/freesurfer/mni
 ENV MNI_DATAPATH /usr/local/freesurfer/mni/data
 ENV MNI_PERL5LIB /usr/local/freesurfer/mni/share/perl5
 ENV PERL5LIB /usr/local/freesurfer/mni/share/perl5
-
-# Avoid some warnings from freesurfer
-ENV XDG_RUNTIME_DIR=/tmp/runtime-root
 
 # Path
 ENV PATHEXT /opt/fs-extensions/src
