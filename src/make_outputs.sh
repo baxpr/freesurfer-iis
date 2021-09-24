@@ -12,10 +12,10 @@ export surf_dir="${SUBJECTS_DIR}"/SUBJECT/surf
 # Stats
 make_xnat_csvs.sh
 
-# NII_FST1
-NII_FST1="${SUBJECTS_DIR}"/NII_FST1
-mkdir "${NII_FST1}"
-mri_convert "${mri_dir}"/norm.mgz "${NII_FST1}"/norm.nii.gz
+# NII_NU_T1
+NII_NU_T1="${SUBJECTS_DIR}"/NII_NU_T1
+mkdir "${NII_NU_T1}"
+mri_convert "${mri_dir}"/nu.mgz "${NII_NU_T1}"/nu.nii.gz
 
 # NII_ASEG
 NII_ASEG="${SUBJECTS_DIR}"/NII_ASEG
