@@ -5,13 +5,13 @@
 # "Scaled CNR" on white matter surface
 
 # Working directory
-TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
 
 # Get Freesurfer screenshots
-cd "${SUBJECTS_DIR}"/"${SUBJECT}"
+cd "${SUBJECTS_DIR}"/SUBJECT
 freeview -cmd ${SRC}/page1_cmd.txt
-mv *.png ${TMP}
-cd ${TMP}
+mv *.png ${tmp}
+cd ${tmp}
 
 # Trim, change background to white, resize
 for p in \
@@ -25,10 +25,10 @@ lh_lat_white lh_med_white rh_lat_white rh_med_white \
 done
 
 # Get CNR
-mri_cnr "${SUBJECTS_DIR}"/"${SUBJECT}"/surf \
-"${SUBJECTS_DIR}"/"${SUBJECT}"/mri/T1.mgz \
+mri_cnr "${SUBJECTS_DIR}"/SUBJECT/surf \
+"${SUBJECTS_DIR}"/SUBJECT/mri/norm.mgz \
 | tr -d '\t' > t1_cnr.txt
-CNRTXT=`cat t1_cnr.txt`
+cnrtxt=$(cat t1_cnr.txt)
 
 # Make montage
 montage -mode concatenate \
@@ -43,9 +43,9 @@ lh_lat_white.png lh_med_white.png rh_lat_white.png rh_med_white.png \
 convert \
 -size 1224x1584 xc:white \
 -gravity South \( eight.png -resize 1194x1354 \) -geometry +0+60 -composite \
--gravity NorthEast -pointsize 24 -annotate +15+10 "${CNRTXT}" \
+-gravity NorthEast -pointsize 24 -annotate +15+10 "${cnrtxt}" \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 "`cat $FREESURFER_HOME/build-stamp.txt`" \
--gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
+-gravity SouthWest -annotate +15+10 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+-gravity NorthWest -pointsize 24 -annotate +15+10 "${label_info}" \
 page1.png
 

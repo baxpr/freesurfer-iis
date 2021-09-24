@@ -6,27 +6,27 @@
 
 
 # Directories
-TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
-MRI="${SUBJECTS_DIR}"/"${SUBJECT}"/mri
-SURF="${SUBJECTS_DIR}"/"${SUBJECT}"/surf
+tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
+mri="${SUBJECTS_DIR}"/SUBJECT/mri
+surf="${SUBJECTS_DIR}"/SUBJECT/surf
 
 # Create the aseg without wm or cerebral gm
-mri_binarize --i "${MRI}"/aseg.mgz --o "${TMP}"/aseg.sub.mgz \
+mri_binarize --i "${mri}"/aseg.mgz --o "${tmp}"/aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 4 0 \
 --replace 41 0 --replace 42 0 --replace 43 0
 
-cd "${TMP}"
+cd "${tmp}"
 
 # Axial slices
 for S in 80 100 120 140 160 180 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport axial \
-    -v "${MRI}"/T1.mgz \
-    -v "${TMP}"/aseg.sub.mgz:visible=1:colormap=lut \
-    -f "${SURF}"/lh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${SURF}"/lh.pial:edgecolor=red:edgethickness=1 \
-    -f "${SURF}"/rh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${SURF}"/rh.pial:edgecolor=red:edgethickness=1 \
+    -v "${mri}"/T1.mgz \
+    -v "${tmp}"/aseg.sub.mgz:visible=1:colormap=lut \
+    -f "${surf}"/lh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf}"/lh.pial:edgecolor=red:edgethickness=1 \
+    -f "${surf}"/rh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf}"/rh.pial:edgecolor=red:edgethickness=1 \
     -slice  "$S" "$S" "$S" -ss axi_"$S".png
 done
 
@@ -34,12 +34,12 @@ done
 for S in 50 75 100 125 150 175 ; do
     freeview \
     -viewsize 800 800 --layout 1 --zoom 1 --viewport coronal \
-    -v "${MRI}"/T1.mgz \
-    -v "${TMP}"/aseg.sub.mgz:visible=1:colormap=lut \
-    -f "${SURF}"/lh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${SURF}"/lh.pial:edgecolor=red:edgethickness=1 \
-    -f "${SURF}"/rh.white:edgecolor=turquoise:edgethickness=1 \
-    -f "${SURF}"/rh.pial:edgecolor=red:edgethickness=1 \
+    -v "${mri}"/T1.mgz \
+    -v "${tmp}"/aseg.sub.mgz:visible=1:colormap=lut \
+    -f "${surf}"/lh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf}"/lh.pial:edgecolor=red:edgethickness=1 \
+    -f "${surf}"/rh.white:edgecolor=turquoise:edgethickness=1 \
+    -f "${surf}"/rh.pial:edgecolor=red:edgethickness=1 \
     -slice  "$S" "$S" "$S" -ss cor_"$S".png
 done
 
@@ -69,8 +69,8 @@ convert \
 -gravity center \( twelve.png -resize 1194x1454 \) -geometry +0+0 -composite \
 -gravity NorthEast -pointsize 24 -annotate +15+10 "recon-all" \
 -gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 "`cat $FREESURFER_HOME/build-stamp.txt`" \
--gravity NorthWest -pointsize 24 -annotate +15+10 "${SUBJECT}" \
+-gravity SouthWest -annotate +15+10 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+-gravity NorthWest -pointsize 24 -annotate +15+10 "${label_info}" \
 page2.png
 
 

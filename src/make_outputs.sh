@@ -11,10 +11,10 @@ tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
 # Stats
 make_xnat_csvs.sh
 
-# NII_T1
-NII_T1="${SUBJECTS_DIR}"/NII_T1
-mkdir "${NII_T1}"
-mri_convert "${mri}"/T1.mgz "${NII_T1}"/T1.nii.gz
+# NII_FST1
+NII_FST1="${SUBJECTS_DIR}"/NII_FST1
+mkdir "${NII_FST1}"
+mri_convert "${mri}"/norm.mgz "${NII_FST1}"/norm.nii.gz
 
 # NII_ASEG
 NII_ASEG="${SUBJECTS_DIR}"/NII_ASEG
@@ -85,7 +85,7 @@ convert \
   "${tmp}"/page2.png \
   "${tmp}"/page3.png \
   "${tmp}"/page4.png \
-  "${SUBJECTS_DIR}"/PDF/freesurfer_v2.pdf
+  "${SUBJECTS_DIR}"/PDF/freesurfer.pdf
 
 # Detailed PDF
 make_slice_screenshots.sh

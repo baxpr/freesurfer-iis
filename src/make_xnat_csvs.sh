@@ -2,11 +2,11 @@
 
 # Get csvs with truncated filenames to save space when using XNAT -> REDCap
 
-TMP="${SUBJECTS_DIR}"/"${SUBJECT}"/tmp
+tmp="${SUBJECTS_DIR}"/SUBJECT/tmp
 
 # STATS (human readable)
-STATS="${SUBJECTS_DIR}"/STATS
-mkdir "${STATS}"
+stats="${SUBJECTS_DIR}"/STATS
+mkdir "${stats}"
 for f in \
   BA_exvivo-area.csv \
   BA_exvivo-thickness.csv \
@@ -31,33 +31,33 @@ for f in \
   hipposubfields.T1.v21.stats.csv \
   thalamic-nuclei.v10.T1.stats.csv \
   ; do
-    cp "${TMP}"/"${f}" "${STATS}"
+    cp "${tmp}"/"${f}" "${stats}"
 done
 
 
 # STATS_ABBREV
 # Short filenames for REDCap module
-ST="${SUBJECTS_DIR}"/STATS_ABBREV
-mkdir "${ST}"
-cp "${TMP}"/BA_exvivo-area.csv "${ST}"/area_ba.csv
-cp "${TMP}"/BA_exvivo-thickness.csv "${ST}"/thick_ba.csv
-cp "${TMP}"/BA_exvivo-volume.csv "${ST}"/vol_ba.csv
-cp "${TMP}"/amygdalar-nuclei.T1.v21.stats.csv "${ST}"/amyg.csv
-cp "${TMP}"/aparc-area.csv "${ST}"/area.csv
-cp "${TMP}"/aparc-thickness.csv "${ST}"/thick.csv
-cp "${TMP}"/aparc-volume.csv "${ST}"/vol.csv
-cp "${TMP}"/aparc.DKTatlas-area.csv "${ST}"/area_dkt.csv
-cp "${TMP}"/aparc.DKTatlas-thickness.csv "${ST}"/thick_dkt.csv
-cp "${TMP}"/aparc.DKTatlas-volume.csv "${ST}"/vol_dkt.csv
-cp "${TMP}"/aparc.a2009s-area.csv "${ST}"/area_2009.csv
-cp "${TMP}"/aparc.a2009s-thickness.csv "${ST}"/thick_2009.csv
-cp "${TMP}"/aparc.a2009s-volume.csv "${ST}"/vol_2009.csv
-cp "${TMP}"/aparc.pial-area.csv "${ST}"/area_pial.csv
-cp "${TMP}"/aparc.pial-thickness.csv "${ST}"/thick_pial.csv
-cp "${TMP}"/aparc.pial-volume.csv "${ST}"/vol_pial.csv
-cp "${TMP}"/aseg.csv "${ST}"/subc.csv
-cp "${TMP}"/brainstem.v12.stats.csv "${ST}"/brainstem.csv
-cp "${TMP}"/hipposubfields.T1.v21.MMAP.stats.csv "${ST}"/mmhipp_ap.csv
-cp "${TMP}"/hipposubfields.T1.v21.MMHBT.stats.csv "${ST}"/mmhipp_hbt.csv
-cp "${TMP}"/hipposubfields.T1.v21.stats.csv "${ST}"/hipp.csv
-cp "${TMP}"/thalamic-nuclei.v10.T1.stats.csv "${ST}"/thal.csv
+st="${SUBJECTS_DIR}"/STATS_ABBREV
+mkdir "${st}"
+cp "${tmp}"/BA_exvivo-area.csv "${st}"/area_ba.csv
+cp "${tmp}"/BA_exvivo-thickness.csv "${st}"/thick_ba.csv
+cp "${tmp}"/BA_exvivo-volume.csv "${st}"/vol_ba.csv
+cp "${tmp}"/amygdalar-nuclei.T1.v21.stats.csv "${st}"/amyg.csv
+cp "${tmp}"/aparc-area.csv "${st}"/area.csv
+cp "${tmp}"/aparc-thickness.csv "${st}"/thick.csv
+cp "${tmp}"/aparc-volume.csv "${st}"/vol.csv
+cp "${tmp}"/aparc.DKTatlas-area.csv "${st}"/area_dkt.csv
+cp "${tmp}"/aparc.DKTatlas-thickness.csv "${st}"/thick_dkt.csv
+cp "${tmp}"/aparc.DKTatlas-volume.csv "${st}"/vol_dkt.csv
+cp "${tmp}"/aparc.a2009s-area.csv "${st}"/area_2009.csv
+cp "${tmp}"/aparc.a2009s-thickness.csv "${st}"/thick_2009.csv
+cp "${tmp}"/aparc.a2009s-volume.csv "${st}"/vol_2009.csv
+cp "${tmp}"/aparc.pial-area.csv "${st}"/area_pial.csv
+cp "${tmp}"/aparc.pial-thickness.csv "${st}"/thick_pial.csv
+cp "${tmp}"/aparc.pial-volume.csv "${st}"/vol_pial.csv
+cp "${tmp}"/aseg.csv "${st}"/subc.csv
+cp "${tmp}"/brainstem.v12.stats.csv "${st}"/brainstem.csv
+cp "${tmp}"/hipposubfields.T1.v21.MMAP.stats.csv "${st}"/mmhipp_ap.csv
+cp "${tmp}"/hipposubfields.T1.v21.MMHBT.stats.csv "${st}"/mmhipp_hbt.csv
+cp "${tmp}"/hipposubfields.T1.v21.stats.csv "${st}"/hipp.csv
+cp "${tmp}"/thalamic-nuclei.v10.T1.stats.csv "${st}"/thal.csv
