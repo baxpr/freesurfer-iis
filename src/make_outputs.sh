@@ -72,7 +72,7 @@ for f in \
   hippoLabels-T1.v21.MMAP.csv \
   hippoLabels-T1.v21.MMHBT.csv \
   ; do
-	  mv "${tmp_dir}"/"${f}" "${NII_HIPP_AMYG}"
+	  cp "${tmp_dir}"/"${f}" "${NII_HIPP_AMYG}"
 done
 
 # Make screenshots and PDFs

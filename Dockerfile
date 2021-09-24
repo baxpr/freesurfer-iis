@@ -41,7 +41,8 @@ COPY --from=fsl /usr/local/fsl /usr/local/fsl
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
 # or,   tcsh bc mesa-libGLU libgomp perl mesa-dri-drivers libicu
 # java-1.8.0-openjdk reqd for MCR
-RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu && \
+RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL mesa-libGLU mesa-dri-drivers && \
+    yum -y install libXext libSM libXrender libXmu && \
     yum -y install java-1.8.0-openjdk && \
     yum -y install epel-release openblas-devel && \
     yum -y install ImageMagick && \

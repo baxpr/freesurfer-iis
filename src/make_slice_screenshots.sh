@@ -294,4 +294,4 @@ sag_mont11.png \
 freesurfer_detailed.pdf
 
 mkdir "${SUBJECTS_DIR}"/PDF_DETAIL
-mv freesurfer_detailed.pdf "${SUBJECTS_DIR}"/PDF_DETAIL
+cp freesurfer_detailed.pdf "${SUBJECTS_DIR}"/PDF_DETAIL
