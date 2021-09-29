@@ -25,7 +25,7 @@ done
 mri_cnr "${SUBJECTS_DIR}"/SUBJECT/surf \
 "${SUBJECTS_DIR}"/SUBJECT/mri/nu.mgz \
 | tr -d '\t' > nu_cnr.txt
-cnrtxt=$(cat nu_cnr.txt)
+cnrtxt="$(cat nu_cnr.txt)"
 
 # Make montage
 montage -mode concatenate \
@@ -39,10 +39,10 @@ lh_lat_white.png lh_med_white.png rh_lat_white.png rh_med_white.png \
 # inside 15px border is 1194 x 1554
 convert \
 -size 1224x1584 xc:white \
--gravity South \( eight.png -resize 1194x1354 \) -geometry +0+60 -composite \
--gravity NorthEast -pointsize 24 -annotate +15+10 "${cnrtxt}" \
--gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
--gravity NorthWest -pointsize 24 -annotate +15+10 "${label_info}" \
+-gravity South \( eight.png -resize 1194x1194 -geometry +0+100 \) -composite \
+-gravity NorthEast -interline-spacing 28 -pointsize 24 -annotate +20+50 "${cnrtxt}" \
+-gravity SouthEast -pointsize 24 -annotate +20+20 "$(date)" \
+-gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+-gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
 page1.png
 
