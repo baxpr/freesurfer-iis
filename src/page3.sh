@@ -144,9 +144,11 @@ axi_0_plain.png axi_0.png axi_lgn_plain.png axi_lgn.png \
 # inside 15px border is 1194 x 1554
 convert \
 -size 1224x1584 xc:white \
--gravity center \( twenty.png -resize 1194x1554 \) -geometry +0+80 -composite \
--gravity NorthEast -pointsize 24 -annotate +15+10 "Thalamus" \
--gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
--gravity NorthWest -pointsize 24 -annotate +15+10 "${label_info}" \
+-gravity center \( twenty.png -resize 1194x1554 \) -composite \
+-gravity NorthEast -pointsize 24 -annotate +20+50 "Thalamus" \
+-gravity SouthEast -pointsize 24 -annotate +20+20 "$(date)" \
+-gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+-gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
 page3.png
+
+

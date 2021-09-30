@@ -61,10 +61,10 @@ cor_125.png cor_150.png cor_175.png \
 convert \
 -size 1224x1584 xc:white \
 -gravity center \( twelve.png -resize 1194x1454 \) -geometry +0+0 -composite \
--gravity NorthEast -pointsize 24 -annotate +15+10 "recon-all" \
--gravity SouthEast -pointsize 24 -annotate +15+10 "$(date)" \
--gravity SouthWest -annotate +15+10 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
--gravity NorthWest -pointsize 24 -annotate +15+10 "${label_info}" \
+-gravity NorthEast -pointsize 24 -annotate +20+50 "recon-all" \
+-gravity SouthEast -pointsize 24 -annotate +20+20 "$(date)" \
+-gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+-gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
 page2.png
 
 
