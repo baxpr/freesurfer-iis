@@ -145,8 +145,8 @@ axi_0_plain.png axi_0.png axi_lgn_plain.png axi_lgn.png \
 convert \
 -size 1224x1584 xc:white \
 -gravity center \( twenty.png -resize 1194x1554 \) -composite \
--gravity NorthEast -pointsize 24 -annotate +20+50 "Thalamus" \
--gravity SouthEast -pointsize 24 -annotate +20+20 "$(date)" \
+-gravity NorthEast -pointsize 24 -annotate +20+50 "segmentThalamicNuclei.sh" \
+-gravity SouthEast -pointsize 24 -annotate +20+20 "$the_date" \
 -gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
 -gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
 page3.png

@@ -77,6 +77,7 @@ done
 
 # Make screenshots and PDFs
 mkdir "${SUBJECTS_DIR}"/PDF
+export the_date=$(date)
 page1.sh
 page2.sh
 page3.sh

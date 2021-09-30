@@ -41,7 +41,7 @@ convert \
 -size 1224x1584 xc:white \
 -gravity South \( eight.png -resize 1194x1194 -geometry +0+100 \) -composite \
 -gravity NorthEast -interline-spacing 28 -pointsize 24 -annotate +20+50 "${cnrtxt}" \
--gravity SouthEast -pointsize 24 -annotate +20+20 "$(date)" \
+-gravity SouthEast -pointsize 24 -annotate +20+20 "$the_date" \
 -gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
 -gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
 page1.png
