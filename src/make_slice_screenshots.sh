@@ -3,11 +3,49 @@
 cd "${tmp_dir}"
 
 # Create the aseg without wm or cerebral gm
-mri_binarize --i "${mri_dir}"/aseg.mgz --o "${tmp_dir}"/aseg.sub.mgz \
+mri_binarize --i "${mri_dir}"/aseg.mgz --o aseg.sub.mgz \
 --replace 2  0 --replace 3 0 --replace 41 0 --replace 42 0
 
-# Create the screenshots
+# 3D screenshots
 freeview -cmd "${src_dir}"/freeview_batch_3d.txt
+
+# Get brain mask extents
+mri_convert "${mri_dir}"/brainmask.mgz brainmask.nii.gz
+extents=$(fslstats brainmask.nii.gz -w)
+extents=(${extents// / })
+xmin=$((${extents[0]} + 0))
+xmax=$((${extents[0]} + ${extents[1]}))
+ymin=$((${extents[2]} + 0))
+ymax=$((${extents[2]} + ${extents[3]}))
+zmin=$((${extents[4]} + 0))
+zmax=$((${extents[4]} + ${extents[5]}))
+
+# Slice by slice. Even numbered image files are with no overlay, odd with,
+# so we get correct sorting later
+#
+# FIXME Probably can't rely on ijk = xyz. How to find axes? Or, use mm coords?
+smin=$xmin
+smax=$xmax
+img=0
+fsline="-v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165"\
+" -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z"
+for s in $(seq $smin 4 $smax); do
+    freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
+        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z \
+        -slice  $s $s $s -ss x_$(printf "%03d" $img).png
+    ((img+=1))
+    freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
+        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z \
+        -v aseg.sub.mgz:visible=1:colormap=lut \
+        -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
+        -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
+        -f ${surf_dir}/rh.white:edgecolor=turquoise:edgethickness=1 \
+        -f ${surf_dir}/rh.pial:edgecolor=red:edgethickness=1 \
+        -slice  $s $s $s -ss x_$(printf "%03d" $img).png
+    ((img+=1))
+done
+
+
 freeview -cmd "${src_dir}"/freeview_batch_axl.txt
 freeview -cmd "${src_dir}"/freeview_batch_cor.txt
 freeview -cmd "${src_dir}"/freeview_batch_sag.txt
