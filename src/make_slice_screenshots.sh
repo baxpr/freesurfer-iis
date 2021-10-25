@@ -13,29 +13,28 @@ freeview -cmd "${src_dir}"/freeview_batch_3d.txt
 mri_convert "${mri_dir}"/brainmask.mgz brainmask.nii.gz
 extents=$(fslstats brainmask.nii.gz -w)
 extents=(${extents// / })
-xmin=$((${extents[0]} + 0))
+xmin=$((${extents[0]} + 4))
 xmax=$((${extents[0]} + ${extents[1]}))
-ymin=$((${extents[2]} + 0))
+ymin=$((${extents[2]} + 4))
 ymax=$((${extents[2]} + ${extents[3]}))
-zmin=$((${extents[4]} + 0))
+zmin=$((${extents[4]} + 4))
 zmax=$((${extents[4]} + ${extents[5]}))
 
 # Slice by slice. Even numbered image files are with no overlay, odd with,
 # so we get correct sorting later
 #
 # FIXME Probably can't rely on ijk = xyz. How to find axes? Or, use mm coords?
+xras=$(mri_head -read ${mri_dir}/nu.mgz | grep "x ras")
 smin=$xmin
 smax=$xmax
 img=0
-fsline="-v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165"\
-" -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z"
 for s in $(seq $smin 4 $smax); do
     freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
-        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z \
+        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x \
         -slice  $s $s $s -ss x_$(printf "%03d" $img).png
     ((img+=1))
     freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
-        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport z \
+        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x \
         -v aseg.sub.mgz:visible=1:colormap=lut \
         -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
         -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
