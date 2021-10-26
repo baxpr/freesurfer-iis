@@ -90,7 +90,7 @@ ENV PATH ${PATHEXT}:${PATHFSL}:${PATHFS1}:${PATHFS2}:${PATHSYS}
 
 # Additional code for generating outputs
 COPY README.md /opt/fs-extensions/
-COPY src /opt/fs-extensions/
+COPY src /opt/fs-extensions/src
 
 # Entrypoint
 ENTRYPOINT ["xwrapper.sh","run_everything.sh"]
