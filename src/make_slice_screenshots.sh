@@ -44,15 +44,15 @@ function slice {
         freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
             -viewsize 400 400 --layout 1 --zoom 1.15 --viewport ${viewport} \
             -ras $ras -ss ${f1}
-        convert ${f1} -pointsize 18 -fill white -annotate +10+20 "${viewport} = ${s}" ${f1}
-        #freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
-        #    -viewsize 400 400 --layout 1 --zoom 1.15 --viewport ${viewport} \
-        #    -v aseg.sub.mgz:visible=1:colormap=lut \
-        #    -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
-        #    -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
-        #    -f ${surf_dir}/rh.white:edgecolor=turquoise:edgethickness=1 \
-        #    -f ${surf_dir}/rh.pial:edgecolor=red:edgethickness=1 \
-        #    -ras $ras -ss ${f2}
+        convert ${f1} -pointsize 18 -fill white -annotate +10+20 "${viewport} = ${s} mm" ${f1}
+        freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
+            -viewsize 400 400 --layout 1 --zoom 1.15 --viewport ${viewport} \
+            -v aseg.sub.mgz:visible=1:colormap=lut \
+            -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
+            -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
+            -f ${surf_dir}/rh.white:edgecolor=turquoise:edgethickness=1 \
+            -f ${surf_dir}/rh.pial:edgecolor=red:edgethickness=1 \
+            -ras $ras -ss ${f2}
         ((img+=2))
     done
 }
@@ -65,18 +65,7 @@ slice z $zmin $zmax
 # Trim 3d screenshots
 for i in [lr]h_*.png;do convert $i -fuzz 1% -trim +repage t${i};done
 
-# Trim top/bottom, annotate with slice numbers, add bottom border
-for i in *[0-9][0-9][0-9]*.png
-	do 
-		convert ${i} \
-		-gravity South -background white -splice 0x1 -fuzz 1% -trim +repage -chop 0x1 \
-		-gravity North -background white -splice 0x1 -fuzz 1% -trim +repage -chop 0x1 \
-		-background black -gravity center -resize 400x345 -extent 400x345 +repage \
-		-pointsize 18 -fill yellow -gravity southeast -annotate +5+5 ${i:3:3} \
-		-background white -splice 0x5 ${i}
-done
-
-# Create first page
+# Create first page, 3Ds
 montage -mode concatenate \
 tlh_lat_aparc.png tlh_lat_pial.png tlh_lat_thick.png \
 trh_lat_aparc.png trh_lat_pial.png trh_lat_thick.png \
