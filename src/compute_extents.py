@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Compute extents of a binary mask on all axes, reporting in mm RAS
 
