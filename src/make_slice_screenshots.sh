@@ -11,43 +11,56 @@ freeview -cmd "${src_dir}"/freeview_batch_3d.txt
 
 # Get brain mask extents
 mri_convert "${mri_dir}"/brainmask.mgz brainmask.nii.gz
-extents=$(fslstats brainmask.nii.gz -w)
+extents=$(compute_extents.py brainmask.nii.gz)
 extents=(${extents// / })
 xmin=$((${extents[0]} + 4))
-xmax=$((${extents[0]} + ${extents[1]}))
+xmax=$((${extents[1]} - 4))
 ymin=$((${extents[2]} + 4))
-ymax=$((${extents[2]} + ${extents[3]}))
+ymax=$((${extents[3]} - 4))
 zmin=$((${extents[4]} + 4))
-zmax=$((${extents[4]} + ${extents[5]}))
+zmax=$((${extents[5]} - 4))
 
-# Slice by slice. Even numbered image files are with no overlay, odd with,
-# so we get correct sorting later
-#
-# FIXME Probably can't rely on ijk = xyz. How to find axes? Or, use mm coords?
-xras=$(mri_head -read ${mri_dir}/nu.mgz | grep "x ras")
-smin=$xmin
-smax=$xmax
-img=0
-for s in $(seq $smin 4 $smax); do
-    freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
-        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x \
-        -slice  $s $s $s -ss x_$(printf "%03d" $img).png
-    ((img+=1))
-    freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
-        -viewsize 400 400 --layout 1 --zoom 1.15 --viewport x \
-        -v aseg.sub.mgz:visible=1:colormap=lut \
-        -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
-        -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
-        -f ${surf_dir}/rh.white:edgecolor=turquoise:edgethickness=1 \
-        -f ${surf_dir}/rh.pial:edgecolor=red:edgethickness=1 \
-        -slice  $s $s $s -ss x_$(printf "%03d" $img).png
-    ((img+=1))
-done
+# And center of mass
+com=$(fslstats brainmask.nii.gz -c)
+com=(${com// / })
+comx=$(printf "%.0f" ${com[0]})
+comy=$(printf "%.0f" ${com[1]})
+comz=$(printf "%.0f" ${com[2]})
 
+# Slice by slice (4mm gap). Even numbered image files are with no overlay, 
+# odd with, so we get correct sorting later
+function slice {
+    local viewport=$1
+    local smin=$2
+    local smax=$3
+    img=0
+    for s in $(seq $smin 4 $smax); do
+        if [[ "$viewport" == "x" ]]; then local ras="$s $comy $comz"
+        elif [[ "$viewport" == "y" ]]; then local ras="$comx $s $comz"
+        elif [[ "$viewport" == "z" ]]; then local ras="$comx $comy $s"
+        fi
+        f1=${viewport}_$(printf "%03d" $img).png
+        f2=${viewport}_$(printf "%03d" $((${img}+1))).png
+        freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
+            -viewsize 400 400 --layout 1 --zoom 1.15 --viewport ${viewport} \
+            -ras $ras -ss ${f1}
+        convert ${f1} -pointsize 18 -fill white -annotate +10+20 "${viewport} = ${s}" ${f1}
+        #freeview -v ${mri_dir}/nu.mgz:visible=1:grayscale=0,165 \
+        #    -viewsize 400 400 --layout 1 --zoom 1.15 --viewport ${viewport} \
+        #    -v aseg.sub.mgz:visible=1:colormap=lut \
+        #    -f ${surf_dir}/lh.white:edgecolor=turquoise:edgethickness=1 \
+        #    -f ${surf_dir}/lh.pial:edgecolor=red:edgethickness=1 \
+        #    -f ${surf_dir}/rh.white:edgecolor=turquoise:edgethickness=1 \
+        #    -f ${surf_dir}/rh.pial:edgecolor=red:edgethickness=1 \
+        #    -ras $ras -ss ${f2}
+        ((img+=2))
+    done
+}
 
-freeview -cmd "${src_dir}"/freeview_batch_axl.txt
-freeview -cmd "${src_dir}"/freeview_batch_cor.txt
-freeview -cmd "${src_dir}"/freeview_batch_sag.txt
+slice x $xmin $xmax 
+slice y $ymin $ymax
+slice z $zmin $zmax 
+
 
 # Trim 3d screenshots
 for i in [lr]h_*.png;do convert $i -fuzz 1% -trim +repage t${i};done
