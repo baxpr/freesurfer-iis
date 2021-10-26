@@ -55,7 +55,7 @@ RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL && \
 # python3 in the first line of python scripts
 RUN yum -y install python3 && \
     yum clean all && \
-    pip3 install pandas numpy
+    pip3 install pandas numpy nibabel
 
 # setup fs env
 ENV OS Linux
