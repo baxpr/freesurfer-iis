@@ -89,7 +89,7 @@ convert \
 make_slice_screenshots.sh
 
 # Clean up (DAX will ignore these if we move them here)
-#mv "${SUBJECTS_DIR}"/SUBJECT/tmp "${SUBJECTS_DIR}"
-#mv "${SUBJECTS_DIR}"/SUBJECT/trash "${SUBJECTS_DIR}"
+mv "${SUBJECTS_DIR}"/SUBJECT/tmp "${SUBJECTS_DIR}"
+mv "${SUBJECTS_DIR}"/SUBJECT/trash "${SUBJECTS_DIR}"
 
 
