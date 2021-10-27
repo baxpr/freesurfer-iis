@@ -66,38 +66,36 @@ montage -mode concatenate y_???.png -border 5 -bordercolor white -tile 2x3 -qual
 montage -mode concatenate z_???.png -border 5 -bordercolor white -tile 2x3 -quality 100 z_mont_%03d.png
 
 # Pad and annotate with assessor name
-for i in ?_mont_???.png
-	do convert -gravity Center ${i} -bordercolor white -border 20x20 \
-	-background white -resize 1224x1554 -extent 1224x1554 -gravity NorthWest \
-	-splice 0x30 -pointsize 18 -annotate +15+10 "${label_info}" ${i}
+for i in ?_mont_???.png; do    
+    convert \
+        -size 1224x1584 xc:white \
+        -gravity Center \( ${i} -resize 1194x1454 -geometry +0+0 \) -composite \
+        -gravity SouthEast -pointsize 24 -annotate +20+20 "$the_date" \
+        -gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+        -gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
+        ${i}
 done
-
 
 # Trim 3d screenshots
 for i in [lr]h_*.png;do convert $i -fuzz 1% -trim +repage t${i};done
 
 # Create first page, 3Ds
 montage -mode concatenate \
-tlh_lat_aparc.png tlh_lat_pial.png tlh_lat_thick.png \
-trh_lat_aparc.png trh_lat_pial.png trh_lat_thick.png \
-tlh_med_aparc.png tlh_med_pial.png tlh_med_thick.png \
-trh_med_aparc.png trh_med_pial.png trh_med_thick.png \
--tile 3x -quality 100 -background black -gravity center \
--trim -border 5 -bordercolor black -resize 300x first_page.png
+    tlh_lat_aparc.png tlh_lat_pial.png tlh_lat_thick.png \
+    trh_lat_aparc.png trh_lat_pial.png trh_lat_thick.png \
+    tlh_med_aparc.png tlh_med_pial.png tlh_med_thick.png \
+    trh_med_aparc.png trh_med_pial.png trh_med_thick.png \
+    -tile 3x -quality 100 -background black -gravity center \
+    -trim -border 5 -bordercolor black -resize 300x first_page.png
 
-convert first_page.png \
--background white -resize 1194x1479 \
--extent 1194x1479 -bordercolor white -border 15 \
--gravity SouthEast -background white -splice 0x15 -pointsize 16 \
--annotate +15+10 "$(date)" -gravity SouthWest -annotate +15+10 \
-"$(cat $FREESURFER_HOME/build-stamp.txt)" \
--gravity NorthWest -background white -splice 0x60 \
--pointsize 24 -annotate +15+35 \
-'QA Summary - FreeSurfer recon-all' \
--pointsize 18 -gravity NorthEast -annotate +15+10 \
-"${label_info}" \
-first_page.png
-
+convert \
+    -size 1224x1584 xc:white \
+    -gravity North \( first_page.png -resize 1194x1194 -geometry +0+100 \) -composite \
+    -gravity NorthEast -pointsize 24 -annotate +20+50 "QA Summary - recon-all" \
+    -gravity SouthEast -pointsize 24 -annotate +20+20 "$the_date" \
+    -gravity SouthWest -pointsize 24 -annotate +20+20 "$(cat $FREESURFER_HOME/build-stamp.txt)" \
+    -gravity NorthWest -pointsize 24 -annotate +20+50 "${label_info}" \
+    first_page.png
 
 # Concatenate into PDF
 convert \
