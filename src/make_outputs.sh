@@ -5,10 +5,6 @@
 
 echo "Generating outputs for ${SUBJECTS_DIR}"
 
-export tmp_dir="${SUBJECTS_DIR}"/SUBJECT/tmp
-export mri_dir="${SUBJECTS_DIR}"/SUBJECT/mri
-export surf_dir="${SUBJECTS_DIR}"/SUBJECT/surf
-
 # Stats
 make_xnat_csvs.sh
 
@@ -93,7 +89,7 @@ convert \
 make_slice_screenshots.sh
 
 # Clean up (DAX will ignore these if we move them here)
-mv "${SUBJECTS_DIR}"/SUBJECT/tmp "${SUBJECTS_DIR}"
-mv "${SUBJECTS_DIR}"/SUBJECT/trash "${SUBJECTS_DIR}"
+#mv "${SUBJECTS_DIR}"/SUBJECT/tmp "${SUBJECTS_DIR}"
+#mv "${SUBJECTS_DIR}"/SUBJECT/trash "${SUBJECTS_DIR}"
 
 

@@ -11,9 +11,6 @@
 #
 # Resample with mri_vol2vol
 
-out_dir="${SUBJECTS_DIR}/SUBJECT/tmp"
-mri="${SUBJECTS_DIR}/SUBJECT/mri"
-
 
 ##############################################################################
 # MMAP anterior/posterior
@@ -46,7 +43,7 @@ mri="${SUBJECTS_DIR}/SUBJECT/mri"
 for hemi in lh rh ; do
 	
 mri_binarize \
---i "${SUBJECTS_DIR}/SUBJECT/mri/${hemi}.hippoAmygLabels-T1.v21.mgz" \
+--i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v21.mgz" \
 \
 --replace 233 1 \
 --replace 235 1 \
@@ -84,7 +81,7 @@ mri_binarize \
 
 mri_vol2vol --nearest --regheader \
 --mov "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz \
---targ "${mri}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
+--targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
 --o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMAP.FSVoxelSpace.mgz
 
 done
@@ -139,7 +136,7 @@ EOF
 for hemi in lh rh ; do
 
 mri_binarize \
---i "${SUBJECTS_DIR}/SUBJECT/mri/${hemi}.hippoAmygLabels-T1.v21.mgz" \
+--i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v21.mgz" \
 \
 --replace 235 1 \
 --replace 237 1 \
@@ -182,7 +179,7 @@ mri_binarize \
 
 mri_vol2vol --nearest --regheader \
 --mov "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz \
---targ "${mri}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
+--targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
 --o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMHBT.FSVoxelSpace.mgz
 
 done

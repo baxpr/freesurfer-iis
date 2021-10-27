@@ -42,8 +42,11 @@ echo recon_opts  = "${recon_opts}"
 echo edit_dir    = "${edit_dir}"
 echo out_dir     = "${out_dir}"
 
-# Set freesurfer subjects dir
+# Set freesurfer subjects dir and others
 export SUBJECTS_DIR="${out_dir}"
+export tmp_dir="${SUBJECTS_DIR}"/SUBJECT/tmp
+export mri_dir="${SUBJECTS_DIR}"/SUBJECT/mri
+export surf_dir="${SUBJECTS_DIR}"/SUBJECT/surf
 
 # recon-all
 if [ -z "${edits_dir}" ]; then

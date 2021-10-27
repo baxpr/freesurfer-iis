@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Compute and reformat regional volume/area/thickness measures
-
-tmp_dir="${SUBJECTS_DIR}/SUBJECT/tmp"
-
 
 # Subcortical regions, aseg
 # This provides our eTIV
