@@ -41,11 +41,13 @@ COPY --from=fsl /usr/local/fsl /usr/local/fsl
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
 # java-1.8.0-openjdk                 reqd for MCR
 # mesa-libGLU mesa-dri-drivers       reqd for fs under xvfb
-RUN yum -y install bc libgomp perl tcsh vim-common mesa-libGL && \
+# epel-release must be installed BEFORE openblas
+RUN yum -y install epel-release && \
+    yum -y install bc libgomp perl tcsh vim-common mesa-libGL && \
     yum -y install libXext libSM libXrender libXmu && \
     yum -y install mesa-libGLU mesa-dri-drivers && \
     yum -y install java-1.8.0-openjdk && \
-    yum -y install epel-release openblas-devel openblas-serial && \
+    yum -y install openblas-devel && \
     yum -y install ImageMagick && \
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
     yum clean all
