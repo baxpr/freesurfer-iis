@@ -74,6 +74,9 @@ ENV FS_OVERRIDE 0
 ENV FIX_VERTEX_AREA ""
 ENV FSF_OUTPUT_FORMAT nii.gz
 
+# Quiet warnings
+ENV XDG_RUNTIME_DIR /tmp
+
 # mni env requirements
 ENV MINC_BIN_DIR /usr/local/freesurfer/mni/bin
 ENV MINC_LIB_DIR /usr/local/freesurfer/mni/lib
