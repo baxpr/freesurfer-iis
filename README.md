@@ -1,8 +1,8 @@
 
-# Freesurfer 7.2.0
+# Freesurfer 7.4.1
 
 This repository contains the files needed to build a docker container that 
-runs Freesurfer 7.2.0 recon-all. See [the Dockerfile](Dockerfile) for details.
+runs Freesurfer 7.4.1 recon-all. See [the Dockerfile](Dockerfile) for details.
 
 A valid Freesurfer license file is required at runtime.
 
