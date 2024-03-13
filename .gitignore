@@ -1,6 +1,6 @@
 INPUTS*
 OUTPUTS*
-local*.sh
+local*
 *.tar.gz
 *.tgz
 *.zip
