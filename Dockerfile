@@ -13,7 +13,7 @@ RUN yum -y update && \
 # Also see https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
 RUN wget -O /opt/freesurfer.tar.gz \      
     https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.4.1/freesurfer-linux-centos7_x86_64-7.4.1.tar.gz && \
-    tar -zxf /opt/freesurfer.tar.gz -C /usr/local && \
+    tar --no-same-owner -zxf /opt/freesurfer.tar.gz -C /usr/local && \
     rm /opt/freesurfer.tar.gz
 ENV FREESURFER_HOME /usr/local/freesurfer
 RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
@@ -22,7 +22,7 @@ RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
 # Also see https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
 RUN wget -O /opt/fsl.tar.gz \
     https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.5.2-centos7_64.tar.gz && \
-    tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
+    tar --no-same-owner -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
     rm /opt/fsl.tar.gz
 
 # Remaining utils for freesurfer, FSL, ImageMagick, X
