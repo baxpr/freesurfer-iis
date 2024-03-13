@@ -3,39 +3,27 @@
 # It shows the centos package dependencies, and how to set up the freesurfer
 # environment without running the SetUpFreeSurfer.sh script.
 
-# Use multi-stage build to let us install things from local .tar.gz files
-# without blowing up the size of the final container
-
 # Initial update and utils
-FROM centos:7 AS init
+FROM centos:7
 RUN yum -y update && \
     yum -y install wget tar zip unzip && \
     yum clean all
 
 # Freesurfer
-# Installed from local file to avoid a long download. Available at
-# https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.2.0/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz
 # Also see https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads
-FROM init AS freesurfer
-COPY external/freesurfer-linux-centos7_x86_64-7.2.0.tar.gz /opt/freesurfer.tar.gz
-RUN tar -zxf /opt/freesurfer.tar.gz -C /usr/local && \
+RUN wget -O /opt/freesurfer.tar.gz \      
+    https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.4.1/freesurfer-linux-centos7_x86_64-7.4.1.tar.gz && \
+    tar -zxf /opt/freesurfer.tar.gz -C /usr/local && \
     rm /opt/freesurfer.tar.gz
 ENV FREESURFER_HOME /usr/local/freesurfer
 RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
 
 # fslstats
-# https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
 # Also see https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
-FROM init AS fsl
-COPY external/fsl-6.0.4-centos7_64.tar.gz /opt/fsl.tar.gz
-RUN tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
+RUN wget -O /opt/fsl.tar.gz \
+    https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.5.2-centos7_64.tar.gz && \
+    tar -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
     rm /opt/fsl.tar.gz
-
-
-# Everything else
-FROM init
-COPY --from=freesurfer /usr/local/freesurfer /usr/local/freesurfer
-COPY --from=fsl /usr/local/fsl /usr/local/fsl
 
 # Remaining utils for freesurfer, FSL, ImageMagick, X
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
