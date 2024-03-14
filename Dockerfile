@@ -25,6 +25,13 @@ RUN wget -O /opt/fsl.tar.gz \
     tar --no-same-owner -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
     rm /opt/fsl.tar.gz
 
+# Install python3 and add needed modules. Note that making python3 
+# the system default breaks yum, so we won't do that. Rather, spec
+# python3 in the first line of python scripts
+RUN yum -y install python3 && \
+    yum clean all && \
+    pip3 install pandas numpy nibabel
+
 # Remaining utils for freesurfer, FSL, ImageMagick, X. Installed here rather
 # than earlier to take advantage of layer caching for debug/dev
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
@@ -40,13 +47,6 @@ RUN yum -y install epel-release && \
     yum -y install ImageMagick && \
     yum -y install xorg-x11-server-Xvfb xorg-x11-xauth which && \
     yum clean all
-
-# Install python3 and add needed modules. Note that making python3 
-# the system default breaks yum, so we won't do that. Rather, spec
-# python3 in the first line of python scripts
-RUN yum -y install python3 && \
-    yum clean all && \
-    pip3 install pandas numpy nibabel
 
 # setup fs env
 ENV OS Linux
