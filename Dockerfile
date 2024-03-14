@@ -25,7 +25,8 @@ RUN wget -O /opt/fsl.tar.gz \
     tar --no-same-owner -zxf /opt/fsl.tar.gz -C /usr/local fsl/bin/fslstats && \
     rm /opt/fsl.tar.gz
 
-# Remaining utils for freesurfer, FSL, ImageMagick, X
+# Remaining utils for freesurfer, FSL, ImageMagick, X. Installed here rather
+# than earlier to take advantage of layer caching for debug/dev
 # bc libgomp perl tcsh vim-common mesa-libGL libXext libSM libXrender libXmu
 # java-1.8.0-openjdk                 reqd for MCR
 # mesa-libGLU mesa-dri-drivers       reqd for fs under xvfb
