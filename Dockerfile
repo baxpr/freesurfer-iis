@@ -33,7 +33,7 @@ RUN wget -O /opt/fsl.tar.gz \
 RUN yum -y install epel-release && \
     yum -y install bc libgomp perl tcsh vim-common mesa-libGL && \
     yum -y install libXext libSM libXrender libXmu && \
-    yum -y install mesa-libGLU mesa-dri-drivers && \
+    yum -y install mesa-libGLU mesa-dri-drivers libxkbcommon-x11 && \
     yum -y install java-1.8.0-openjdk && \
     yum -y install openblas-devel && \
     yum -y install ImageMagick && \
