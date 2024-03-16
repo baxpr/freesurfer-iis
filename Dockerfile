@@ -16,7 +16,7 @@ RUN wget -O /opt/freesurfer.tar.gz \
     tar --no-same-owner -zxf /opt/freesurfer.tar.gz -C /usr/local && \
     rm /opt/freesurfer.tar.gz
 ENV FREESURFER_HOME /usr/local/freesurfer
-RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2014b
+RUN ${FREESURFER_HOME}/bin/fs_install_mcr R2019b
 
 # fslstats
 # Also see https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
