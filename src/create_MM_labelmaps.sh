@@ -3,8 +3,8 @@
 # MM reorg of hippocampus regions
 #
 # We have to get these from the hires resampled images:
-#     lh.hippoAmygLabels-T1.v21.mgz
-#     rh.hippoAmygLabels-T1.v21.mgz
+#     lh.hippoAmygLabels-T1.v22.mgz
+#     rh.hippoAmygLabels-T1.v22.mgz
 # Both hemispheres are labeled with the same codes.
 #
 # Label info is in $FREESURFER_HOME/FreeSurferColorLUT.txt
@@ -43,7 +43,7 @@
 for hemi in lh rh ; do
 	
 mri_binarize \
---i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v21.mgz" \
+--i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v22.mgz" \
 \
 --replace 233 1 \
 --replace 235 1 \
@@ -77,18 +77,18 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz
+--o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz
 
 mri_vol2vol --nearest --regheader \
---mov "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMAP.mgz \
---targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMAP.FSVoxelSpace.mgz
+--mov "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz \
+--targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v22.FSvoxelSpace.mgz \
+--o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.FSVoxelSpace.mgz
 
 done
 
 
 # Make corresponding label file
-cat <<EOF > "${out_dir}/hippoLabels-T1.v21.MMAP.csv"
+cat <<EOF > "${out_dir}/hippoLabels-T1.v22.MMAP.csv"
 Label,Region
 1,Anterior-Hippocampus
 2,Posterior-Hippocampus
@@ -136,7 +136,7 @@ EOF
 for hemi in lh rh ; do
 
 mri_binarize \
---i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v21.mgz" \
+--i "${mri_dir}/${hemi}.hippoAmygLabels-T1.v22.mgz" \
 \
 --replace 235 1 \
 --replace 237 1 \
@@ -175,17 +175,17 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz
+--o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz
 
 mri_vol2vol --nearest --regheader \
---mov "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMHBT.mgz \
---targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v21.FSvoxelSpace.mgz \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v21.MMHBT.FSVoxelSpace.mgz
+--mov "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz \
+--targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v22.FSvoxelSpace.mgz \
+--o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.FSVoxelSpace.mgz
 
 done
 
 # Make corresponding label file
-cat <<EOF > "${out_dir}/hippoLabels-T1.v21.MMHBT.csv"
+cat <<EOF > "${out_dir}/hippoLabels-T1.v22.MMHBT.csv"
 Label,Region
 1,Head-CA
 2,Head-DG

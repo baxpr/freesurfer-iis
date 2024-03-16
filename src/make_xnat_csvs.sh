@@ -9,7 +9,7 @@ for f in \
   BA_exvivo-area.csv \
   BA_exvivo-thickness.csv \
   BA_exvivo-volume.csv \
-  amygdalar-nuclei.T1.v21.stats.csv \
+  amygdalar-nuclei.T1.v22.stats.csv \
   aparc-area.csv \
   aparc-thickness.csv \
   aparc-volume.csv \
@@ -23,11 +23,11 @@ for f in \
   aparc.pial-thickness.csv \
   aparc.pial-volume.csv \
   aseg.csv \
-  brainstem.v12.stats.csv \
-  hipposubfields.T1.v21.MMAP.stats.csv \
-  hipposubfields.T1.v21.MMHBT.stats.csv \
-  hipposubfields.T1.v21.stats.csv \
-  thalamic-nuclei.v12.T1.stats.csv \
+  brainstem.v13.stats.csv \
+  hipposubfields.T1.v22.MMAP.stats.csv \
+  hipposubfields.T1.v22.MMHBT.stats.csv \
+  hipposubfields.T1.v22.stats.csv \
+  thalamic-nuclei.v13.T1.stats.csv \
   ; do
     cp "${tmp_dir}"/"${f}" "${stats}"
 done
@@ -40,7 +40,7 @@ mkdir "${st}"
 cp "${tmp_dir}"/BA_exvivo-area.csv "${st}"/area_ba.csv
 cp "${tmp_dir}"/BA_exvivo-thickness.csv "${st}"/thick_ba.csv
 cp "${tmp_dir}"/BA_exvivo-volume.csv "${st}"/vol_ba.csv
-cp "${tmp_dir}"/amygdalar-nuclei.T1.v21.stats.csv "${st}"/amyg.csv
+cp "${tmp_dir}"/amygdalar-nuclei.T1.v22.stats.csv "${st}"/amyg.csv
 cp "${tmp_dir}"/aparc-area.csv "${st}"/area.csv
 cp "${tmp_dir}"/aparc-thickness.csv "${st}"/thick.csv
 cp "${tmp_dir}"/aparc-volume.csv "${st}"/vol.csv
@@ -54,8 +54,8 @@ cp "${tmp_dir}"/aparc.pial-area.csv "${st}"/area_pial.csv
 cp "${tmp_dir}"/aparc.pial-thickness.csv "${st}"/thick_pial.csv
 cp "${tmp_dir}"/aparc.pial-volume.csv "${st}"/vol_pial.csv
 cp "${tmp_dir}"/aseg.csv "${st}"/subc.csv
-cp "${tmp_dir}"/brainstem.v12.stats.csv "${st}"/brainstem.csv
-cp "${tmp_dir}"/hipposubfields.T1.v21.MMAP.stats.csv "${st}"/mmhipp_ap.csv
-cp "${tmp_dir}"/hipposubfields.T1.v21.MMHBT.stats.csv "${st}"/mmhipp_hbt.csv
-cp "${tmp_dir}"/hipposubfields.T1.v21.stats.csv "${st}"/hipp.csv
-cp "${tmp_dir}"/thalamic-nuclei.v12.T1.stats.csv "${st}"/thal.csv
+cp "${tmp_dir}"/brainstem.v13.stats.csv "${st}"/brainstem.csv
+cp "${tmp_dir}"/hipposubfields.T1.v22.MMAP.stats.csv "${st}"/mmhipp_ap.csv
+cp "${tmp_dir}"/hipposubfields.T1.v22.MMHBT.stats.csv "${st}"/mmhipp_hbt.csv
+cp "${tmp_dir}"/hipposubfields.T1.v22.stats.csv "${st}"/hipp.csv
+cp "${tmp_dir}"/thalamic-nuclei.v13.T1.stats.csv "${st}"/thal.csv

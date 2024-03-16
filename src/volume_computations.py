@@ -12,13 +12,13 @@ statsdir = sys.argv[1]
 outdir = sys.argv[2]
 
 fnames = [
-    'hipposubfields.lh.T1.v21.stats',
-    'hipposubfields.rh.T1.v21.stats',
-    'amygdalar-nuclei.lh.T1.v21.stats',
-    'amygdalar-nuclei.rh.T1.v21.stats',
-    'thalamic-nuclei.lh.v12.T1.stats',
-    'thalamic-nuclei.rh.v12.T1.stats',
-    'brainstem.v12.stats'
+    'hipposubfields.lh.T1.v22.stats',
+    'hipposubfields.rh.T1.v22.stats',
+    'amygdalar-nuclei.lh.T1.v22.stats',
+    'amygdalar-nuclei.rh.T1.v22.stats',
+    'thalamic-nuclei.lh.v13.T1.stats',
+    'thalamic-nuclei.rh.v13.T1.stats',
+    'brainstem.v13.stats'
     ]
     
 rx = re.compile('.+?\.(lh|rh)\..+')
@@ -69,7 +69,7 @@ posterior = [
 for hemi in ('lh','rh'):
 
     X = pandas.read_csv(os.path.join(outdir,
-        'hipposubfields.'+hemi+'.T1.v21.stats.csv'))
+        'hipposubfields.'+hemi+'.T1.v22.stats.csv'))
 
     y = numpy.concatenate((X[[hemi + '_' + x for x in anterior]].sum(1).values,
                            X[[hemi + '_' + x for x in posterior]].sum(1).values))
@@ -78,7 +78,7 @@ for hemi in ('lh','rh'):
         columns=[hemi+'_anterior_hippocampus',
                  hemi+'_posterior_hippocampus'] )
                  
-    Y.to_csv(os.path.join(outdir,'hipposubfields.'+hemi+'.T1.v21.MMAP.stats.csv'),
+    Y.to_csv(os.path.join(outdir,'hipposubfields.'+hemi+'.T1.v22.MMAP.stats.csv'),
         index=False)
 
 
@@ -115,7 +115,7 @@ tail = [
 for hemi in ('lh','rh'):
 
     X = pandas.read_csv(os.path.join(outdir,
-        'hipposubfields.'+hemi+'.T1.v21.stats.csv'))
+        'hipposubfields.'+hemi+'.T1.v22.stats.csv'))
 
     y = numpy.concatenate((X[[hemi + '_' + x for x in head_ca]].sum(1).values,
                            X[[hemi + '_' + x for x in head_dg]].sum(1).values,
@@ -134,5 +134,5 @@ for hemi in ('lh','rh'):
                  hemi+'_body_subiculum',
                  hemi+'_tail'] )
                  
-    Y.to_csv(os.path.join(outdir,'hipposubfields.'+hemi+'.T1.v21.MMHBT.stats.csv'),
+    Y.to_csv(os.path.join(outdir,'hipposubfields.'+hemi+'.T1.v22.MMHBT.stats.csv'),
         index=False)

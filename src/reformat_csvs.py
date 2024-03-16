@@ -11,11 +11,11 @@ outdir = sys.argv[1]
 ##############################################################################
 # Subfields files - join lh and rh
 for fbase in [
-    'hipposubfields.lh.T1.v21.stats.csv',
-    'hipposubfields.lh.T1.v21.MMAP.stats.csv',
-    'hipposubfields.lh.T1.v21.MMHBT.stats.csv',
-    'thalamic-nuclei.lh.v12.T1.stats.csv',
-    'amygdalar-nuclei.lh.T1.v21.stats.csv'
+    'hipposubfields.lh.T1.v22.stats.csv',
+    'hipposubfields.lh.T1.v22.MMAP.stats.csv',
+    'hipposubfields.lh.T1.v22.MMHBT.stats.csv',
+    'thalamic-nuclei.lh.v13.T1.stats.csv',
+    'amygdalar-nuclei.lh.T1.v22.stats.csv'
     ]:
 
     L = pandas.read_csv(os.path.join(outdir,fbase))

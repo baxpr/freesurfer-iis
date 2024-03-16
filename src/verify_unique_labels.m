@@ -4,7 +4,7 @@ files = {
 	'BA_exvivo-area.csv'
 	'BA_exvivo-thickness.csv'
 	'BA_exvivo-volume.csv'
-	'amygdalar-nuclei.T1.v21.stats.csv'
+	'amygdalar-nuclei.T1.v22.stats.csv'
 	'aparc-area.csv'
 	'aparc-thickness.csv'
 	'aparc-volume.csv'
@@ -18,11 +18,11 @@ files = {
 	'aparc.pial-thickness.csv'
 	'aparc.pial-volume.csv'
 	'aseg.csv'
-	'brainstem.v12.stats.csv'
-	'hipposubfields.T1.v21.MMAP.stats.csv'
-	'hipposubfields.T1.v21.MMHBT.stats.csv'
-	'hipposubfields.T1.v21.stats.csv'
-	'thalamic-nuclei.v12.T1.stats.csv'
+	'brainstem.v13.stats.csv'
+	'hipposubfields.T1.v22.MMAP.stats.csv'
+	'hipposubfields.T1.v22.MMHBT.stats.csv'
+	'hipposubfields.T1.v22.stats.csv'
+	'thalamic-nuclei.v13.T1.stats.csv'
 	};
 
 clear F

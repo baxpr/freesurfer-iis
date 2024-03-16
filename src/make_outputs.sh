@@ -26,47 +26,47 @@ mri_convert "${mri_dir}"/wmparc.mgz "${NII_WMPARC}"/wmparc.nii.gz
 # NII_THALAMUS
 NII_THALAMUS="${SUBJECTS_DIR}"/NII_THALAMUS
 mkdir "${NII_THALAMUS}"
-mri_convert "${mri_dir}"/ThalamicNuclei.v12.T1.FSvoxelSpace.mgz \
-    "${NII_THALAMUS}"/ThalamicNuclei.v12.T1.FSvoxelSpace.nii.gz
+mri_convert "${mri_dir}"/ThalamicNuclei.v13.T1.FSvoxelSpace.mgz \
+    "${NII_THALAMUS}"/ThalamicNuclei.v13.T1.FSvoxelSpace.nii.gz
 
 # NII_BRAINSTEM
 NII_BRAINSTEM="${SUBJECTS_DIR}"/NII_BRAINSTEM
 mkdir "${NII_BRAINSTEM}"
-mri_convert "${mri_dir}"/brainstemSsLabels.v12.FSvoxelSpace.mgz \
-    "${NII_BRAINSTEM}"/brainstemSsLabels.v12.FSvoxelSpace.nii.gz
+mri_convert "${mri_dir}"/brainstemSsLabels.v13.FSvoxelSpace.mgz \
+    "${NII_BRAINSTEM}"/brainstemSsLabels.v13.FSvoxelSpace.nii.gz
 
 # NII_HIPP_AMYG
 NII_HIPP_AMYG="${SUBJECTS_DIR}"/NII_HIPP_AMYG
 mkdir "${NII_HIPP_AMYG}"
 for f in \
-  lh.hippoAmygLabels-T1.v21.FSvoxelSpace \
-  rh.hippoAmygLabels-T1.v21.FSvoxelSpace \
-  lh.hippoAmygLabels-T1.v21.HBT.FSvoxelSpace \
-  rh.hippoAmygLabels-T1.v21.HBT.FSvoxelSpace \
-  lh.hippoAmygLabels-T1.v21.FS60.FSvoxelSpace \
-  rh.hippoAmygLabels-T1.v21.FS60.FSvoxelSpace \
-  lh.hippoAmygLabels-T1.v21.CA.FSvoxelSpace \
-  rh.hippoAmygLabels-T1.v21.CA.FSvoxelSpace \
+  lh.hippoAmygLabels-T1.v22.FSvoxelSpace \
+  rh.hippoAmygLabels-T1.v22.FSvoxelSpace \
+  lh.hippoAmygLabels-T1.v22.HBT.FSvoxelSpace \
+  rh.hippoAmygLabels-T1.v22.HBT.FSvoxelSpace \
+  lh.hippoAmygLabels-T1.v22.FS60.FSvoxelSpace \
+  rh.hippoAmygLabels-T1.v22.FS60.FSvoxelSpace \
+  lh.hippoAmygLabels-T1.v22.CA.FSvoxelSpace \
+  rh.hippoAmygLabels-T1.v22.CA.FSvoxelSpace \
   ; do
     mri_convert "${mri_dir}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
 for f in \
-  lh.hippoLabels-T1.v21.MMAP.FSVoxelSpace \
-  lh.hippoLabels-T1.v21.MMHBT.FSVoxelSpace \
-  rh.hippoLabels-T1.v21.MMAP.FSVoxelSpace \
-  rh.hippoLabels-T1.v21.MMHBT.FSVoxelSpace \
-  lh.hippoLabels-T1.v21.MMAP \
-  lh.hippoLabels-T1.v21.MMHBT \
-  rh.hippoLabels-T1.v21.MMAP \
-  rh.hippoLabels-T1.v21.MMHBT \
+  lh.hippoLabels-T1.v22.MMAP.FSVoxelSpace \
+  lh.hippoLabels-T1.v22.MMHBT.FSVoxelSpace \
+  rh.hippoLabels-T1.v22.MMAP.FSVoxelSpace \
+  rh.hippoLabels-T1.v22.MMHBT.FSVoxelSpace \
+  lh.hippoLabels-T1.v22.MMAP \
+  lh.hippoLabels-T1.v22.MMHBT \
+  rh.hippoLabels-T1.v22.MMAP \
+  rh.hippoLabels-T1.v22.MMHBT \
   ; do
     mri_convert "${tmp_dir}"/"${f}".mgz "${NII_HIPP_AMYG}"/"${f}".nii.gz
 done
 
 for f in \
-  hippoLabels-T1.v21.MMAP.csv \
-  hippoLabels-T1.v21.MMHBT.csv \
+  hippoLabels-T1.v22.MMAP.csv \
+  hippoLabels-T1.v22.MMHBT.csv \
   ; do
 	  cp "${tmp_dir}"/"${f}" "${NII_HIPP_AMYG}"
 done
