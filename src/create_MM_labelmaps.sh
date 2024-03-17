@@ -77,18 +77,18 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz
+--o "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz
 
 mri_vol2vol --nearest --regheader \
---mov "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz \
+--mov "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.mgz \
 --targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v22.FSvoxelSpace.mgz \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.FSVoxelSpace.mgz
+--o "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMAP.FSVoxelSpace.mgz
 
 done
 
 
 # Make corresponding label file
-cat <<EOF > "${out_dir}/hippoLabels-T1.v22.MMAP.csv"
+cat <<EOF > "${tmp_dir}/hippoLabels-T1.v22.MMAP.csv"
 Label,Region
 1,Anterior-Hippocampus
 2,Posterior-Hippocampus
@@ -175,17 +175,17 @@ mri_binarize \
 --replace 7010 0 \
 --replace 7015 0 \
 \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz
+--o "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz
 
 mri_vol2vol --nearest --regheader \
---mov "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz \
+--mov "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.mgz \
 --targ "${mri_dir}"/${hemi}.hippoAmygLabels-T1.v22.FSvoxelSpace.mgz \
---o "${out_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.FSVoxelSpace.mgz
+--o "${tmp_dir}"/${hemi}.hippoLabels-T1.v22.MMHBT.FSVoxelSpace.mgz
 
 done
 
 # Make corresponding label file
-cat <<EOF > "${out_dir}/hippoLabels-T1.v22.MMHBT.csv"
+cat <<EOF > "${tmp_dir}/hippoLabels-T1.v22.MMHBT.csv"
 Label,Region
 1,Head-CA
 2,Head-DG
